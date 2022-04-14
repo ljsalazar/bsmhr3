@@ -55,7 +55,7 @@
 						<div class="card-header">
 							<h2>Request</h2>
 							<p>Provide a type of claim for a user</p>
-						</div><?php
+							</div><?php
 							if(isset($_POST['add_claim'])) {
 								$claim = $_POST['claim'];
 								$user_selected = $_POST['user_selected'];
@@ -106,10 +106,74 @@
 								</div>
 								</br>
 								<button type="submit" name="add_claim" class="btn btn-primary" value="add_claim">Add</button>
+								</br></br></br>
+								<h4>Payable Leaves</h4></br>
+								<div class="panel-body">
+									<div style="max-height:600px; overflow:auto;">
+										<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+											<thead>
+												<tr>
+													<th class="text-center" style="width: 50px;">User</th>
+													<th class="text-center" style="width: 50px;">Leave Type</th>
+													<th class="text-center" style="width: 50px;">Posting Date</th>
+													<th class="text-center" style="width: 50px;">From-To</th>
+													<th class="text-center" style="width: 50px;">Options</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php 
+													
+													//Query Statement for leave history
+													$conn = new mysqli('localhost', 'root', '', 'bank') or die(mysqli_error());
+													$user = current_user();
+													$userid = (int)$user['id'];
+													
+													if ($user_level <= 2){
+														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
+														$sql .=" FROM tblleaves l";
+														$sql .=" LEFT JOIN users u ON l.empid = u.id";
+														$sql .=" WHERE l.Status = 1";
+														// $sql .=" WHERE l.empid= '{$userid}'";
+														$sql .=" ORDER BY id DESC";
+													} else {
+														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
+														$sql .=" FROM tblleaves l";
+														$sql .=" LEFT JOIN users u ON l.empid = u.id";
+														$sql .=" WHERE l.Status = 1 AND empid='{$userid}'";
+														$sql .=" ORDER BY id DESC";
+													}
+													if($result = $conn->query($sql)){
+														while ($row = $result -> fetch_row()) {
+														?>
+														<tr>
+															<td class="text-center"> <?php echo remove_junk($row[12]); ?></td>
+															<td class="text-center"><?php echo remove_junk($row[1]); ?></td>                   
+															<td class="text-center"><?php echo read_date($row[5]); ?></td>
+															<td class="text-center"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
+															<td class="text-center"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="background-color:steelblue; color: whitesmoke;"> Action </a></td>
+														</tr>
+														<?php } 
+													}
+												?>
+											</tbody>
+										</table>
+									</div>
+								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-			</div><?php include_once('layouts/footer.php'); ?>
+				</div><?php include_once('layouts/footer.php'); ?>
+			
+			
+			<!--from startbootstrap.com this is for Datatables...
+				<link href="dist/css/styles.css" rel="stylesheet" />
+			-->
+			<?php include('layouts/table/tablefooter.php');?>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+			<script src="dist/js/scripts.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+			<script src="dist/js/datatables-simple-demo.js"></script>
 		</body>
 	</html>
