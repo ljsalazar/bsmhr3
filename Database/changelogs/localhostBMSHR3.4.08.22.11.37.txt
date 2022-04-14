@@ -1,0 +1,37 @@
+Edited:
+user_menu.php
+header.php
+hr3/user_menu.php
+hr3/header.php
+
+
+leave management edited(active navigation)
+all_leaves.php
+leave_history.php
+apply_leave.php
+
+shiftandscheduling edited(table queries)
+schedule_management.php
+
+
+problem:
+schedule_view.php
+leave_view.php
+with 0 id value 
+
+
+databases altered:
+tblleaves
+tblleavetype
+tblleavetype_archive
+tblschedule
+tblschedule_archive
+tblshift_type_archive
+tblshift_type
+
+
+previous problem:
+schedule_view.php
+leave_view.php
+with 0 id value 
+status: SOLVED!

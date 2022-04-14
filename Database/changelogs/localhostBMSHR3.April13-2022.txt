@@ -1,0 +1,41 @@
+EDITED:As of April 13, 2022
+
+(additional Navigations)
+admin.php
+admin_menu.php
+user_menu.php
+hr3/layouts/admin_menu.php
+hr3/layouts/user_menu.php
+hr2/layouts/admin_menu.php
+hr2/layouts/user_menu.php
+hr4/layouts/admin_menu.php
+hr4/layouts/user_menu.php
+
+
+(archives buttons changed into trashbin span)
+set_shift.php
+leave_type.php
+reimbursement_history.php
+claim_history.php
+claim_history_accepted.php
+timesheet_index.php
+
+
+
+needs to be fullfill:
+integration of:
+ESS
+Core Human Capital
+
+
+added sub modules:
+HR 1,2,4
+
+
+
+under HR2 folder:
+ess_index.php
+apply_leave.php
+
+under HR4 folder:
+corehumancapital_index.php

@@ -1,0 +1,50 @@
+edited:
+admin_menu.php
+hr3/layouts/admin_menu.php
+
+babaguhin:
+
+schedule.php /
+scheduling.php /
+
+schedule_management.php /
+set_shift.php /
+edit_shift.php /
+
+03-31-22
+schedule_view.php /
+sched_approval_form.php /
+set_schedule.php /
+edit_schedule.php /
+
+
+Leave Management:
+leave_management.php /
+apply_leave.php /
+leave_history.php /
+leave_type.php /
+edit_leave_type.php /
+leave_report.php /
+leave_view.php /
+leave_approval_form.php /
+add_leave_type.php /
+delete_leave_type.php /
+generate_leaves_index.php /
+generate_leaves.php / 
+generate_schedule_report.php /
+
+edited
+shift & scheduling:
+delete_shift.php - card panels /
+delete_schedule.php - card panels /
+edit_shift.php - cancel button,formgrouptocard-body
+set_shift.php - formgrouptocard-body
+set_schedule.php - cancel button
+edit_schedule.php - cancel button
+sched_approval_form.php - cancel button
+
+
+
+edited also:
+admin_menu.php
+hr3/layouts/admin_menu.php

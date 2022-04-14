@@ -1,0 +1,10 @@
+Edited:
+
+Shift and Scheduling:
+set_shift.php - mini table
+
+edit_shift.php - mini table
+
+set_schedule.php - shift schedule time format (from military time to digital time)
+
+schedule.php - shift schedule time format (from military time to digital time)
