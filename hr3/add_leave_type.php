@@ -1,4 +1,5 @@
 <?php
+// Tangina Test 
   $page_title = 'Add Leave Type ';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
