@@ -91,7 +91,7 @@ $result = $db->query($sql);
                 <td class="text-center"><?php echo count_id();?></td>
                 <td class="text-center"> <?php echo remove_junk($row[12]); ?></td>
                 <td class="text-center"><?php echo remove_junk($row[1]); ?></td>                   
-                <td class="text-center"><?php echo read_date($row[5]); ?></td>
+                <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[5])); echo $posting_date; ?></td>
                 <td class="text-center"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
                 <td><?php $stats=(int)$row[8];
                 if($stats==1){
