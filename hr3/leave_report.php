@@ -110,10 +110,10 @@
               <tr>
                 <td class="text-center"><?php echo count_id();?></td>
                 <td class="text-center"> <?php echo remove_junk($row[1]); ?></td>
-                <td class="text-center"><?php echo read_date($row[2]); ?></td>                   
-                <td class="text-center"><?php echo read_date($row[3]); ?></td> 
+                <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[2])); echo $posting_date; ?></td>                   
+                <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[3])); echo $posting_date; ?></td> 
                 <td class="text-center"> <?php echo remove_junk($row[4]); ?></td>
-                <td class="text-center"> <?php echo read_date($row[5]); ?></td>
+                <td class="text-center"> <?php $posting_date = date("F j, Y", strtotime($row[5])); echo $posting_date; ?></td>
                 <td><?php if($row[7]=="")
                 {
                   echo htmlentities('waiting for approval');
