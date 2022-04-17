@@ -131,14 +131,14 @@
 														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
 														$sql .=" FROM tblleaves l";
 														$sql .=" LEFT JOIN users u ON l.empid = u.id";
-														$sql .=" WHERE l.Status = 1";
+														$sql .=" WHERE l.Status = 1 AND paid = 0";
 														// $sql .=" WHERE l.empid= '{$userid}'";
 														$sql .=" ORDER BY id DESC";
 													} else {
 														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
 														$sql .=" FROM tblleaves l";
 														$sql .=" LEFT JOIN users u ON l.empid = u.id";
-														$sql .=" WHERE l.Status = 1 AND empid='{$userid}'";
+														$sql .=" WHERE l.Status = 1 AND paid = 0 AND empid='{$userid}'";
 														$sql .=" ORDER BY id DESC";
 													}
 													if($result = $conn->query($sql)){

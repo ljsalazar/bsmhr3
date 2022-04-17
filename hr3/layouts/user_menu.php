@@ -162,7 +162,7 @@
     <div class="collapse" id="hr3">
       <ul class="navbar-nav ps-3">
         <li>
-          <a href="claim_index.php" class="nav-link px-3">
+          <a href="claim_history.php" class="nav-link px-3">
             <span class="me-2"
               ><i class="bi bi-credit-card-fill"></i
             ></span>
