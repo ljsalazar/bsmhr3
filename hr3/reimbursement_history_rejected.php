@@ -23,6 +23,9 @@
 	$user_level = $user['user_level'];
 	$user_id = $user['id']; 
 	
+	$query = $conn->query("SELECT reimbursement_notif FROM users WHERE reimbursement_notif!=0 AND id='$user_id'");
+	$query2 = $conn->query("UPDATE users SET reimbursement_notif=0 WHERE id=$user_id");
+	
 	include_once('layouts/header.php'); 
 ?>
 <html>
@@ -77,9 +80,7 @@
 								<!-- <form class="form-inline" method="post" action="reimbursement_archive.php">
 									<button type="submit" id="pdf" name="generate_pdf" class="btn">Archive</button>
 								</form> -->
-								
-								<a href="reimbursement_archive.php" class="btn btn-outline-danger me-md-1"><span class="bi bi-trash3-fill"></a>
-									
+								<a href="reimbursement_archive.php" class="btn btn-outline-danger"><span class="bi bi-trash3-fill"></a>
 									<?php endif;?>
 								</div>
 							</div>
@@ -93,9 +94,9 @@
 								}
 							?>
 							<ul class="nav nav-pills">
-								<li role="presentation" class="active"><a href="reimbursement_history.php" class="btn btn-primary" style="margin-bottom:10px">Pending</a></li>
+								<li role="presentation"><a href="reimbursement_history.php" class="btn" style="margin-bottom:10px">Pending</a></li>
 								<li role="presentation"><a href="reimbursement_history_accepted.php" class="btn" style="margin-bottom:10px">Accepted<?php if(!$reimbursement_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$reimbursement_notif; ?></span><?php } ?></a></li>
-								<li role="presentation"><a href="reimbursement_history_rejected.php" class="btn" style="margin-bottom:10px">Rejected</a></li>
+								<li role="presentation" class="active"><a href="reimbursement_history_rejected.php" class="btn btn-primary" style="margin-bottom:10px">Rejected</a></li>
 							</ul>
 							
 							<div style="max-height:300px; overflow:auto;">
@@ -112,13 +113,13 @@
 									</thead>
 									<?php
 										if ($user_level <= 1){
-											$query = $conn->query("SELECT * FROM reimbursements WHERE accepted=0 ORDER BY reimbursement_id DESC");
+											$query = $conn->query("SELECT * FROM reimbursements WHERE accepted=2 ORDER BY reimbursement_id DESC");
 										} 
 										else if ($user_level <= 2){
-											$query = $conn->query("SELECT * FROM reimbursements WHERE accepted=0 AND user_level >= 2 ORDER BY reimbursement_id DESC");
+											$query = $conn->query("SELECT * FROM reimbursements WHERE accepted=2 AND user_level >= 2 ORDER BY reimbursement_id DESC");
 										} 
 										else {
-											$query = $conn->query("SELECT * FROM reimbursements WHERE username='$username' && accepted=0 ORDER BY reimbursement_id DESC");
+											$query = $conn->query("SELECT * FROM reimbursements WHERE username='$username' && accepted=2 ORDER BY reimbursement_id DESC");
 										}
 										
 										while($user_data = mysqli_fetch_array($query)) {
@@ -128,11 +129,7 @@
 											echo "<td>".$user_data['reimbursement_date']."</td>";
 											echo "<td>".$user_data['amount']."</td>";
 											echo "<td>".$user_data['status']."</td>";
-											if ($user_level <= 2){
-												echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a> | <a href='reimbursement_accept.php?reimbursement_id=$user_data[reimbursement_id]'>Accept</a> | <a href='reimbursement_reject.php?reimbursement_id=$user_data[reimbursement_id]'>Reject</a></td>";
-												} else {
-												echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a></td>";
-											}
+											echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a></td>";
 											echo "</tr>";
 										}?>
 								</table>

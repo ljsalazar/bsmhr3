@@ -83,8 +83,8 @@
 						<div class="card-body">
 							<ul class="nav nav-pills">
 								<li role="presentation"><a href="claim_history.php" class="btn" style="margin-bottom:10px">Pending</a></li>
-								<li role="presentation" class="active"><a href="claim_history_accepted.php" class="btn btn-primary" style="margin-bottom:10px">Accepted<?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a></li>
-								<li role="presentation"><a href="claim_history_rejected.php" class="btn" style="margin-bottom:10px">Rejected</a></li>
+								<li role="presentation"><a href="claim_history_accepted.php" class="btn" style="margin-bottom:10px">Accepted<?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a></li>
+								<li role="presentation" class="active"><a href="claim_history_rejected.php" class="btn btn-primary" style="margin-bottom:10px">Rejected</a></li>
 							</ul>
 							
 							<div style="max-height:300px; overflow:auto;">
@@ -106,13 +106,13 @@
 										$conn = new mysqli('localhost', 'root', '', 'bank');
 										
 										if ($user_level <= 1){
-											$query = $conn->query("SELECT * FROM claim WHERE accepted = '1' ORDER BY claim_id DESC");
+											$query = $conn->query("SELECT * FROM claim WHERE accepted = '2' ORDER BY claim_id DESC");
 										}
 										else if ($user_level <= 2){
-											$query = $conn->query("SELECT * FROM claim WHERE accepted = '1' AND user_level >= 2 ORDER BY claim_id DESC");
+											$query = $conn->query("SELECT * FROM claim WHERE accepted = '2' AND user_level >= 2 ORDER BY claim_id DESC");
 										}
 										else {
-											$query = $conn->query("SELECT * FROM claim WHERE username = '$username' && accepted = '1' ORDER BY claim_id DESC");
+											$query = $conn->query("SELECT * FROM claim WHERE username = '$username' && accepted = '2' ORDER BY claim_id DESC");
 										}
 										while($user_data = mysqli_fetch_array($query)) {
 											echo "<tr>";

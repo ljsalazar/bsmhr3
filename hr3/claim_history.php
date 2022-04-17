@@ -79,8 +79,9 @@
 						?>
 						<div class="card-body">
 							<ul class="nav nav-pills">
-								<li role="presentation" class="active"><a href="claim_history.php" class="btn" style="margin-bottom:10px">Pending Claims</a></li>
-								<li role="presentation"><a href="claim_history_accepted.php" class="btn" style="margin-bottom:10px">Accepted Claims <?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a></li>
+								<li role="presentation" class="active"><a href="claim_history.php" class="btn btn-primary" style="margin-bottom:10px">Pending</a></li>
+								<li role="presentation"><a href="claim_history_accepted.php" class="btn" style="margin-bottom:10px">Accepted<?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a></li>
+								<li role="presentation"><a href="claim_history_rejected.php" class="btn" style="margin-bottom:10px">Rejected</a></li>
 							</ul>
 							
 							<div style="max-height:300px; overflow:auto;">
@@ -117,7 +118,7 @@
 											echo "<td>".$user_data['claim_date']."</td>";
 											echo "<td>".$user_data['status']."</td>";
 											if ($user_level <= 2) {
-												echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]'>Delete</a> | <a href='claim_accept.php?claim_id=$user_data[claim_id]'>Accept</a></td>";
+												echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]'>Delete</a> | <a href='claim_accept.php?claim_id=$user_data[claim_id]'>Accept</a> | <a href='claim_reject.php?claim_id=$user_data[claim_id]'>Reject</a></td>";
 												} else {
 												echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]'>Delete</a></td>";
 											}

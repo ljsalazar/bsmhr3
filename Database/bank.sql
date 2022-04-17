@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2022 at 12:02 PM
+-- Generation Time: Apr 17, 2022 at 09:02 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -62,13 +62,10 @@ CREATE TABLE `claim` (
 --
 
 INSERT INTO `claim` (`claim_id`, `claim`, `claim_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`) VALUES
-(0, 'Health Insurance Claims', '2022-03-30', 'Pending', 0, 12, 'rjinxed', 3, 'jin rodriguez'),
-(1, 'Health Insurance Claims', '2022-01-08', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(3, 'Life Insurance Claims', '2022-01-11', 'Accepted by Admin Account', 1, 11, 'admin1', 1, 'Admin RJ'),
-(4, 'Health Insurance Claims', '2022-01-11', 'Accepted by Admin RJ', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(5, 'Property Claims', '2022-01-11', 'Accepted by Admin RJ', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(6, 'Health Insurance Claims', '2022-01-11', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(7, 'Property Claims', '2022-01-26', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez');
+(1, 'Life Insurance Claims', '2022-04-17', 'Pending', 0, 16, 'lj', 1, 'Lawrence'),
+(2, 'Health Insurance Claims', '2022-04-17', 'Rejected by Admin RJ', 2, 17, 'Hanna', 3, 'Hanna'),
+(3, 'Casualty Claims', '2022-04-17', 'Accepted by Admin RJ', 1, 12, 'rjinxed', 3, 'jin rodriguez'),
+(4, 'Casualty Claims', '2022-04-17', 'Pending', 0, 16, 'lj', 1, 'Lawrence');
 
 -- --------------------------------------------------------
 
@@ -467,9 +464,10 @@ CREATE TABLE `reimbursements` (
 INSERT INTO `reimbursements` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`) VALUES
 (1, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Papers', '2022-01-08', 100, 'Accepted by Admin Account', 1),
 (2, 'rjinxed', 'jin rodriguez', 3, 10, '19.5 inch ThinkVision Computer Monitor', '2022-01-08', 6000, 'Accepted by Admin Account', 1),
-(3, 'Admin', 'Admin Account', 1, 7, 'Thinkpad x250 as a workstation laptop', '2022-01-08', 15000, 'Pending', 0),
+(3, 'Admin', 'Admin Account', 1, 7, 'Thinkpad x250 as a workstation laptop', '2022-01-08', 15000, 'Accepted by Admin RJ', 1),
 (7, 'rjinxed', 'jin rodriguez', 3, 10, 'Reimburse Test Jin', '2022-01-11', 100, 'Accepted by Admin RJ', 1),
-(8, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Paper', '2022-01-11', 100, 'Pending', 0);
+(9, 'Admin', 'Admin Account', 1, 7, 'Test', '2022-01-26', 1000, 'Accepted by Admin RJ', 1),
+(10, 'employee', 'Employee', 3, 6, 'test1', '2022-04-17', 100, 'Rejected by Admin Account', 2);
 
 -- --------------------------------------------------------
 
@@ -489,13 +487,6 @@ CREATE TABLE `reimbursements_archive` (
   `status` varchar(50) NOT NULL,
   `accepted` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `reimbursements_archive`
---
-
-INSERT INTO `reimbursements_archive` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`) VALUES
-(9, 'Admin', 'Admin Account', 1, 7, 'Test', '2022-01-26', 1000, 'Accepted by Admin RJ', 1);
 
 -- --------------------------------------------------------
 
@@ -641,7 +632,7 @@ INSERT INTO `tblleaves` (`id`, `LeaveType`, `FromDate`, `ToDate`, `Description`,
 (4, 'Maternity leave', '2021-12-13', '2021-12-17', 'Maternity', '2021-12-19', 'ok', '2021-12-19 14:36:04 ', 1, 1, 7, 0, 5, 0),
 (5, 'Sick Leave', '2021-12-13', '2021-12-18', 'Sick Leave', '2021-12-19', NULL, NULL, 0, 1, 6, 0, 6, 0),
 (10, 'Sample Leave', '2021-01-12', '2021-01-14', 'Sample', '2022-01-11', 'okie doki ', '2022-01-26 18:59:25 ', 1, 1, 7, 0, 3, 0),
-(11, 'Sample Leave', '2022-01-11', '2022-01-12', 'Demo', '2022-01-11', 'Okay', '2022-01-11 18:25:34 ', 1, 1, 10, 1, 2, 1),
+(11, 'Sample Leave', '2022-01-11', '2022-01-12', 'Demo', '2022-01-11', 'Okay', '2022-01-11 18:25:34 ', 1, 1, 6, 1, 2, 1),
 (12, 'Vacation leave', '2022-03-31', '2022-04-09', 'demo', '2022-03-31', 'yeah', '2022-04-08 10:46:41 ', 1, 1, 16, 0, 10, 9),
 (13, 'Casual Leave', '2022-04-10', '2022-04-16', 'Demo leave', '2022-04-08', 'yeah', '2022-04-08 10:46:41 ', 1, 1, 17, 1, 7, 9);
 
@@ -908,15 +899,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`, `reimbursement_budget`, `reimbursement_notif`, `claim_notif`, `complaint_notif`) VALUES
-(6, 'Employee', 'employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-09 11:24:09', 10010, 0, 0, 0),
-(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-09 11:31:53', 95431, 0, 0, 0),
+(6, 'Employee', 'employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-17 20:54:41', 10010, 0, 0, 0),
+(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-17 20:55:05', 80431, 0, 0, 0),
 (8, 'HR STAFF', 'Staff', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 2, 'no_image.jpg', 1, '2022-01-11 17:05:45', 25000, 0, 0, 0),
-(11, 'Admin RJ', 'admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-03-30 18:04:44', 49900, 0, 0, 0),
-(12, 'jin rodriguez', 'rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 3, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 0, 0),
+(11, 'Admin RJ', 'admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-17 19:20:40', 49900, 0, 0, 0),
+(12, 'jin rodriguez', 'rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 3, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 2, 0),
 (13, 'name', 'username', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 1, 'no_image.jpg', 1, NULL, 5000, 0, 0, 0),
 (15, 'asdasd', 'asdasd', '85136c79cbf9fe36bb9d05d0639c70c265c18d37', 1, 'no_image.jpg', 1, '2022-03-21 15:17:30', 100, 0, 0, 0),
 (16, 'Lawrence', 'lj', '846251899cbc801a4d307becd54393a88ad1536d', 1, 'bso7e8j116.jpg', 1, '2022-04-08 13:44:27', 0, 0, 0, 0),
-(17, 'Hanna', 'Hanna', '26f769205f6a2faa1521d5d628ecf51210aebeb0', 3, 'no_image.jpg', 1, '2022-04-08 11:32:45', 0, 0, 0, 0);
+(17, 'Hanna', 'Hanna', '26f769205f6a2faa1521d5d628ecf51210aebeb0', 3, 'no_image.jpg', 1, '2022-04-08 11:32:45', 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1052,6 +1043,12 @@ ALTER TABLE `purchases`
   ADD PRIMARY KEY (`PU_id`);
 
 --
+-- Indexes for table `reimbursements`
+--
+ALTER TABLE `reimbursements`
+  ADD PRIMARY KEY (`reimbursement_id`);
+
+--
 -- Indexes for table `reimbursment`
 --
 ALTER TABLE `reimbursment`
@@ -1150,6 +1147,18 @@ ALTER TABLE `budgetreleasing`
   MODIFY `P_ID` int(200) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
 
 --
+-- AUTO_INCREMENT for table `claim`
+--
+ALTER TABLE `claim`
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `claim_archive`
+--
+ALTER TABLE `claim_archive`
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `collection`
 --
 ALTER TABLE `collection`
@@ -1190,6 +1199,12 @@ ALTER TABLE `proposals`
 --
 ALTER TABLE `purchases`
   MODIFY `PU_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `reimbursements`
+--
+ALTER TABLE `reimbursements`
+  MODIFY `reimbursement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `reimbursment`

@@ -81,74 +81,71 @@
 									<button type="submit" id="pdf" name="generate_pdf" class="btn">Archive</button>
 								</form> -->
 								<a href="reimbursement_archive.php" class="btn btn-outline-danger"><span class="bi bi-trash3-fill"></a>
-								<?php endif;?>
+									<?php endif;?>
+								</div>
 							</div>
 						</div>
-					</div>
-					
-					<div class="card-body" id="pending">
-						<?php
-							$query = $conn->query("SELECT reimbursement_notif FROM users WHERE id='$user_id'");
-							while($user_data = mysqli_fetch_array($query)) {
-								$reimbursement_notif = $user_data['reimbursement_notif'];
-							}
+						
+						<div class="card-body" id="pending">
+							<?php
+								$query = $conn->query("SELECT reimbursement_notif FROM users WHERE id='$user_id'");
+								while($user_data = mysqli_fetch_array($query)) {
+									$reimbursement_notif = $user_data['reimbursement_notif'];
+								}
 							?>
 							<ul class="nav nav-pills">
-								<li role="presentation" class="active"><a href="reimbursement_history.php" class="btn" style="margin-bottom:10px">Pending Reimbursements</a></li>
-							<li role="presentation"><a href="reimbursement_history_accepted.php" class="btn" style="margin-bottom:10px">Accepted Reimbursements <?php if(!$reimbursement_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$reimbursement_notif; ?></span><?php } ?></a></li>
-						</ul>
+								<li role="presentation"><a href="reimbursement_history.php" class="btn" style="margin-bottom:10px">Pending</a></li>
+								<li role="presentation" class="active"><a href="reimbursement_history_accepted.php" class="btn btn-primary" style="margin-bottom:10px">Accepted<?php if(!$reimbursement_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$reimbursement_notif; ?></span><?php } ?></a></li>
+								<li role="presentation"><a href="reimbursement_history_rejected.php" class="btn" style="margin-bottom:10px">Rejected</a></li>
+							</ul>
+							
+							<div style="max-height:300px; overflow:auto;">
+								<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+									<thead>
+										<tr>
+											<th>User</th>
+											<th>Reimbursement Description</th>
+											<th>Date</th>
+											<th>Amount</th>
+											<th>Status</th>
+											<th>Options</th>
+										</tr>
+									</thead>
+									<?php
+										if ($user_level <= 1){
+											$query = $conn->query("SELECT * FROM reimbursements WHERE accepted=1 ORDER BY reimbursement_id DESC");
+										} 
+										else if ($user_level <= 2){
+											$query = $conn->query("SELECT * FROM reimbursements WHERE accepted=1 AND user_level >= 2 ORDER BY reimbursement_id DESC");
+										} 
+										else {
+											$query = $conn->query("SELECT * FROM reimbursements WHERE username='$username' && accepted=1 ORDER BY reimbursement_id DESC");
+										}
+										
+										while($user_data = mysqli_fetch_array($query)) {
+											echo "<tr>";
+											echo "<td>".$user_data['name']."</td>";
+											echo "<td>".$user_data['reimbursement']."</td>";
+											echo "<td>".$user_data['reimbursement_date']."</td>";
+											echo "<td>".$user_data['amount']."</td>";
+											echo "<td>".$user_data['status']."</td>";
+											echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a></td>";
+											echo "</tr>";
+										}?>
+								</table>
+							</div>
+						</div>
 						
-						<div style="max-height:300px; overflow:auto;">
-							<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
-								<thead>
-								<tr>
-									<th>User</th>
-									<th>Reimbursement Description</th>
-									<th>Date</th>
-									<th>Amount</th>
-									<th>Status</th>
-									<th>Options</th>
-								</tr>
-							</thead>
-							<?php
-								if ($user_level <= 1){
-									$query = $conn->query("SELECT * FROM reimbursements WHERE accepted=1 ORDER BY reimbursement_id DESC");
-								} 
-								else if ($user_level <= 2){
-									$query = $conn->query("SELECT * FROM reimbursements WHERE accepted=1 AND user_level >= 2 ORDER BY reimbursement_id DESC");
-								} 
-								else {
-									$query = $conn->query("SELECT * FROM reimbursements WHERE username='$username' && accepted=1 ORDER BY reimbursement_id DESC");
-								}
-								
-								while($user_data = mysqli_fetch_array($query)) {
-									echo "<tr>";
-									echo "<td>".$user_data['name']."</td>";
-									echo "<td>".$user_data['reimbursement']."</td>";
-									echo "<td>".$user_data['reimbursement_date']."</td>";
-									echo "<td>".$user_data['amount']."</td>";
-									echo "<td>".$user_data['status']."</td>";
-									if ($user_level <= 2){
-										echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a> | <a href='reimbursement_accept.php?reimbursement_id=$user_data[reimbursement_id]'>Accept</a></td>";
-										} else {
-										echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a></td>";
-									}
-									echo "</tr>";
-								}?>
-						</table>
 					</div>
 				</div>
 				
-				</div>
-			</div>
-			
-			<?php include('layouts/table/tablefooter.php');?>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-			<script src="dist/js/scripts.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-			<script src="dist/js/datatables-simple-demo.js"></script>
-			
-		</div><?php include_once('layouts/footer.php'); ?>
-	</body>
-</html>
+				<?php include('layouts/table/tablefooter.php');?>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+				<script src="dist/js/scripts.js"></script>
+				<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+				<script src="dist/js/datatables-simple-demo.js"></script>
+				
+			</div><?php include_once('layouts/footer.php'); ?>
+		</body>
+	</html>
