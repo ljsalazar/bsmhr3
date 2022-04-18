@@ -9,7 +9,10 @@ $password = remove_junk($_POST['password']);
 
     $user = authenticate_v2($username, $password);
 
-        if($user):
+    if($user['status'] === '0'):
+      $session->msg("d", "Sorry This level of user has been band!");
+      redirect('index.php',false);
+        elseif($user):
            //create session with id
            $session->login($user['id']);
            //Update Sign in time
@@ -26,6 +29,7 @@ $password = remove_junk($_POST['password']);
              redirect('home.php',false);
            endif;
 
+        
         else:
           $session->msg("d", "Sorry Username/Password incorrect.");
           redirect('index.php',false);

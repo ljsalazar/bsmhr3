@@ -69,8 +69,8 @@
               <tr>
               <td style="font-size:16px;"> <b>Name:</b></td>
                 <td><?php echo remove_junk($row[10]); ?></td>
-                <td style="font-size:16px;"><b>Id:</b></td>
-                <td colspan="3"><?php echo remove_junk($row[9]); ?></td>
+                <td style="font-size:16px;"><b>Leave ID:</b></td>
+                <td colspan="3"><?php echo remove_junk($row[0]); ?></td>
                 <!-- <td style="font-size:16px;"><b>Gender :</b></td>
                 <td><?php echo htmlentities($result->Gender);?></td> -->
                 </tr>
