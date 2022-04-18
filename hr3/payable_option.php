@@ -2,7 +2,7 @@
 	$page_title = 'Request Claims';
 	require_once('includes/load.php');
 	// Checkin What level user has permission to view this page
-	page_require_level(2);
+	page_require_level(3);
 	
 	$user = current_user();
 	$user_level = $user['user_level'];
@@ -72,7 +72,12 @@
 									$add_user_level = $user_data['user_level'];
 									$add_fullname = $user_data['name'];
 								}
-								$conn->query("UPDATE tblleaves SET paid = 1 WHERE id = '$bruh'");
+								if ($user_level <= 2){
+								// granted for admin side
+									$conn->query("UPDATE tblleaves SET paid = 1 WHERE id = '$bruh'");
+								} else {
+									$conn->query("UPDATE tblleaves SET paid = 2 WHERE id = '$bruh'");
+								}
 								$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '0', '$add_user_id', '$add_username', '$add_user_level', '$add_fullname')") or die(mysqli_error());
 								$session->msg('s',"Claim Request Successfully Added");
 								echo "<script>window.location.href='claim_index.php';</script>";

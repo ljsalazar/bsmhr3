@@ -176,9 +176,7 @@
 													<th class="text-center" style="width: 50px;">Leave Type</th>
 													<th class="text-center" style="width: 50px;">Posting Date</th>
 													<th class="text-center" style="width: 50px;">From-To</th>
-													<?php if ($user_level <= 2){?>
-														<th class="text-center" style="width: 50px;">Options</th>
-													<?php }?>
+													<th class="text-center" style="width: 50px;">Options</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -211,9 +209,7 @@
 															<td class="text-center"><?php echo remove_junk($row[1]); ?></td>                   
 															<td class="text-center"><?php echo read_date($row[5]); ?></td>
 															<td class="text-center"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
-															<?php if ($user_level <= 2){?>
-																<td class="text-center"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="background-color:steelblue; color: whitesmoke;"> Action </a></td>
-															<?php }?>
+															<td class="text-center"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="background-color:steelblue; color: whitesmoke;"> Action </a></td>
 														</tr>
 														<?php } 
 													}

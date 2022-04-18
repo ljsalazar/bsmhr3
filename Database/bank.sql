@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2022 at 12:09 PM
+-- Generation Time: Apr 18, 2022 at 12:36 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -65,7 +65,11 @@ INSERT INTO `claim` (`claim_id`, `claim`, `claim_date`, `status`, `accepted`, `u
 (1, 'Life Insurance Claims', '2022-04-17', 'Pending', 0, 16, 'lj', 1, 'Lawrence'),
 (2, 'Health Insurance Claims', '2022-04-17', 'Rejected by Admin RJ', 2, 17, 'Hanna', 3, 'Hanna'),
 (3, 'Casualty Claims', '2022-04-17', 'Accepted by Admin RJ', 1, 12, 'rjinxed', 3, 'jin rodriguez'),
-(108, 'Payable Leaves( Vacation leave)', '2022-04-18', 'Accepted by Admin RJ', 1, 6, 'employee', 3, 'Employee');
+(108, 'Payable Leaves( Vacation leave)', '2022-04-18', 'Accepted by Admin RJ', 1, 6, 'employee', 3, 'Employee'),
+(109, 'Payable Leaves( Medical Leave)', '2022-04-18', 'Pending', 0, 7, 'Admin', 1, 'Admin Account'),
+(110, 'Payable Leaves( Casual Leave)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee'),
+(111, 'Payable Leaves( Casual Leave)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee'),
+(112, 'Payable Leaves( Sick Leave)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee');
 
 -- --------------------------------------------------------
 
@@ -628,8 +632,10 @@ CREATE TABLE `tblleaves` (
 --
 
 INSERT INTO `tblleaves` (`id`, `LeaveType`, `FromDate`, `ToDate`, `Description`, `PostingDate`, `AdminRemark`, `AdminRemarkDate`, `Status`, `IsRead`, `empid`, `emp_read`, `amount_of_days`, `remaining_days`, `paid`) VALUES
-(1, 'Medical Leave', '2022-04-28', '2022-04-29', 'sdf', '2022-04-18', 'sdf', '2022-04-18 0:02:25 ', 1, 1, 7, 0, 2, 12, 0),
-(2, 'Vacation leave', '2022-04-23', '2022-04-24', 'vacation test', '2022-04-18', 'ok', '2022-04-18 12:01:24 ', 1, 1, 6, 0, 2, 7, 1);
+(1, 'Medical Leave', '2022-04-28', '2022-04-29', 'sdf', '2022-04-18', 'sdf', '2022-04-18 0:02:25 ', 1, 1, 7, 0, 2, 12, 1),
+(2, 'Vacation leave', '2022-04-23', '2022-04-24', 'vacation test', '2022-04-18', 'ok', '2022-04-18 12:01:24 ', 1, 1, 6, 1, 2, 7, 1),
+(3, 'Casual Leave', '2022-05-05', '2022-05-06', 'asd', '2022-04-18', 'ok\r\n', '2022-04-18 12:24:19 ', 1, 1, 6, 1, 2, 18, 2),
+(4, 'Sick Leave', '2022-04-29', '2022-04-30', 'sick leave test', '2022-04-18', 'ok', '2022-04-18 12:33:34 ', 1, 1, 6, 1, 2, 12, 2);
 
 -- --------------------------------------------------------
 
@@ -894,8 +900,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`, `reimbursement_budget`, `reimbursement_notif`, `claim_notif`, `complaint_notif`) VALUES
-(6, 'Employee', 'employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-18 12:03:18', 10010, 0, 0, 0),
-(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-18 12:08:28', 80431, 0, 0, 0),
+(6, 'Employee', 'employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-18 12:34:46', 10010, 0, 0, 0),
+(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-18 12:34:28', 80431, 0, 0, 0),
 (8, 'HR STAFF', 'Staff', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 2, 'no_image.jpg', 1, '2022-01-11 17:05:45', 25000, 0, 0, 0),
 (11, 'Admin RJ', 'admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-18 12:03:04', 49900, 0, 0, 0),
 (12, 'jin rodriguez', 'rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 3, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 2, 0),
@@ -1145,7 +1151,7 @@ ALTER TABLE `budgetreleasing`
 -- AUTO_INCREMENT for table `claim`
 --
 ALTER TABLE `claim`
-  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `claim_archive`
@@ -1217,7 +1223,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `tblleaves`
 --
 ALTER TABLE `tblleaves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tblleavetype`
