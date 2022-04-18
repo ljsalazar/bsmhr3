@@ -72,7 +72,7 @@
 								$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '0', '$add_user_id', '$add_username', '$add_user_level', '$add_fullname')") or die(mysqli_error($conn));
 								$session->msg('s',"Claim Request Successfully Added");
 								echo "<script>window.location.href='claim_index.php';</script>";
-							}
+								}
 						?>
 						<div class="panel-body" style="margin:50px">
 							<form method="post" action="claim_index.php">

@@ -53,6 +53,9 @@
 							<h2>Request Claims</h2>
 							<p>Provided as for Payable Leaves</p>
 							</div><?php
+							$id = $_GET['id'];
+							$bruh = $id;
+							
 							if(isset($_POST['add_claim'])) {
 								$claim = $_POST['claim'];
 								$user_selected = $_POST['user_selected'];
@@ -69,13 +72,14 @@
 									$add_user_level = $user_data['user_level'];
 									$add_fullname = $user_data['name'];
 								}
+								$conn->query("UPDATE tblleaves SET paid = 1 WHERE id = '$bruh'");
 								$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '0', '$add_user_id', '$add_username', '$add_user_level', '$add_fullname')") or die(mysqli_error());
 								$session->msg('s',"Claim Request Successfully Added");
 								echo "<script>window.location.href='claim_index.php';</script>";
 							}
 						?>
 						<div class="panel-body" style="margin:50px">
-							<form method="post" action="claim_index.php">
+							<form method="post" action="">
 								<p>Selected Claims: </p>
 								<div class="form-group">
 								<?php 
@@ -84,7 +88,7 @@
 													$conn = new mysqli('localhost', 'root', '', 'bank') or die(mysqli_error());
 													$user = current_user();
 													$userid = (int)$user['id'];
-													$id = $_GET['id'];
+													
 													
 													if ($user_level <= 2){
 														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
