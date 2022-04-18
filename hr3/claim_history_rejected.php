@@ -33,7 +33,7 @@
 						$claim_notif = $user_data['claim_notif'];
 					}
 				?>
-				<?php if ($user_level <= '2'): ?>
+				<?php if ($user_level <= '3'): ?>
 				<nav class="breadcrumbs">
 					<a href="claim_index.php" class="breadcrumbs__item">Request Claims</a>
 					<a href="claim_type.php" class="breadcrumbs__item">Types of Claims</a>

@@ -28,7 +28,7 @@
 						$claim_notif = $user_data['claim_notif'];
 					}
 				?>
-				<?php if ($user_level <= '2'): ?>
+				<?php if ($user_level <= '3'): ?>
 				<nav class="breadcrumbs">
 					<a href="claim_index.php" class="breadcrumbs__item">Request Claims</a>
 					<a href="claim_history.php" class="breadcrumbs__item">Claims History <?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a>

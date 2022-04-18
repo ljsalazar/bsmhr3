@@ -33,7 +33,7 @@
 						$claim_notif = $user_data['claim_notif'];
 					}
 				?>
-				<?php if ($user_level <= '2'): ?>
+				<?php if ($user_level <= '3'): ?>
 				<nav class="breadcrumbs">
 					<a href="claim_type.php" class="breadcrumbs__item">Types of Claims</a>
 					<a href="claim_history.php" class="breadcrumbs__item">Claims History <?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a>
@@ -50,9 +50,15 @@
 				<div class="col-md-12">
 					<div class="card h-100">
 						<div class="card-header">
+						<?php if ($user_level <= '2'): ?>
 							<h2>Request</h2>
 							<p>Provide a type of claim for a user</p>
-							</div><?php
+						<?php else: ?>
+							<h2>Payable Leaves</h2>
+							<p>Suitable payable leaves</p>
+						<?php endif;?>
+						</div>
+						<?php
 							if(isset($_POST['add_claim'])) {
 								$claim = $_POST['claim'];
 								$user_selected = $_POST['user_selected'];
@@ -72,10 +78,11 @@
 								$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '0', '$add_user_id', '$add_username', '$add_user_level', '$add_fullname')") or die(mysqli_error($conn));
 								$session->msg('s',"Claim Request Successfully Added");
 								echo "<script>window.location.href='claim_index.php';</script>";
-								}
+							}
 						?>
 						<div class="panel-body" style="margin:50px">
 							<form method="post" action="claim_index.php">
+								<?php if ($user_level <= '2'): ?>
 								<p>Select Claim: </p>
 								<div class="form-group">
 									<select required class="form-control" name="claim" placeholder="Claim Type">
@@ -97,7 +104,6 @@
 										while($row = mysqli_fetch_array($query)){
 											echo '<option>'.$row['name'].'</option>';
 										}
-										
 									?>
 									</select>
 								</div>
@@ -115,7 +121,7 @@
 													<th class="text-center" style="width: 50px;">Posting Date</th>
 													<th class="text-center" style="width: 50px;">From-To</th>
 													<?php if ($user_level <= 2){?>
-													<th class="text-center" style="width: 50px;">Options</th>
+														<th class="text-center" style="width: 50px;">Options</th>
 													<?php }?>
 												</tr>
 											</thead>
@@ -134,7 +140,7 @@
 														$sql .=" WHERE l.Status = 1 AND paid = 0";
 														// $sql .=" WHERE l.empid= '{$userid}'";
 														$sql .=" ORDER BY id DESC";
-													} else {
+														} else {
 														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
 														$sql .=" FROM tblleaves l";
 														$sql .=" LEFT JOIN users u ON l.empid = u.id";
@@ -150,9 +156,9 @@
 															<td class="text-center"><?php echo read_date($row[5]); ?></td>
 															<td class="text-center"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
 															<?php if ($user_level <= 2){?>
-															<td class="text-center"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="background-color:steelblue; color: whitesmoke;"> Action </a></td>
+																<td class="text-center"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="background-color:steelblue; color: whitesmoke;"> Action </a></td>
 															<?php }?>
-															</tr>
+														</tr>
 														<?php } 
 													}
 												?>
@@ -160,11 +166,68 @@
 										</table>
 									</div>
 								</div>
+								<?php else: ?>
+								<div class="panel-body">
+									<div style="max-height:600px; overflow:auto;">
+										<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+											<thead>
+												<tr>
+													<th class="text-center" style="width: 50px;">User</th>
+													<th class="text-center" style="width: 50px;">Leave Type</th>
+													<th class="text-center" style="width: 50px;">Posting Date</th>
+													<th class="text-center" style="width: 50px;">From-To</th>
+													<?php if ($user_level <= 2){?>
+														<th class="text-center" style="width: 50px;">Options</th>
+													<?php }?>
+												</tr>
+											</thead>
+											<tbody>
+												<?php 
+													
+													//Query Statement for leave history
+													$conn = new mysqli('localhost', 'root', '', 'bank') or die(mysqli_error());
+													$user = current_user();
+													$userid = (int)$user['id'];
+													
+													if ($user_level <= 2){
+														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
+														$sql .=" FROM tblleaves l";
+														$sql .=" LEFT JOIN users u ON l.empid = u.id";
+														$sql .=" WHERE l.Status = 1 AND paid = 0";
+														// $sql .=" WHERE l.empid= '{$userid}'";
+														$sql .=" ORDER BY id DESC";
+														} else {
+														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
+														$sql .=" FROM tblleaves l";
+														$sql .=" LEFT JOIN users u ON l.empid = u.id";
+														$sql .=" WHERE l.Status = 1 AND paid = 0 AND empid='{$userid}'";
+														$sql .=" ORDER BY id DESC";
+													}
+													if($result = $conn->query($sql)){
+														while ($row = $result -> fetch_row()) {
+														?>
+														<tr>
+															<td class="text-center"> <?php echo remove_junk($row[12]); ?></td>
+															<td class="text-center"><?php echo remove_junk($row[1]); ?></td>                   
+															<td class="text-center"><?php echo read_date($row[5]); ?></td>
+															<td class="text-center"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
+															<?php if ($user_level <= 2){?>
+																<td class="text-center"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="background-color:steelblue; color: whitesmoke;"> Action </a></td>
+															<?php }?>
+														</tr>
+														<?php } 
+													}
+												?>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<?php endif;?>
 							</form>
 						</div>
 					</div>
 				</div>
-				</div><?php include_once('layouts/footer.php'); ?>
+			</div><?php include_once('layouts/footer.php'); ?>
 			
 			
 			<!--from startbootstrap.com this is for Datatables...
