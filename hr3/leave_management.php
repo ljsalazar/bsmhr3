@@ -109,7 +109,7 @@ $result = $db->query($sql);
               </tr>
              <?php } }?>
             </tbody>
-          </tabel>
+          </table>
         </div>
       </div>
     </div>

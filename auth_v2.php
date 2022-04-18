@@ -10,7 +10,7 @@ $password = remove_junk($_POST['password']);
     $user = authenticate_v2($username, $password);
 
     if($user['status'] === '0'):
-      $session->msg("d", "Sorry This level of user has been band!");
+      $session->msg("d", "Sorry, but this level of user has been banned!");
       redirect('index.php',false);
         elseif($user):
            //create session with id

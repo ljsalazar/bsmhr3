@@ -48,34 +48,32 @@
 				<?php endif;?> -->
 				
 				<div class="col-md-12">
-					<div class="panel">
-						<div class="jumbotron text-center">
-							<button name="cancel" class="btn btn-primary" onclick="location.href='leave_type.php'">Back</button>
-							
+					<div class="card h-100">
+						<div class="card-header">
 							<h3>Deleted Leave Type Logs</h3>
-							<div class="text-center">
-								<table class="table" style="table-layout: fixed">
+							<button name="cancel" class="btn btn-primary" onclick="location.href='leave_type.php'">Back</button>
+							<div class="card-body">
+							<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
 									<tr>
+										<th>#</th>
 										<th>Leave Type</th>
-										<th>Description</th>
 										<th>Deletion Date</th>
 										<th>Options</th>
 									</tr>
-								</table>
-								<div style="max-height:300px; overflow:auto;">
-									<table class="table" style="table-layout: fixed">
+								<tbody>
 										<?php
 											$query = $conn->query("SELECT * FROM tblleavetype_archive ORDER BY id DESC");
 											
 											while($user_data = mysqli_fetch_array($query)) {
 												echo "<tr>";
+												echo "<td>".count_id()."</td>";
 												echo "<td>".$user_data['LeaveType']."</td>";
-												echo "<td>".$user_data['Description']."</td>";
 												echo "<td>".$user_data['DeletionDate']."</td>";
 												
 												echo "<td><a href='leave_type_retrieve_archive.php?leavetype_id=$user_data[id]'>Retrieve | </a><a href='leave_type_delete_archive.php?leavetype_id=$user_data[id]'>Delete</a></td>";
 												echo "</tr>";
 											}?>
+										</tbody>
 									</table>
 								</div>
 							</div>

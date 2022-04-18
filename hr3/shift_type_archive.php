@@ -48,28 +48,28 @@
 				<?php endif;?> -->
 				
 				<div class="col-md-12">
-					<div class="panel">
-						<div class="jumbotron text-center">
-							<button name="cancel" class="btn btn-primary" onclick="location.href='set_shift.php'">Back</button>
-							
+					<div class="card h-100">
+						<div class="card-header">
 							<h3>Deleted Shift Logs</h3>
-							<div class="text-center">
-								<table class="table" style="table-layout: fixed">
+							<button name="cancel" class="btn btn-primary" onclick="location.href='set_shift.php'">Back</button>
+							<div class="card-body">
+							<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
 									<tr>
+										<th>#</th>
 										<th>Shift Type</th>
 										<th>From Time</th>
 										<th>To Time</th>
 										<th>Deletion Date</th>
 										<th>Options</th>
 									</tr>
-								</table>
-								<div style="max-height:300px; overflow:auto;">
-									<table class="table" style="table-layout: fixed">
+								<tbody>
+									
 										<?php
 											$query = $conn->query("SELECT * FROM tblshifttype_archive ORDER BY id DESC");
 											
 											while($user_data = mysqli_fetch_array($query)) {
 												echo "<tr>";
+												echo "<td>".count_id()."</td>";
 												echo "<td>".$user_data['name']."</td>";
 												echo "<td>".$user_data['fromTime']."</td>";
 												echo "<td>".$user_data['toTime']."</td>";
@@ -78,6 +78,7 @@
 												echo "<td><a href='shift_type_retrieve_archive.php?shifttype_id=$user_data[id]'>Retrieve | </a><a href='shift_type_delete_archive.php?shifttype_id=$user_data[id]'>Delete</a></td>";
 												echo "</tr>";
 											}?>
+											</tbody>
 									</table>
 								</div>
 							</div>
