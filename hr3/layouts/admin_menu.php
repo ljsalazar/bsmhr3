@@ -534,6 +534,14 @@
       Addons
     </div>
   </li>
+  <!-- USER's ACTIVITY LOGS -->
+  <li>
+    <a href="../activitylog_user.php" class="nav-link px-3">
+      <span class="me-2"><i class="bi bi-clipboard2-fill"></i></span>
+      <span>Users Activity Logs</span>
+    </a>
+  </li>
+<!-- END POINT -->
   <li>
     <a href="#" class="nav-link px-3">
       <span class="me-2"><i class="bi bi-graph-up"></i></span>

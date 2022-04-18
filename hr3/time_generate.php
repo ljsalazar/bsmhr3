@@ -6,7 +6,7 @@
 		var $dbhost = "localhost";
 		var $username = "root";
 		var $password = "";
-		var $dbname = "bank";
+		var $dbname = "db";
 		var $conn;
 		function getConnstring() {
 			$con = mysqli_connect($this->dbhost, $this->username, $this->password, $this->dbname) or die("Connection failed: " . mysqli_connect_error());

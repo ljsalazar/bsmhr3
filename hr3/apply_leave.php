@@ -12,7 +12,11 @@ if(isset($_POST['btn_apply_leave'])){
 $req_fields = array('leavetypes','description','fromDate','toDate');
 validate_fields($req_fields);
    if(empty($errors)){
-    $currentUserID = (int)$user['id'];
+    if ($user['user_level'] <= '2'){
+    $currentUserID = (int)$_POST['user_selected'];
+    }else{
+      $currentUserID = (int)$user['id'];
+    }
      $l_types = remove_junk($db->escape($_POST['leavetypes']));
      $l_description  = remove_junk($db->escape($_POST['description']));
      $l_fromDate = remove_junk($db->escape($_POST['fromDate']));
@@ -164,8 +168,25 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
          <h2>Apply Leave</h2>
         <form action="apply_leave.php" method="POST">
             <div class="card-body">
-                <div class="row">
-                  <div class="col-md-6">
+
+              <!-- This block is for appointing leave to user as an Admin or Super Admin -->
+            <?php if ($user['user_level'] <= '2'): ?>
+              <p>Fill up those fields:</p>
+              <div class="card-body">
+            <select class="form-control" name="user_selected" placeholder="Appoint Leave" required>
+              <option value="">Appoint leave to:</option>
+              <?php
+										$query = $conn->query("SELECT id,name FROM users");
+										while($row = mysqli_fetch_array($query)){
+											echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+										}
+									?>
+									</select>
+                  </div>
+                    <?php endif;?>
+                    <!-- End point -->
+
+                  <div class="card-body">
                     <select class="form-control btn-default" name="leavetypes">
                       <option value="">Types of Leave...</option>
                     <?php  foreach ($leavetype as $types): ?>
@@ -174,7 +195,6 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
                     <?php endforeach; ?>
                     </select>
                   </div>
-              </div>
               <div class="card-body">
                   <p>Description:</p>
                     <div class="input_group">
