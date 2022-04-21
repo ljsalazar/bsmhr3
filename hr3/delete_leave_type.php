@@ -15,6 +15,12 @@ if(isset($_POST['btn_delete_leave_type'])){
      $query  = "DELETE FROM tblleavetype WHERE id = '{$delete_l_id}'";
      if($db->query($query)){
        $session->msg('d',"Leave Type Deleted! ");
+      
+       //  Updating leave token of all user
+       $l_earned_leaves = remove_junk($db->escape($_POST['earned_leaves']));
+       $query = "UPDATE users SET leave_token=leave_token - '{$l_earned_leaves}'";
+     $db->query($query);
+
        //================================================
                  //Activity Log
                  //attribute for activity log support
@@ -51,12 +57,12 @@ if(isset($_POST['btn_delete_leave_type'])){
                 //Query Statement for Archiving Leave Type...
                 $a_leavetype = $_POST['a_leave_type'];
                 $a_description = $_POST['a_description'];
+                $a_earned_leaves = $_POST['earned_leaves'];
                 $query  = "INSERT INTO tblleavetype_archive (";
-                $query .=" LeaveType,Description";
+                $query .=" LeaveType,Description,earned_leaves";
                 $query .=") VALUES (";
-                $query .=" '{$a_leavetype}', '{$a_description}'";
+                $query .=" '{$a_leavetype}', '{$a_description}','{$a_earned_leaves}'";
                 $query .=")";
-                $query .=" ON DUPLICATE KEY UPDATE LeaveType='{$a_leavetype}'";
                 $db->query($query);
                 }
                  else{
@@ -101,6 +107,7 @@ if(isset($_POST['btn_delete_leave_type'])){
                   ?>
                 <input type="hidden" name="a_leave_type" value="<?php echo remove_junk($row[1]);?>">
                 <input type="hidden" name="a_description" value="<?php echo remove_junk($row[2]);?>">
+                <input type="hidden" name="earned_leaves" value="<?php echo remove_junk($row[4]);?>">
               <?php } ?>
                 </div>
                 <input type="submit" name="btn_delete_leave_type" value="Yes" class="btn btn-primary">

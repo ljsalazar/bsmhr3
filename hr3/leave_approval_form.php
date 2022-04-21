@@ -33,7 +33,17 @@
     $query.=" AdminRemark='{$l_remarks}',Status='{$l_status}',AdminRemarkDate='{$l_admremarkdate}'";
     $query.=" WHERE id = '{$l_id}'";
 
-    
+
+    // Fetching specified data in tblleaves
+    $query1 = "SELECT empid,amount_of_days FROM tblleaves WHERE id = '{$l_id}'";
+    $result = $db->query($query1);
+    $row = $result -> fetch_row();
+    $employeeID = (int)$row[0];
+    $amount_days = (int)$row[1];
+
+    // Query for users' leave token - amount of leaves filed.
+    $query2 = "UPDATE users SET leave_token = leave_token - '{$amount_days}' WHERE id = '{$employeeID}'";
+    $db->query($query2);
 
       if($db->query($query)){    
     $session->msg('s',"Leave updated Successfully!");

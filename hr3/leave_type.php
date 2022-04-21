@@ -24,7 +24,7 @@
     $sql = "SELECT id FROM tblleaves WHERE IsRead='{$isread}'";
     $result = $conn->query($sql);
     while($unreadcount = $result -> fetch_row()){
-      $totalUnread++;
+      $totalAdminUnread++;
     }
     ?>
     <?php if($user['user_level'] === '1'): ?>
@@ -75,6 +75,7 @@
               <tr>
                 <th class="text-center" style="width: 50px;">#</th>
                 <th class="text-center" style="width: 50px;">Leave Type</th>
+                <th class="text-center" style="width: 50px;">Earned Leaves</th>
                 <th class="text-center" style="width: 10%;"> Description </th>
                 <th class="text-center" style="width: 10%;"> Creation Date </th>
                 <th class="text-left" style="width: 100px;"> Action </th>
@@ -96,6 +97,7 @@
               <tr>
                 <td class="text-center"><?php echo count_id();?></td>
                 <td class="text-center" style="width:20%"> <?php echo remove_junk($row[1]); ?></td> 
+                <td class="text-center" style="width:10%"> <?php echo remove_junk($row[4]); ?></td> 
                 <td class="text-left" style="width:30%"> <?php echo remove_junk($row[2]); ?></td>
                 <td class="text-center" style="width:30%"> <?php echo read_date($row[3]); ?></td>
                 <td class="text-center"><a href="edit_leave_type.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:green; color: whitesmoke;"> Edit </a>

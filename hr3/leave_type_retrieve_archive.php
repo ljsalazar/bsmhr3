@@ -46,8 +46,13 @@
 						// $l_id = $_POST['id'];
 						$l_types = $_POST['leavetype'];
      					$l_description  = $_POST['description'];
-									$query1 = $conn->query("INSERT INTO tblleavetype (LeaveType,Description)VALUES('{$l_types}', '{$l_description}') ");
+					    $l_earned_leaves = $_POST['earned_leaves'];
+
+									$query1 = $conn->query("INSERT INTO tblleavetype (LeaveType,Description,earned_leaves)VALUES('{$l_types}', '{$l_description}', '{$l_earned_leaves}') ");
 									
+									//  Updating leave token of all user
+									$query = $conn->query("UPDATE users SET leave_token=leave_token + '{$l_earned_leaves}'");
+
 									$query = $conn->query("DELETE FROM tblleavetype_archive WHERE id=$leavetype_id");									
 									$session->msg('s',"Successfully Retrieved");
 									
@@ -65,6 +70,8 @@
 							<input type="hidden" name="id" value="<?php echo $row[0];?>">
 							<input type="hidden" name="leavetype" value="<?php echo $row[1];?>">
 							<input type="hidden" name="description" value="<?php echo $row[2];?>">
+							<input type="hidden" name="earned_leaves" value="<?php echo remove_junk($row[4]);?>">
+
 						<?php }?>
 								<button type="submit" name="yes" class="btn btn-primary" value="yes">Yes</button>
 							</form></br>

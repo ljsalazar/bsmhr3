@@ -17,10 +17,18 @@
        $password   = remove_junk($db->escape($_POST['password']));
        $user_level = (int)$db->escape($_POST['level']);
        $password = sha1($password);
+      
+       // the codes below will be the identifier of starter leave token for users.
+      $query1 = "SELECT SUM(days_allowed) FROM tblleavetype";
+      $result = $db->query($query1);
+      $row = $result -> fetch_row();
+      $leave_tokens = (int)$row[0];
+      // END QUERY STMT -by LJ  04-20-22/9:13pm
+
         $query = "INSERT INTO users (";
-        $query .="name,username,password,user_level,status";
+        $query .="name,username,password,user_level,status,leave_token";
         $query .=") VALUES (";
-        $query .=" '{$name}', '{$username}', '{$password}', '{$user_level}','1'";
+        $query .=" '{$name}', '{$username}', '{$password}', '{$user_level}','1','{$leave_tokens}'";
         $query .=")";
         if($db->query($query)){
           //sucess

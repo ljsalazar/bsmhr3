@@ -9,23 +9,27 @@
 ?>
 <?php
 if(isset($_POST['btn_add_leave_type'])){
-$req_fields = array('leavetypes','description');
+$req_fields = array('leavetypes','description','earned_leaves');
 validate_fields($req_fields);
    if(empty($errors)){
     $currentUserID = (int)$user['id'];
      $l_types = remove_junk($db->escape($_POST['leavetypes']));
      $l_description  = remove_junk($db->escape($_POST['description']));
-    
+     $l_earned_leaves = remove_junk($db->escape($_POST['earned_leaves']));
 
      $date    = make_date();
      $query  = "INSERT INTO tblleavetype (";
-     $query .=" LeaveType,Description";
+     $query .=" LeaveType,Description,earned_leaves";
      $query .=") VALUES (";
-     $query .=" '{$l_types}', '{$l_description}'";
+     $query .=" '{$l_types}', '{$l_description}', '{$l_earned_leaves}'";
      $query .=")";
      $query .=" ON DUPLICATE KEY UPDATE LeaveType='{$l_types}'";
+     
+    
      if($db->query($query)){
-        
+        //  Updating leave token of all user
+     $query = "UPDATE users SET leave_token=leave_token + '{$l_earned_leaves}'";
+     $db->query($query);
        $session->msg('s',"Leave Type applied! ");
        //================================================
                  //Activity Log
@@ -93,6 +97,12 @@ validate_fields($req_fields);
                     <input type="text" name="leavetypes" class="form-control">
                   </div>
               </div>
+              <p>Earned Leaves:</p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="number" name="earned_leaves" class="form-control" placeholder="number of earned leaves" min="0">
+                  </div>
+              
               <div class="card-body">
                   <p>Description:</p>
                     <div class="input_group">

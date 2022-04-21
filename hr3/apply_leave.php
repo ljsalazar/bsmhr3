@@ -168,7 +168,15 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
          <h2>Apply Leave</h2>
         <form action="apply_leave.php" method="POST">
             <div class="card-body">
+            <?php
 
+            echo "<p>Hello, <b>".$user['name']."</b>!</p>";
+            if($user['leave_token'] >= '2'){
+            echo "<p>Available Earned Leaves: <b>".$user['leave_token']."</b></p>"; 
+            }else{
+            echo "<p>Available Earned Leave: <b>".$user['leave_token']."</b></p>"; 
+            }
+            ?>
               <!-- This block is for appointing leave to user as an Admin or Super Admin -->
             <?php if ($user['user_level'] <= '2'): ?>
               <p>Fill up those fields:</p>

@@ -119,7 +119,7 @@
 							<span class="input-group-addon">
 								<i class="glyphicon glyphicon-time"></i>
 							</span>
-							<input type="time" class="form-control" name="fromTime" required>
+							<input type="time" id="eventStart" class="form-control" name="fromTime" required>
 						</div>
 					</div>
 					
@@ -129,7 +129,7 @@
 							<span class="input-group-addon">
 								<i class="glyphicon glyphicon-time"></i>
 							</span>
-							<input type="time" class="form-control" name="toTime" required>
+							<input type="time" id="eventEnd" class="form-control" name="toTime" required>
 						</div>
 					</div>
 
@@ -196,6 +196,27 @@
 	
 	
 </div>
-
+<!-- This Script specifies the Realtime/Auto calculation with jQuery $selector .on() | HTML CSS JavaScript JQuery -->
+<script src="libs/ajax/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$( document ).ready(function() {
+         $('#eventStart').on('input', function () {
+                //var convertDuration = minuteToHours(6);
+                const now = new Date();
+                const [hour, minutes] = $(this).val().split(":");
+                now.setHours(hour);
+                now.setMinutes(minutes);
+                const newDate = addMinutes(now, 540);
+                $('#eventEnd').val(`${newDate.getHours().toString().padStart(2, 0)}:${newDate.getMinutes().toString().padStart(2, 0)}`);
+            });
+    });
+    
+    function addMinutes(date, minutes) {
+      const minuteInMillisecons = minutes * 1000 * 60;
+      const newDate = new Date(date.valueOf() + minuteInMillisecons);
+      return newDate;
+    }
+    </script>
+	<!-- END of AJAX SCRIPT -->
 
 <?php include_once('layouts/footer.php'); ?>
