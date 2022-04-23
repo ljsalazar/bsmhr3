@@ -133,8 +133,9 @@
            <th>Name </th>
            <th>Username</th>
            <th>User Role</th>
+           <th>Department</th>
            <th>Status</th>
-           <th>Last Login</th>
+           <!-- <th>Last Login</th> -->
            <th>Actions</th>
          </tr>
        </tfoot>
