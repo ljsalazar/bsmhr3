@@ -54,6 +54,9 @@ $result = $db->query($sql);
       <div class="card h-100">
         <div class="card-header">
           <h2>Leaves</h2>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+           <a href="leave_credit.php" class="btn btn-primary me-md-2">Add Credits</a>
+          </div>
         </div>
         <div class="card-body">
           <!--<table class="table table-bordered" class="table table-sm table-striped table-bordered table-hover" style="width:100%">-->

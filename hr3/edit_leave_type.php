@@ -29,7 +29,7 @@ validate_fields($req_fields);
      $query  ="UPDATE tblleavetype SET LeaveType='{$l_types}',Description='{$l_description}'";
      $query .=" WHERE id = '{$l_id}'";
      if($db->query($query)){
-        
+
        $session->msg('s',"Leave Type applied! ");
        //================================================
                  //Activity Log
@@ -98,6 +98,7 @@ validate_fields($req_fields);
                     <input type="text" name="leavetypes" class="form-control" value="<?php echo $row[1]; ?>">
                   </div>
               </div>
+
               <div class="card-body">
                   <p>Description:</p>
                     <div class="input_group">

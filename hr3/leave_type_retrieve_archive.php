@@ -46,6 +46,7 @@
 						// $l_id = $_POST['id'];
 						$l_types = $_POST['leavetype'];
      					$l_description  = $_POST['description'];
+
 									$query1 = $conn->query("INSERT INTO tblleavetype (LeaveType,Description)VALUES('{$l_types}', '{$l_description}') ");
 									
 									$query = $conn->query("DELETE FROM tblleavetype_archive WHERE id=$leavetype_id");									
@@ -65,6 +66,7 @@
 							<input type="hidden" name="id" value="<?php echo $row[0];?>">
 							<input type="hidden" name="leavetype" value="<?php echo $row[1];?>">
 							<input type="hidden" name="description" value="<?php echo $row[2];?>">
+
 						<?php }?>
 								<button type="submit" name="yes" class="btn btn-primary" value="yes">Yes</button>
 							</form></br>

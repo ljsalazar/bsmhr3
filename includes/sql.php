@@ -139,9 +139,10 @@ function tableExists($table){
   function find_all_user(){
       global $db;
       $results = array();
-      $sql = "SELECT u.id,u.name,u.username,u.user_level,u.status,u.last_login,";
-      $sql .="g.group_name ";
+      $sql = "SELECT u.id,u.name,u.username,u.user_level,u.status,u.last_login,u.department_id,";
+      $sql .="d.DepartmentName,d.DepartmentShortName,d.DepartmentCode,g.group_name ";
       $sql .="FROM users u ";
+      $sql .="LEFT JOIN tbldepartments d ON d.id=u.department_id ";
       $sql .="LEFT JOIN user_groups g ";
       $sql .="ON g.group_level=u.user_level ORDER BY u.name ASC";
       $result = find_by_sql($sql);
