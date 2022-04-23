@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2022 at 07:32 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- Generation Time: Apr 23, 2022 at 03:44 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -631,18 +631,6 @@ CREATE TABLE `tblleaves` (
   `paid` int(1) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tblleaves`
---
-
-INSERT INTO `tblleaves` (`id`, `LeaveType`, `FromDate`, `ToDate`, `Description`, `PostingDate`, `AdminRemark`, `AdminRemarkDate`, `Status`, `IsRead`, `empid`, `emp_read`, `amount_of_days`, `remaining_days`, `paid`) VALUES
-(1, 'Medical Leave', '2022-04-28', '2022-04-29', 'sdf', '2022-04-18', 'sdf', '2022-04-18 0:02:25 ', 1, 1, 7, 0, 2, 12, 1),
-(2, 'Vacation leave', '2022-04-23', '2022-04-24', 'vacation test', '2022-04-18', 'ok', '2022-04-18 12:01:24 ', 1, 1, 6, 1, 2, 7, 1),
-(3, 'Casual Leave', '2022-05-05', '2022-05-06', 'asd', '2022-04-18', 'ok\r\n', '2022-04-18 12:24:19 ', 1, 1, 6, 1, 2, 18, 2),
-(4, 'Sick Leave', '2022-04-29', '2022-04-30', 'sick leave test', '2022-04-18', 'ok', '2022-04-18 12:33:34 ', 1, 1, 6, 1, 2, 12, 2),
-(5, 'Leave Type test', '2022-04-21', '2022-04-22', 'description', '2022-04-18', 'granted', '2022-04-18 18:28:24 ', 1, 1, 7, 0, 2, 4, 0),
-(6, 'Leave Type test', '2022-04-20', '2022-04-29', 'description', '2022-04-18', 'ok', '2022-04-18 18:30:22 ', 1, 1, 6, 1, 10, 11, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -661,15 +649,11 @@ CREATE TABLE `tblleavetype` (
 --
 
 INSERT INTO `tblleavetype` (`id`, `LeaveType`, `Description`, `CreationDate`) VALUES
-(1, 'Casual Leave', 'is granted to an eligible employee if they cannot report to work due to an unforeseen situation.', '2017-11-01 12:07:56'),
-(2, 'Medical Leave', 'provides certain employees with up to 12 weeks of unpaid, job-protected leave per year. It also requires that their group health benefits be maintained during the leave.', '2017-11-06 13:16:09'),
-(3, 'Restricted Holiday(RH)', 'a holiday that is optional, and it is the discretion of the employee whether they want to take leave on that particular day or not. Restricted holiday is also called an \'Optional Holiday\' and it is not mandatory to close the entire office on that day.', '2017-11-06 13:16:38'),
-(4, 'Vacation leave', 'granted to employee for personal reasons, the approval of which is contingent upon the necessities of the service. • Vacation leave without pay is considered a gap. in the service.\r\n\r\n', '2021-11-22 06:03:01'),
-(5, 'Sick Leave', 'can be used when an employee is ill or injured. An employee may have to take time off to care for an immediate family or household member who is sick or injured or help during a family emergency. ', '2021-11-22 06:03:29'),
-(6, 'Annual leave', ' the time a person is allowed to take off work as holiday in any one-year period. We get five weeks\' annual leave.', '2021-11-22 06:07:37'),
-(7, 'Maternity leave', 'a period of absence from work granted to a mother before and after the birth of her child.', '2021-11-22 06:15:16'),
-(8, 'Paternity Leave', 'a period of time that a father is legally allowed to be away from his job so that he can spend time with his new baby: on paternity leave He was on paternity leave after the birth of his son.\r\n\r\n', '2022-03-31 08:41:40'),
-(15, 'Leave Type test', 'leave type description edited', '2022-04-18 10:24:34');
+(34, 'Casual Leave', 'is granted to an eligible employee if they cannot report to work due to an unforeseen situation.', '2022-04-21 11:09:54'),
+(35, 'Vacation leave', 'granted to employee for personal reasons, the approval of which is contingent upon the necessities of the service. • Vacation leave without pay is considered a gap. in the service.\r\n\r\n', '2022-04-21 11:09:56'),
+(36, 'Sick Leave', 'can be used when an employee is ill or injured. An employee may have to take time off to care for an immediate family or household member who is sick or injured or help during a family emergency. ', '2022-04-21 11:10:09'),
+(37, 'Paternity Leave', 'a period of time that a father is legally allowed to be away from his job so that he can spend time with his new baby: on paternity leave He was on paternity leave after the birth of his son.\r\n\r\n', '2022-04-21 11:10:14'),
+(41, 'Maternity leave', 'a period of absence from work granted to a mother before and after the birth of her child.', '2022-04-23 06:03:29');
 
 -- --------------------------------------------------------
 
@@ -689,16 +673,7 @@ CREATE TABLE `tblleavetype_archive` (
 --
 
 INSERT INTO `tblleavetype_archive` (`id`, `LeaveType`, `Description`, `DeletionDate`) VALUES
-(1, 'Paid time off', 'planned time off, or personal time off (PTO), is a policy in some employee handbooks that provides a bank of hours in which the employer pools sick days, vacation days, and personal days that allows employees to use as the need or desire arises.', '2021-11-22 09:26:39'),
-(2, 'Paid time off', 'planned time off, or personal time off (PTO), is a policy in some employee handbooks that provides a bank of hours in which the employer pools sick days, vacation days, and personal days that allows employees to use as the need or desire arises.', '2021-11-22 09:34:13'),
-(3, 'Paid time off', 'Paid time off, planned time off, or personal time off (PTO), is a policy in some employee handbooks that provides a bank of hours in which the employer pools sick days, vacation days, and personal days that allows employees to use as the need or desire arises.', '2021-11-22 09:36:07'),
-(4, 'Mema Leave', 'Mema Leave lang po', '2021-11-22 09:52:41'),
-(6, 'Mema Leave', 'Memas', '2021-11-22 10:02:26'),
-(7, 'Paid time off', 'Paid Time Off (PTO)', '2021-11-22 10:04:03'),
-(9, 'Covid', 'gfuycuytfvi', '2021-11-27 06:55:40'),
-(10, 'Accident', 'asdfgh', '2021-11-27 07:07:47'),
-(11, 'Religious holidays', 'a day specified for religious observance. holy day. fast day - a day designated for fasting.\r\n\r\n', '2021-11-28 12:58:10'),
-(12, 'Sample Leave', 'Demo edited test', '2022-03-31 08:41:20');
+(19, 'Medical Leave', 'provides certain employees with up to 12 weeks of unpaid, job-protected leave per year. It also requires that their group health benefits be maintained during the leave.', '2022-04-22 08:33:35');
 
 -- --------------------------------------------------------
 
@@ -726,7 +701,8 @@ CREATE TABLE `tblschedule` (
 
 INSERT INTO `tblschedule` (`id`, `days`, `PostingDate`, `AdminRemark`, `AdminRemarkDate`, `Status`, `IsRead`, `empid`, `emp_read`, `shift_type_id`, `shift_type_detail`) VALUES
 (7, 'Tue-Thu-Sat-', '2022-04-09 02:56:01', 'Granted', '2022-04-09 10:49:28 ', 1, 1, 6, 1, 13, 'From 8:00 am To 6:00 pm'),
-(8, 'Mon-Wed-Fri-', '2022-04-18 10:43:17', 'ok\r\n', '2022-04-18 18:43:05 ', 1, 1, 6, 1, 14, 'From 6:42 pm To 10:42 pm');
+(8, 'Mon-Wed-Fri-', '2022-04-18 10:43:17', 'ok\r\n', '2022-04-18 18:43:05 ', 1, 1, 6, 1, 14, 'From 6:42 pm To 10:42 pm'),
+(9, 'Mon-Tue-Wed-Thu-Fri-Sat-', '2022-04-19 10:46:48', 'Granted', '2022-04-19 16:40:26 ', 1, 1, 17, 1, 14, 'From 6:42 pm To 10:42 pm');
 
 -- --------------------------------------------------------
 
@@ -796,7 +772,8 @@ CREATE TABLE `tblshift_type` (
 
 INSERT INTO `tblshift_type` (`id`, `name`, `fromTime`, `toTime`) VALUES
 (13, 'Day Shift', '08:00:00', '18:00:00'),
-(14, 'sample shift', '18:42:00', '22:42:00');
+(14, 'sample shift', '18:42:00', '22:42:00'),
+(15, 'Night Shift', '18:00:00', '03:00:00');
 
 -- --------------------------------------------------------
 
@@ -826,7 +803,8 @@ INSERT INTO `time_attendance` (`time_id`, `user_id`, `login_time`, `logout_time`
 (6, 11, '2022-03-30 21:47:20', '2022-03-30 21:48:08', 'admin1', 'Admin RJ', 1, '0.01 Hours (0.8 Minutes)', 0),
 (7, 17, '2022-04-08 10:44:57', '2022-04-08 10:44:59', 'hanna', 'Hanna', 2, '0 Hours (0.03 Minutes)', 0),
 (8, 17, '2022-04-08 11:14:58', '2022-04-08 14:15:00', 'Hanna', 'Hanna', 3, '3 Hours (180.03 Minutes)', 0),
-(10, 6, '2022-04-19 19:10:57', '2022-04-19 19:10:58', 'Employee', 'Employee', 3, '0 Hours (0.02 Minutes)', 0);
+(10, 6, '2022-04-19 19:10:57', '2022-04-19 19:10:58', 'Employee', 'Employee', 3, '0 Hours (0.02 Minutes)', 0),
+(11, 17, '2022-04-19 18:47:38', '2022-04-19 18:49:36', 'Hanna', 'Hanna', 3, '0.03 Hours (1.97 Minutes)', 0);
 
 -- --------------------------------------------------------
 
@@ -903,23 +881,24 @@ CREATE TABLE `users` (
   `reimbursement_budget` int(11) UNSIGNED NOT NULL,
   `reimbursement_notif` int(10) UNSIGNED NOT NULL,
   `claim_notif` int(10) UNSIGNED NOT NULL,
-  `complaint_notif` int(10) UNSIGNED NOT NULL
+  `complaint_notif` int(10) UNSIGNED NOT NULL,
+  `leave_token` int(50) UNSIGNED NOT NULL,
+  `department_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`, `reimbursement_budget`, `reimbursement_notif`, `claim_notif`, `complaint_notif`) VALUES
-(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-18 19:10:44', 10010, 0, 0, 0),
-(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-19 19:13:57', 80000, 1, 0, 0),
-(8, 'HR STAFF', 'Staff', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 2, 'no_image.jpg', 1, '2022-01-11 17:05:45', 25000, 0, 0, 0),
-(11, 'Admin RJ', 'admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-18 18:40:27', 49900, 0, 0, 0),
-(12, 'jin rodriguez', 'rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 3, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 2, 0),
-(13, 'name', 'username', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 1, 'no_image.jpg', 1, NULL, 5000, 0, 0, 0),
-(15, 'asdasd', 'asdasd', '85136c79cbf9fe36bb9d05d0639c70c265c18d37', 1, 'no_image.jpg', 1, '2022-03-21 15:17:30', 100, 0, 0, 0),
-(16, 'Lawrence', 'lj', '846251899cbc801a4d307becd54393a88ad1536d', 1, 'bso7e8j116.jpg', 1, '2022-04-08 13:44:27', 0, 0, 0, 0),
-(17, 'Hanna', 'Hanna', '26f769205f6a2faa1521d5d628ecf51210aebeb0', 3, 'no_image.jpg', 1, '2022-04-08 11:32:45', 0, 0, 1, 0);
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`, `reimbursement_budget`, `reimbursement_notif`, `claim_notif`, `complaint_notif`, `leave_token`, `department_id`) VALUES
+(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-20 21:01:54', 10010, 0, 0, 0, 10, 3),
+(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-19 19:13:57', 80000, 1, 0, 0, 10, 1),
+(8, 'HR STAFF', 'Staff', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 2, 'no_image.jpg', 1, '2022-04-22 17:46:13', 25000, 0, 0, 0, 10, 1),
+(11, 'Admin RJ', 'admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-18 18:40:27', 49900, 0, 0, 0, 10, 1),
+(12, 'Jin Rodriguez', 'Rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 1, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 2, 0, 10, 2),
+(15, 'asdasd', 'asdasd', '85136c79cbf9fe36bb9d05d0639c70c265c18d37', 1, 'no_image.jpg', 1, '2022-03-21 15:17:30', 100, 0, 0, 0, 10, 1),
+(16, 'Lawrence Joshua', 'lj', '0b8e8bf084b7e49274730f1bf591c1af1459ddf1', 1, 'bso7e8j116.jpg', 1, '2022-04-23 14:13:32', 0, 0, 0, 0, 10, 1),
+(17, 'Hanna', 'Hanna', '26f769205f6a2faa1521d5d628ecf51210aebeb0', 3, 'no_image.jpg', 1, '2022-04-22 18:10:50', 0, 0, 0, 0, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -1246,25 +1225,25 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `tblleaves`
 --
 ALTER TABLE `tblleaves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tblleavetype`
 --
 ALTER TABLE `tblleavetype`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tblleavetype_archive`
 --
 ALTER TABLE `tblleavetype_archive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tblschedule`
 --
 ALTER TABLE `tblschedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tblschedule_archive`
@@ -1282,13 +1261,13 @@ ALTER TABLE `tblshifttype_archive`
 -- AUTO_INCREMENT for table `tblshift_type`
 --
 ALTER TABLE `tblshift_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `time_attendance`
 --
 ALTER TABLE `time_attendance`
-  MODIFY `time_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `time_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `uexpenses`
@@ -1300,7 +1279,7 @@ ALTER TABLE `uexpenses`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users_1`

@@ -84,6 +84,13 @@ $result = $db->query($sql);
       <div class="card h-100">
         <div class="card-header">
           <h2>All Reponded Leaves</h2>
+           <?php
+            if($user['leave_token'] >= '2'){
+            echo "<p>Available Credits: <b>".$user['leave_token']."</b></p>"; 
+            }else{
+            echo "<p>Available Credit: <b>".$user['leave_token']."</b></p>"; 
+            }
+            ?>
         </div>
         <div class="card-body">
           <!--<table class="table table-bordered" class="table table-sm table-striped table-bordered table-hover" style="width:100%">-->

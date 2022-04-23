@@ -7,6 +7,7 @@
  page_require_level(1);
 //pull out all user form database
  $all_users = find_all_user();
+ $departments = find_all('tbldepartments');
 ?>
 <?php include_once('layouts/header.php'); ?>
 
@@ -49,8 +50,9 @@
             <th>Name </th>
             <th>Username</th>
             <th>User Role</th>
+            <th>Department</th>
             <th>Status</th>
-            <th>Last Login</th>
+            <!-- <th>Last Login</th> -->
             <th>Actions</th>
           </tr>
         </thead>
@@ -62,6 +64,7 @@
              <td><?php echo remove_junk(ucwords($a_user['name']))?></td>
              <td><?php echo remove_junk(ucwords($a_user['username']))?></td>
              <td><?php echo remove_junk(ucwords($a_user['group_name']))?></td>
+             <td><?php echo remove_junk(ucwords($a_user['DepartmentName']))?></td>
              <td>
              <?php if($a_user['status'] === '1'): ?>
               <span class="badge rounded-pill bg-success"><?php echo "Active"; ?></span>
@@ -69,7 +72,7 @@
               <span class="badge rounded-pill bg-danger"><?php echo "Deactive"; ?></span>
             <?php endif;?>
              </td>
-             <td><?php echo read_date($a_user['last_login'])?></td>
+             <!-- <td><?php echo read_date($a_user['last_login'])?></td> -->
               <td> <span class="badge rounded-pill bg-warning">You</span> </td>
             </tr>
           <?php elseif ($a_user['user_level']===$user['user_level']): ?>
@@ -78,6 +81,7 @@
              <td><?php echo remove_junk(ucwords($a_user['name']))?></td>
              <td><?php echo remove_junk(ucwords($a_user['username']))?></td>
              <td><?php echo remove_junk(ucwords($a_user['group_name']))?></td>
+             <td><?php echo remove_junk(ucwords($a_user['DepartmentName']))?></td>
              <td>
              <?php if($a_user['status'] === '1'): ?>
               <span class="badge rounded-pill bg-success"><?php echo "Active"; ?></span>
@@ -85,7 +89,7 @@
               <span class="badge rounded-pill bg-danger"><?php echo "Deactive"; ?></span>
             <?php endif;?>
              </td>
-             <td><?php echo read_date($a_user['last_login'])?></td>
+             <!-- <td><?php echo read_date($a_user['last_login'])?></td> -->
                <div class="btn-group">
                 <td>
                   <a href="edit_user.php?id=<?php echo (int)$a_user['id'];?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
@@ -100,6 +104,7 @@
                <td><?php echo remove_junk(ucwords($a_user['name']))?></td>
                <td><?php echo remove_junk(ucwords($a_user['username']))?></td>
                <td><?php echo remove_junk(ucwords($a_user['group_name']))?></td>
+             <td><?php echo remove_junk(ucwords($a_user['DepartmentName']))?></td>
                <td>
                <?php if($a_user['status'] === '1'): ?>
                 <span class="badge rounded-pill bg-success"><?php echo "Active"; ?></span>
@@ -107,7 +112,7 @@
                 <span class="badge rounded-pill bg-danger"><?php echo "Deactive"; ?></span>
               <?php endif;?>
                </td>
-               <td><?php echo read_date($a_user['last_login'])?></td>
+               <!-- <td><?php echo read_date($a_user['last_login'])?></td> -->
                  <div class="btn-group">
                   <td>
                     <a href="edit_user.php?id=<?php echo (int)$a_user['id'];?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">

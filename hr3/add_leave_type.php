@@ -15,7 +15,6 @@ validate_fields($req_fields);
     $currentUserID = (int)$user['id'];
      $l_types = remove_junk($db->escape($_POST['leavetypes']));
      $l_description  = remove_junk($db->escape($_POST['description']));
-    
 
      $date    = make_date();
      $query  = "INSERT INTO tblleavetype (";
@@ -24,6 +23,8 @@ validate_fields($req_fields);
      $query .=" '{$l_types}', '{$l_description}'";
      $query .=")";
      $query .=" ON DUPLICATE KEY UPDATE LeaveType='{$l_types}'";
+     
+    
      if($db->query($query)){
         
        $session->msg('s',"Leave Type applied! ");
@@ -93,6 +94,7 @@ validate_fields($req_fields);
                     <input type="text" name="leavetypes" class="form-control">
                   </div>
               </div>
+              
               <div class="card-body">
                   <p>Description:</p>
                     <div class="input_group">

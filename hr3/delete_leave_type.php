@@ -15,6 +15,7 @@ if(isset($_POST['btn_delete_leave_type'])){
      $query  = "DELETE FROM tblleavetype WHERE id = '{$delete_l_id}'";
      if($db->query($query)){
        $session->msg('d',"Leave Type Deleted! ");
+      
        //================================================
                  //Activity Log
                  //attribute for activity log support
@@ -56,7 +57,6 @@ if(isset($_POST['btn_delete_leave_type'])){
                 $query .=") VALUES (";
                 $query .=" '{$a_leavetype}', '{$a_description}'";
                 $query .=")";
-                $query .=" ON DUPLICATE KEY UPDATE LeaveType='{$a_leavetype}'";
                 $db->query($query);
                 }
                  else{

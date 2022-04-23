@@ -24,7 +24,7 @@
     $sql = "SELECT id FROM tblleaves WHERE IsRead='{$isread}'";
     $result = $conn->query($sql);
     while($unreadcount = $result -> fetch_row()){
-      $totalUnread++;
+      $totalAdminUnread++;
     }
     ?>
     <?php if($user['user_level'] === '1'): ?>

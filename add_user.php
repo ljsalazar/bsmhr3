@@ -4,11 +4,12 @@
   // Checkin What level user has permission to view this page
   page_require_level(1);
   $groups = find_all('user_groups');
+  $departments = find_all('tbldepartments');
 ?>
 <?php
   if(isset($_POST['add_user'])){
 
-   $req_fields = array('full-name','username','password','level' );
+   $req_fields = array('full-name','username','password','level','dept' );
    validate_fields($req_fields);
 
    if(empty($errors)){
@@ -16,15 +17,19 @@
        $username   = remove_junk($db->escape($_POST['username']));
        $password   = remove_junk($db->escape($_POST['password']));
        $user_level = (int)$db->escape($_POST['level']);
+       $dept = (int)$db->escape($_POST['dept']);
        $password = sha1($password);
+      
+       $credits = 10;
+
         $query = "INSERT INTO users (";
-        $query .="name,username,password,user_level,status";
+        $query .="name,username,password,user_level,status,leave_token,department_id";
         $query .=") VALUES (";
-        $query .=" '{$name}', '{$username}', '{$password}', '{$user_level}','1'";
+        $query .=" '{$name}', '{$username}', '{$password}', '{$user_level}','1','{$credits}','{$dept}'";
         $query .=")";
         if($db->query($query)){
           //sucess
-          $session->msg('s',"User account has been creted! ");
+          $session->msg('s',"User account has been created! ");
           redirect('add_user.php', false);
         } else {
           //failed
@@ -72,6 +77,15 @@
               <label for="password">Password</label>
               <input type="password" class="form-control" name ="password"  placeholder="Password">
           </div>
+          <div class="form-group">
+            <label for="level">Department</label>
+              <select class="form-control" name="dept">
+                 <option value="">Appoint to:</option>
+                 <?php foreach ($departments as $dept ):?>
+                 <option value="<?php echo $dept['id'];?>"><?php echo ucwords($dept['DepartmentName']."(".$dept['DepartmentShortName'].")");?></option>
+              <?php endforeach;?>
+              </select>
+          </div> <br>
           <div class="form-group">
             <label for="level">User Role</label>
               <select class="form-control" name="level">
