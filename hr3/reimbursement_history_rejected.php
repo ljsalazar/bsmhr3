@@ -108,6 +108,7 @@
 											<th>Date</th>
 											<th>Amount</th>
 											<th>Status</th>
+											<th>Download</th>
 											<th>Options</th>
 										</tr>
 									</thead>
@@ -129,6 +130,11 @@
 											echo "<td>".$user_data['reimbursement_date']."</td>";
 											echo "<td>".$user_data['amount']."</td>";
 											echo "<td>".$user_data['status']."</td>";
+											$imageURL = 'uploads/'.$user_data["picture"];
+										?>
+										<td><a href="reimbursement_download.php?picture=<?php echo $user_data['picture'] ?>">Picture</a></td>
+										<?php
+											
 											echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a></td>";
 											echo "</tr>";
 										}?>

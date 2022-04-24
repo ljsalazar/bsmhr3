@@ -107,6 +107,7 @@
 											<th>Date</th>
 											<th>Amount</th>
 											<th>Status</th>
+											<th>Download</th>
 											<th>Options</th>
 										</tr>
 									</thead>
@@ -128,6 +129,12 @@
 											echo "<td>".$user_data['reimbursement_date']."</td>";
 											echo "<td>".$user_data['amount']."</td>";
 											echo "<td>".$user_data['status']."</td>";
+											#echo "<td>".$user_data['picture']."</td>";
+											$imageURL = 'uploads/'.$user_data["picture"];
+										?>
+										<td><a href="reimbursement_download.php?picture=<?php echo $user_data['picture'] ?>">Picture</a></td>
+										<?php
+											
 											if ($user_level <= 2){
 												echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a> | <a href='reimbursement_accept.php?reimbursement_id=$user_data[reimbursement_id]'>Accept</a> | <a href='reimbursement_reject.php?reimbursement_id=$user_data[reimbursement_id]'>Reject</a></td>";
 												} else {

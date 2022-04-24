@@ -68,12 +68,43 @@
 								
 								$q_student = $conn->query("SELECT * FROM `users` WHERE `username` = '$username'") or die(mysqli_error());
 								$f_student = $q_student->fetch_array();
-								$conn->query("INSERT INTO `reimbursements` VALUES('', '$username', '$name', '$user_level', '$user_id', '$reimbursement', '$date', '$amount', '$status', '0')") or die(mysqli_error());
-								$conn->query("UPDATE users SET reimbursement_notif = reimbursement_notif + '$one' WHERE 'username' = '$username'") or die(mysqli_error());
-								
-								$session->msg('s',"Successfully Added Request");
+								#$conn->query("INSERT INTO `reimbursements` VALUES('', '$username', '$name', '$user_level', '$user_id', '$reimbursement', '$date', '$amount', '$status', '0','".$filename."')") or die(mysqli_error());
 								
 								#header("Location:timesheet_index.php");
+								
+								$targetDir = "uploads/";
+								$random = rand(0,999999999);
+								$fileName = basename($_FILES["file"]["name"]);
+								$fileName = $random . $fileName;
+								
+								$targetFilePath = $targetDir . $fileName;
+								$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+								
+								if(!empty($_FILES["file"]["name"])){
+									// Allow certain file formats
+									$allowTypes = array('jpg','png','jpeg','gif','pdf');
+									if(in_array($fileType, $allowTypes)){
+										// Upload file to server
+										if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+											// Insert image file name into database
+											$insert = $conn->query("INSERT INTO `reimbursements` VALUES('', '$username', '$name', '$user_level', '$user_id', '$reimbursement', '$date', '$amount', '$status', '0','".$fileName."')") or die(mysqli_error());
+											$insert = $conn->query("UPDATE users SET reimbursement_notif = reimbursement_notif + '$one' WHERE 'username' = '$username'") or die(mysqli_error());
+								
+											if($insert){
+												$session->msg('s',"Successfully Added Request");
+												}else{
+												$session->msg('d',"File upload failed, please try again.");
+											} 
+											}else{
+											$session->msg('d',"Sorry, there was an error uploading your file.");
+										}
+										}else{
+										$session->msg('d','Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.');
+									}
+									}else{
+									$session->msg('d','Please select a file to upload.');
+								}
+								
 								echo "<script>window.location.href='reimbursement_index.php';</script>";
 							}
 						?>
@@ -91,6 +122,10 @@
 							<div class="form-group">
 								<p>Reimbursement Amount (PHP)</p>
 								<input required type="text" class="form-control" name="amount" placeholder="Amount" />
+							</div></br>
+							<div class="form-group">
+								<p>Upload a photo</p>
+								<input type="file" name="file" id="file">
 							</div></br>
 							<button type="submit" name="add_reimbursement" class="btn btn-primary" value="add_reimbursement">Add</button>
 						</form>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2022 at 03:44 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Apr 24, 2022 at 03:47 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -258,8 +258,7 @@ INSERT INTO `events` (`event_id`, `event`, `fromdate`, `todate`, `min_user_level
 (2, 'Jin Rodriguez Birthday', '2022-01-01', '2022-01-09', 1, 'Admin RJ'),
 (14, 'Admins Only Event Test', '2022-01-11', '2022-01-11', 1, 'Admin RJ'),
 (15, 'Staff Only Event Test', '2022-01-10', '2022-01-10', 2, 'Admin RJ'),
-(16, 'Employee Only Event Test', '2022-01-10', '2022-01-10', 0, 'Admin RJ'),
-(25, 'staff test', '2022-01-11', '2022-01-11', 2, 'Admin Account');
+(16, 'Employee Only Event Test', '2022-01-10', '2022-01-10', 0, 'Admin RJ');
 
 -- --------------------------------------------------------
 
@@ -462,21 +461,23 @@ CREATE TABLE `reimbursements` (
   `reimbursement_date` date NOT NULL,
   `amount` int(11) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `accepted` int(11) NOT NULL
+  `accepted` int(11) NOT NULL,
+  `picture` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reimbursements`
 --
 
-INSERT INTO `reimbursements` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`) VALUES
-(1, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Papers', '2022-01-08', 100, 'Accepted by Admin Account', 1),
-(2, 'rjinxed', 'jin rodriguez', 3, 10, '19.5 inch ThinkVision Computer Monitor', '2022-01-08', 6000, 'Accepted by Admin Account', 1),
-(3, 'Admin', 'Admin Account', 1, 7, 'Thinkpad x250 as a workstation laptop', '2022-01-08', 15000, 'Accepted by Admin RJ', 1),
-(7, 'rjinxed', 'jin rodriguez', 3, 10, 'Reimburse Test Jin', '2022-01-11', 100, 'Accepted by Admin RJ', 1),
-(9, 'Admin', 'Admin Account', 1, 7, 'Test', '2022-01-26', 1000, 'Accepted by Admin RJ', 1),
-(10, 'employee', 'Employee', 3, 6, 'test1', '2022-04-17', 100, 'Rejected by Admin Account', 2),
-(11, 'Admin', 'Admin Account', 1, 7, 'test', '2022-04-18', 431, 'Accepted by Admin RJ', 1);
+INSERT INTO `reimbursements` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`, `picture`) VALUES
+(1, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Papers', '2022-01-08', 100, 'Accepted by Admin Account', 1, 'blank.jpg'),
+(2, 'rjinxed', 'jin rodriguez', 3, 10, '19.5 inch ThinkVision Computer Monitor', '2022-01-08', 6000, 'Accepted by Admin Account', 1, 'blank.jpg'),
+(3, 'Admin', 'Admin Account', 1, 7, 'Thinkpad x250 as a workstation laptop', '2022-01-08', 15000, 'Accepted by Admin RJ', 1, 'blank.jpg'),
+(7, 'rjinxed', 'jin rodriguez', 3, 10, 'Reimburse Test Jin', '2022-01-11', 100, 'Accepted by Admin RJ', 1, 'blank.jpg'),
+(10, 'employee', 'Employee', 3, 6, 'test1', '2022-04-17', 100, 'Rejected by Admin Account', 2, 'blank.jpg'),
+(31, 'Admin', 'Admin Account', 1, 7, 'one', '2022-04-24', 1, 'Pending', 0, '728482Untitled.png'),
+(32, 'Admin', 'Admin Account', 1, 7, 'two', '2022-04-24', 2, 'Accepted by Admin RJ', 1, '182740Untitled.png'),
+(33, 'Employee', 'Employee', 3, 6, 'I pulled for Yoimiya', '2022-04-24', 2000, 'Pending', 0, '92258998Screenshot_20210810-191703496~2.jpg');
 
 -- --------------------------------------------------------
 
@@ -891,10 +892,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`, `reimbursement_budget`, `reimbursement_notif`, `claim_notif`, `complaint_notif`, `leave_token`, `department_id`) VALUES
-(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-20 21:01:54', 10010, 0, 0, 0, 10, 3),
-(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-19 19:13:57', 80000, 1, 0, 0, 10, 1),
+(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-24 15:41:48', 10010, 0, 0, 0, 10, 3),
+(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-24 15:42:36', 79998, 0, 0, 0, 10, 1),
 (8, 'HR STAFF', 'Staff', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 2, 'no_image.jpg', 1, '2022-04-22 17:46:13', 25000, 0, 0, 0, 10, 1),
-(11, 'Admin RJ', 'admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-18 18:40:27', 49900, 0, 0, 0, 10, 1),
+(11, 'Admin RJ', 'admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-24 15:40:19', 49900, 0, 0, 0, 10, 1),
 (12, 'Jin Rodriguez', 'Rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 1, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 2, 0, 10, 2),
 (15, 'asdasd', 'asdasd', '85136c79cbf9fe36bb9d05d0639c70c265c18d37', 1, 'no_image.jpg', 1, '2022-03-21 15:17:30', 100, 0, 0, 0, 10, 1),
 (16, 'Lawrence Joshua', 'lj', '0b8e8bf084b7e49274730f1bf591c1af1459ddf1', 1, 'bso7e8j116.jpg', 1, '2022-04-23 14:13:32', 0, 0, 0, 0, 10, 1),
@@ -1207,7 +1208,7 @@ ALTER TABLE `purchases`
 -- AUTO_INCREMENT for table `reimbursements`
 --
 ALTER TABLE `reimbursements`
-  MODIFY `reimbursement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `reimbursement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `reimbursment`
