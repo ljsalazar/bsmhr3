@@ -73,7 +73,8 @@
         <div class="card-header">
           <h2>Leave Reports</h2>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="generate_leaves_index.php" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open">Generate Report</a>
+            <a href="generate_leaves_index.php" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open">Generate PDF</a>
+            <a href="leave_generate_excel_index.php" class="btn btn-success"><span class="glyphicon glyphicon-floppy-open">Generate Excel</a>
           </div>
         </div>
         <div class="card-body">
@@ -82,6 +83,7 @@
             <thead>
               <tr>
                 <th class="text-center" style="width: 50px;">#</th>
+                <th class="text-center" style="width: 50px;">Employee Name</th>
                 <th class="text-center" style="width: 50px;">Leave Type</th>
                 <th class="text-center" style="width: 10%;"> From </th>
                 <th class="text-center" style="width: 10%;"> To </th>
@@ -99,9 +101,9 @@
               $user = current_user();
               $userid = (int)$user['id'];
 
-              $sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid";
+              $sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,u.username";
               $sql .=" FROM tblleaves l";
-              $sql .=" LEFT JOIN users u ON l.id = u.id";
+              $sql .=" LEFT JOIN users u ON u.id = l.empid";
               $sql .=" WHERE l.Status = 1";
               $sql .=" ORDER BY id DESC";
               if($result = $conn->query($sql)){
@@ -109,6 +111,7 @@
               ?>
               <tr>
                 <td class="text-center"><?php echo count_id();?></td>
+                <td class="text-center"><?php echo $row[10];?></td>
                 <td class="text-center"> <?php echo remove_junk($row[1]); ?></td>
                 <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[2])); echo $posting_date; ?></td>                   
                 <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[3])); echo $posting_date; ?></td> 
@@ -135,7 +138,7 @@
               </tr>
              <?php } }?>
             </tbody>
-          </tabel>
+          </table>
         </div>
       </div>
     </div>
@@ -149,5 +152,6 @@
         <script src="dist/js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="dist/js/datatables-simple-demo.js"></script>
+
 
 <?php include_once('layouts/footer.php'); ?>
