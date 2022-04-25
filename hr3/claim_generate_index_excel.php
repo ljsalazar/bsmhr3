@@ -49,7 +49,7 @@
 					<div class="panel">
 						<div class="jumbotron text-center">
 							<h2>Select Claim Log</h2>	
-							<form method="post" action="claim_generate.php" enctype="multipart/form-data">
+							<form method="post" action="claim_generate_excel.php" enctype="multipart/form-data">
 								<?php if ($user_level <= '2'): ?>
 								<div class="form-group">
 									<p style="text-align:left">User: </p>
