@@ -69,16 +69,16 @@
 		if ($user_level <= 2){
 			if ($user_selected == 'All users'){
 				$result = mysqli_query($connString, "SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-				AND reimbursement_date <= '$todate' AND accepted = 1 ORDER BY reimbursement_id DESC");	
+				AND reimbursement_date <= '$todate' AND accepted != 0 ORDER BY reimbursement_id DESC");	
 				
 				} else {
 				$result = mysqli_query($connString, "SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-				AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted = 1 ORDER BY reimbursement_id DESC");	
+				AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted != 0 ORDER BY reimbursement_id DESC");	
 			}
 		} 
 		elseif ($user_level > 2) {
 			$result = mysqli_query($connString, "SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-			AND reimbursement_date <= '$todate' AND username = '$username' AND accepted = 1 ORDER BY reimbursement_id DESC");	
+			AND reimbursement_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY reimbursement_id DESC");	
 		}
 		
 		$pdf = new PDF();

@@ -69,15 +69,15 @@
 		if ($user_level <= 2){
 			if ($user_selected == 'All users'){
 				$result = mysqli_query($connString, "SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
-				AND claim_date <= '$todate' AND accepted = 1 ORDER BY claim_id DESC");
+				AND claim_date <= '$todate' AND accepted != 0 ORDER BY claim_id DESC");
 				} else {
 				$result = mysqli_query($connString, "SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
-				AND claim_date <= '$todate' AND accepted = 1 AND name = '$user_selected' ORDER BY claim_id DESC");
+				AND claim_date <= '$todate' AND accepted != 0 AND name = '$user_selected' ORDER BY claim_id DESC");
 			}
 		} 
 		elseif ($user_level > 2) {
 			$result = mysqli_query($connString, "SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
-			AND claim_date <= '$todate' AND username = '$username' AND accepted = 1 ORDER BY claim_id DESC");	
+			AND claim_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY claim_id DESC");	
 		}
 		
 		$pdf = new PDF();

@@ -37,10 +37,11 @@
 						<p>Browsing current clock in and clock out logs of users</p></br>
 					</div>
 					<div class="col-md-3" style="text-align:right">
-						<form class="form-inline" method="post" action="time_generate_index.php">
-							<button type="submit" id="pdf" name="generate_pdf" class="btn btn-primary">
-							Generate attendance logs</button>
-						</form>
+						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+							<a href="time_generate_index.php" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open">Generate PDF</a>
+							<a href="time_generate_index_excel.php" class="btn btn-success"><span class="glyphicon glyphicon-floppy-open">Generate Excel</a>
+						</div>
+						</br>
 						<?php if ($user_level == 1): ?>
 						<!-- <form class="form-inline" method="post" action="time_archive.php">
 							<button type="submit" id="pdf" name="generate_pdf" class="btn">
