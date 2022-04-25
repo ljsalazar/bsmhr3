@@ -55,12 +55,12 @@ $Collections=$Expense['Collection'];
    </div>
 </div>
 <!-- End Notification div -->
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-12">
     <h4>Dashboard</h4>
   </div>
-</div>
-<div class="row">
+</div> -->
+<!-- <div class="row">
   <div class="col-md-3 mb-3">
     <div class="card bg-primary text-white h-100">
       <div class="card-body py-5"><p>₱ <?php echo $Expense['Collection']; ?><br><span><i class="bi bi-building"></i> Total Assets </span></p></div>
@@ -107,10 +107,10 @@ $Collections=$Expense['Collection'];
     </div>
   </div>
 </div>
-
+ -->
 <!-- Start of Charts -->
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-6 mb-3">
     <div class="card h-100">
       <div class="card-header">
@@ -133,7 +133,7 @@ $Collections=$Expense['Collection'];
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- End of Charts -->
 
@@ -147,9 +147,6 @@ $Collections=$Expense['Collection'];
 ?>
 <div class="col-md-13">
 	<div class="card h-100">
-        <div class="card-header">
-			<h2>HR3-DASHBOARD</h2>
-		</div>
         <div class="card-body">
 			
         <div class="row">

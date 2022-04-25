@@ -49,7 +49,7 @@
       class="navbar-brand me-auto ms-lg-0 ms-2 text-uppercase fw-bold"
       href="#"
       >Banking and Finance</a>
-    <button
+    <!-- <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -59,8 +59,8 @@
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="topNavBar">
+    </button> -->
+    <!-- <div class="collapse navbar-collapse" id="topNavBar">
       <form class="d-flex ms-auto my-3 my-lg-0">
         <div class="input-group">
           <input
@@ -73,7 +73,7 @@
             <i class="bi bi-search"></i>
           </button>
         </div>
-      </form>
+      </form> -->
 
       <ul class="navbar-nav">
         <li class="nav-item dropdown">

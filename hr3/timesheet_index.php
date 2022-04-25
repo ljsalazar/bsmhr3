@@ -33,15 +33,14 @@
 			<div class="card-header">
 				<div class="row">
 					<div class="col-md-9">
-						<h2>Timesheet Management</h2>
-						<p>Browsing current clock in and clock out logs of users</p></br>
+						<!-- <h2>Timesheet Management</h2> -->
+						<!-- <p>Browsing current clock in and clock out logs of users</p></br> -->
 					</div>
 					<div class="col-md-3" style="text-align:right">
-						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-							<a href="time_generate_index.php" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open">Generate PDF</a>
-							<a href="time_generate_index_excel.php" class="btn btn-success"><span class="glyphicon glyphicon-floppy-open">Generate Excel</a>
-						</div>
-						</br>
+						<form class="form-inline" method="post" action="time_generate_index.php">
+							<button type="submit" id="pdf" name="generate_pdf" class="btn btn-primary">
+							Generate attendance logs</button>
+						</form>
 						<?php if ($user_level == 1): ?>
 						<!-- <form class="form-inline" method="post" action="time_archive.php">
 							<button type="submit" id="pdf" name="generate_pdf" class="btn">
@@ -93,9 +92,12 @@
 								}
 								
 								if ($user_level <= 1){
-									echo "<td style='font-size: 14px'><a href='time_edit.php?time_id=$user_data[time_id]'>Edit</a> | <a href='time_delete.php?time_id=$user_data[time_id]'>Delete</a></td>";
+									echo "<td style='font-size: 14px'><a href='time_edit.php?time_id=$user_data[time_id]' class='btn btn-xs btn-warning'data-toggle='tooltip' title='Edit'>
+                   <i class='bi bi-pencil-fill'></i></a>  <a href='time_delete.php?time_id=$user_data[time_id]' class='btn btn-xs btn-danger'data-toggle='tooltip' title='Remove'>
+                   <i class='bi bi-eraser-fill'></i></a></td>";
 									} else {
-									echo "<td style='font-size: 14px'><a href='time_delete.php?time_id=$user_data[time_id]'>Delete</a>";
+									echo "<td style='font-size: 14px'><a href='time_delete.php?time_id=$user_data[time_id]' class='btn btn-xs btn-danger'data-toggle='tooltip' title='Remove'>
+                   <i class='bi bi-eraser-fill'></i></a>";
 								}	
 								echo "</tr>";
 							}?>

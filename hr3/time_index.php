@@ -43,7 +43,10 @@
 					}
 				?>
 				<h2>Time and Attendance</h2>
-				<p>Current Time <?php echo date("F j, Y, g:i a");?></p></br>
+				<!-- TIME CLOCK ANALOG  -->
+				<iframe src="https://free.timeanddate.com/clock/i8asr1uo/n145/szw210/szh210/hoc000/hbw6/cf100/hgr0/hcw2/hcd88/fan2/fas20/fdi70/mqc000/mqs3/mql13/mqw4/mqd94/mhc000/mhs4/mhl13/mhw4/mhd94/mmc000/mms4/mml5/mmw1/mmd94/hwm2/hhs2/hhb18/hms2/hml80/hmb18/hmr7/hscf09/hss1/hsl90/hsr5" style="pointer-events: none" frameborder="0" width="210" height="210"></iframe>
+				<!-- END OF FRAME TAG -->
+				<p><b>Current Date & Time <?php echo date("F j, Y, g:i a");?></b></p></br>
 				
 				<?php 
 					$date = date("Y-m-d H:i:s", strtotime("+0 HOURS"));
@@ -117,7 +120,7 @@
 				
 				<?php if ($user_level >= 1): ?>
 				<form class="form-inline" method="post" action="complaint_index.php">
-					<button type="submit" id="pdf" name="generate_pdf" class="btn" style="font-size:20px">Support <?php if(!$complaint_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$complaint_notif; ?></span><?php } ?></button>
+					<button type="submit" id="pdf" name="generate_pdf" class="btn btn-success" style="font-size:20px; margin-top: 10px;">Support <?php if(!$complaint_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$complaint_notif; ?></span><?php } ?></button>
 				</form>
 				<?php endif;?>
 			</div>
@@ -160,7 +163,10 @@
 			?>
 			<div class="row" style="margin:50px">
 				<div class="col-md-7" style="max-height:500px; overflow:auto;">
+					<div class="card-header">
 					<h2 style="text-align:left">Ongoing Events</h2>
+				</div>
+				<div class="card-body"style="background-color: rgb(240, 240, 240)">
 					<?php
 						$today = date("Y-m-d", strtotime("+0 HOURS"));
 						$query1 = $conn->query("SELECT * FROM events WHERE fromdate <= '$today' AND todate >= '$today' AND min_user_level >= '$user_level'");
@@ -175,8 +181,9 @@
 							} if (mysqli_num_rows($query1)==0) { 
 							echo "No events for today";
 						}
-						
-						echo "</br><h2 style='text-align:left'>Upcoming Events</h2>";
+						echo "</div>";
+						echo "</br><div class='card-header'><h2 style='text-align:left'>Upcoming Events</h2></div>";
+						echo "<div class='card-body'style='background-color: rgb(240, 240, 240)'>";
 						$query1 = $conn->query("SELECT * FROM events WHERE fromdate > '$today' AND min_user_level >= '$user_level'");
 						
 						while($user_data = mysqli_fetch_array($query1)) {
@@ -189,8 +196,10 @@
 							} if (mysqli_num_rows($query1)==0) { 
 							echo "No upcoming events";
 						}
+						echo "</div>";
 					?> 
 				</div>
+
 				
 				<?php if($user['user_level'] <= '2'): ?>
 				<div class="col-md-5" style="margin-bottom: 50px">
@@ -259,14 +268,15 @@
 							} else {
 							$query = $conn->query("SELECT * FROM events WHERE min_user_level >= 2 ORDER BY event_id DESC");
 							}
-							
 							while($user_data = mysqli_fetch_array($query)) {
 							echo "<tr>";
 							echo "<td>".$user_data['event']."</td>";
 							echo "<td>".$user_data['fromdate']."</td>";
 							echo "<td>".$user_data['todate']."</td>";
 							echo "<td>".$user_data['author']."</td>";
-							echo "<td><a href='event_edit.php?event_id=$user_data[event_id]'>Edit</a> | <a href='event_delete.php?event_id=$user_data[event_id]'>Delete</a></td>";
+							echo "<td><a href='event_edit.php?event_id=$user_data[event_id]' class='btn btn-xs btn-warning'data-toggle='tooltip' title='Edit'>
+                      <i class='bi bi-pencil-fill'></i></a>  <a href='event_delete.php?event_id=$user_data[event_id]' class='btn btn-xs btn-danger'data-toggle='tooltip' title='Remove'>
+                   <i class='bi bi-eraser-fill'></i></a></td>";
 							echo "</tr>";
 							}	
 							?>

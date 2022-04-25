@@ -62,10 +62,10 @@
     <div class="col-md-12">
       <div class="card h-100">
         <div class="card-header">
-          <h2>Manage Leave Type</h2>
-          <a href="leave_type_archive.php" class="btn btn-outline-danger"><span class="bi bi-trash3-fill"></a>
+          <!-- <h2>Manage Leave Type</h2> -->
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-           <a href="add_leave_type.php" class="btn btn-primary me-md-2">Add New</a>
+           <a href="add_leave_type.php" class="btn btn-success me-md-2">ADD <span class="bi bi-clipboard-plus-fill"></a>
+           <a href="leave_type_archive.php" class="btn btn-danger">TRASH <span class="bi bi-trash3-fill"></a>
           </div>
         </div>
         <div class="card-body">
@@ -98,8 +98,13 @@
                 <td class="text-center" style="width:20%"> <?php echo remove_junk($row[1]); ?></td> 
                 <td class="text-left" style="width:30%"> <?php echo remove_junk($row[2]); ?></td>
                 <td class="text-center" style="width:30%"> <?php echo read_date($row[3]); ?></td>
-                <td class="text-center"><a href="edit_leave_type.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:green; color: whitesmoke;"> Edit </a>
-                <a href="delete_leave_type.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:red; color: whitesmoke;"> Delete </a>
+                <td>
+                  <a href="edit_leave_type.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit">
+                  <i class="bi bi-pencil-fill"></i>
+                   </a>
+                   <a href="delete_leave_type.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove">
+                   <i class="bi bi-eraser-fill"></i>
+                   </a>
               </td>
               </tr>
              <?php } }?>

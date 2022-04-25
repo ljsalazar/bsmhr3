@@ -55,22 +55,11 @@
 	$username = $user['username'];
 	$name = $user['name'];
 	$user_level = $user['user_level']; 
-	$status = $_POST['status'];
-	
-	switch ($status) {
-		case 'Rejected Only':
-		$accepted = '2';
-		break;
-		case 'Accepted Only':
-		$accepted = '1';
-		break;
-	}
 	
 	$db = new dbObj();
 	$connString =  $db->getConnstring();
 	
 	$header = mysqli_query($connString, "SHOW columns FROM time_attendance");
-	$conn = new mysqli('localhost', 'root', '', 'bank') or die(mysqli_error());
 	
 	if(isset($_POST['generate'])) {
 		$fromdate = $_POST['fromdate'];
@@ -79,32 +68,17 @@
 		
 		if ($user_level <= 2){
 			if ($user_selected == 'All users'){
-				if ($status == 'All') {
-					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-					AND reimbursement_date <= '$todate' AND accepted != 0 ORDER BY reimbursement_id DESC");	
-					} else {
-					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-					AND reimbursement_date <= '$todate' AND accepted = '$accepted' ORDER BY reimbursement_id DESC");	
-				}
+				$result = mysqli_query($connString, "SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+				AND reimbursement_date <= '$todate' AND accepted = 1 ORDER BY reimbursement_id DESC");	
 				
 				} else {
-				if ($status == 'All') {
-					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-					AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted != 0 ORDER BY reimbursement_id DESC");	
-					} else {
-					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-					AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted = '$accepted' ORDER BY reimbursement_id DESC");	
-				}
+				$result = mysqli_query($connString, "SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+				AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted = 1 ORDER BY reimbursement_id DESC");	
 			}
 		} 
 		elseif ($user_level > 2) {
-			if ($status == 'All') {
-				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-				AND reimbursement_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY reimbursement_id DESC");	
-				} else {
-				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-				AND reimbursement_date <= '$todate' AND username = '$username' AND accepted = '$accepted' ORDER BY reimbursement_id DESC");	
-			}
+			$result = mysqli_query($connString, "SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+			AND reimbursement_date <= '$todate' AND username = '$username' AND accepted = 1 ORDER BY reimbursement_id DESC");	
 		}
 		
 		$pdf = new PDF();
@@ -122,17 +96,16 @@
 		
 		$bruh = array(35, 35, 35, 20, 50);
 		
-	foreach($header as $heading) {
+		foreach($header as $heading) {
+		}
+		foreach($result as $row) {
+			$pdf->Ln();
+			$plus = "0";
+			foreach($row as $column) {
+				$pdf->Cell($bruh[$plus],10,$column,1,);
+				$plus+=1;
+			}
+		}
+		$pdf->Output();
 	}
-	foreach($result as $row) {
-	$pdf->Ln();
-	$plus = "0";
-	foreach($row as $column) {
-	$pdf->Cell($bruh[$plus],10,$column,1,);
-	$plus+=1;
-	}
-	}
-	$pdf->Output();
-	}
-	?>
-		
+?>

@@ -71,10 +71,10 @@
     <div class="col-md-12">
       <div class="card h-100">
         <div class="card-header">
-          <h2>Leave Reports</h2>
+          <!-- <h2>Leave Reports</h2> -->
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="generate_leaves_index.php" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open">Generate PDF</a>
-            <a href="leave_generate_excel_index.php" class="btn btn-success"><span class="glyphicon glyphicon-floppy-open">Generate Excel</a>
+            <a href="generate_leaves_index.php" class="btn btn-danger">PDF <span class="bi bi-filetype-pdf"></a>
+            <a href="leave_generate_excel_index.php" class="btn btn-success">EXCEL <span class="bi bi-filetype-xls"></a>
           </div>
         </div>
         <div class="card-body">

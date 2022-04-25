@@ -100,8 +100,7 @@
 	<div class="col-md-6">
 		<div class="card h-100">
 			<div class="card-header">
-				<h2>Shift and Scheduling</h2>
-				<p>create shift:</p>
+				<h2>Shift Type:</h2>
 				<form method="post" action="set_shift.php">
 					
 					<div class="card-body">
@@ -147,9 +146,8 @@
 		<div class="card h-100">
 			<div class="card-header">
 				<div class="panel" style="width:100%; display:block; margin:auto">
-					<h4 style="text-align:left; margin-bottom:10px; margin-left:20px">Shifting Records:
 					<div class="pull-right">
-		            <a href="shift_type_archive.php" class="btn btn-outline-danger" style="margin-bottom: 10px; margin-right: 10px;"><span class="bi bi-trash3-fill"></span></a>
+		            <a href="shift_type_archive.php" class="btn btn-danger" style="margin-bottom: 10px; margin-right: 10px;">TRASH <span class="bi bi-trash3-fill"></span></a>
 		          </div>
 		          </h4>
 					
@@ -179,8 +177,8 @@
 										<td class="text-center"><?php $f_time = date("g:i a", strtotime($row[2])); echo $f_time; ?></td>                   
 										<td class="text-center"><?php $f_time = date("g:i a", strtotime($row[3])); echo $f_time; ?></td>
 										<td class="text-center">
-											<a href="edit_shift.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
-											<a href="delete_shift.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+											<a href="edit_shift.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="bi bi-pencil-fill"></i></a>
+											<a href="delete_shift.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove"><i class="bi bi-eraser-fill"></i></a>
 										</td>  
 									</tr>
 								<?php } }?>

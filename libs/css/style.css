@@ -545,11 +545,15 @@ hr .new1forprofile {
 /* End of Css for Breadcrumb ---------------------------------------------------*/
 
 /* Css for login page ---------------------------------------------------------*/
+
 .containerLog{
   max-width: 440px;
   padding: 0 20px;
   margin: 170px auto;
+  
 }
+
+
 .wrapperLog{
   width: 100%;
   background: #fff;
@@ -642,4 +646,10 @@ hr .new1forprofile {
 }
 .formlog .signup-link a:hover{
   text-decoration: underline;
+}
+@media screen and (min-width: 1024px) {
+     .containerLog{
+         margin-left: 350px;
+     }
+
 }
