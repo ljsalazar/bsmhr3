@@ -53,93 +53,90 @@
 									<p>Browse the current claim history logs</p>
 								</div>
 								<div class="col-md-3" style="text-align:right">
-									<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-										<a href="claim_generate_index.php" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open">Generate PDF</a>
-										<a href="claim_generate_index_excel.php" class="btn btn-success"><span class="glyphicon glyphicon-floppy-open">Generate Excel</a>
-									</div>
-									</br>
-											<?php if ($user_level == 1): ?>
-											<!-- <form class="form-inline" method="post" action="claim_archive.php">
-												<button type="submit" id="pdf" name="generate_pdf" class="btn">Archive</button>
-											</form> -->
-											<a href="claim_archive.php" class="btn btn-outline-danger"><span class="bi bi-trash3-fill"></a>
-												
-												<?php endif;?>
-											</div>
-										</div>
-									</div>
-									<?php							
-										if(isset($_POST['add_claim'])) {
-											$claim = $_POST['claim'];;
-											$status = "Pending";
-											$date = date("Y-m-d", strtotime("+7 HOURS"));
-											
-											$q_student = $conn->query("SELECT * FROM `users` WHERE `username` = '$username'") or die(mysqli_error());
-											$f_student = $q_student->fetch_array();
-											$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '$user_id', '$username', '$user_level', '$fullname')") or die(mysqli_error());
-										}
-									?>
-									<div class="card-body">
-										<ul class="nav nav-pills">
-											<li role="presentation" class="active"><a href="claim_history.php" class="btn btn-primary" style="margin-bottom:10px">Pending</a></li>
-											<li role="presentation"><a href="claim_history_accepted.php" class="btn" style="margin-bottom:10px">Accepted<?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a></li>
-											<li role="presentation"><a href="claim_history_rejected.php" class="btn" style="margin-bottom:10px">Rejected</a></li>
-										</ul>
-										
-										<div style="max-height:300px; overflow:auto;">
-											<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
-												<thead>
-													<tr>
-														<th>User</th>
-														<th>Claim</th>
-														<th>Date</th>
-														<th>Status</th>
-														<th>Options</th>
-													</tr>
-												</thead>
-												<?php
-											$user = current_user();
-											$username = $user['username'];
-											$name = $user['name'];
-											$user_level = $user['user_level'];
-											$conn = new mysqli('localhost', 'root', '', 'bank');
-											
-											if ($user_level <= 1){
-												$query = $conn->query("SELECT * FROM claim WHERE accepted = '0' ORDER BY claim_id DESC");
-											}
-											else if ($user_level <= 2){
-												$query = $conn->query("SELECT * FROM claim WHERE accepted = '0' AND user_level >= 2 ORDER BY claim_id DESC");
-											}
-											else {
-												$query = $conn->query("SELECT * FROM claim WHERE username = '$username' && accepted = '0' ORDER BY claim_id DESC");
-											}
-											while($user_data = mysqli_fetch_array($query)) {
-												echo "<tr>";
-												echo "<td>".$user_data['name']."</td>";
-												echo "<td>".$user_data['claim']."</td>";
-												echo "<td>".$user_data['claim_date']."</td>";
-												echo "<td>".$user_data['status']."</td>";
-												if ($user_level <= 2) {
-													echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]'>Delete</a> | <a href='claim_accept.php?claim_id=$user_data[claim_id]'>Accept</a> | <a href='claim_reject.php?claim_id=$user_data[claim_id]'>Reject</a></td>";
-													} else {
-													echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]'>Delete</a></td>";
-												}
-												echo "</tr>";
-											}?>
-									</table>
+									<form class="form-inline" method="post" action="claim_generate_index.php">
+										<button type="submit" id="pdf" name="generate_pdf" class="btn btn-primary">Generate history logs</button>
+									</form>
+									<?php if ($user_level == 1): ?>
+									<!-- <form class="form-inline" method="post" action="claim_archive.php">
+										<button type="submit" id="pdf" name="generate_pdf" class="btn">Archive</button>
+									</form> -->
+									<a href="claim_archive.php" class="btn btn-outline-danger"><span class="bi bi-trash3-fill"></a>
+
+									<?php endif;?>
 								</div>
 							</div>
 						</div>
+						<?php							
+							if(isset($_POST['add_claim'])) {
+								$claim = $_POST['claim'];;
+								$status = "Pending";
+								$date = date("Y-m-d", strtotime("+7 HOURS"));
+								
+								$q_student = $conn->query("SELECT * FROM `users` WHERE `username` = '$username'") or die(mysqli_error());
+								$f_student = $q_student->fetch_array();
+								$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '$user_id', '$username', '$user_level', '$fullname')") or die(mysqli_error());
+							}
+						?>
+						<div class="card-body">
+							<ul class="nav nav-pills">
+								<li role="presentation" class="active"><a href="claim_history.php" class="btn btn-primary" style="margin-bottom:10px">Pending</a></li>
+								<li role="presentation"><a href="claim_history_accepted.php" class="btn" style="margin-bottom:10px">Accepted<?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a></li>
+								<li role="presentation"><a href="claim_history_rejected.php" class="btn" style="margin-bottom:10px">Rejected</a></li>
+							</ul>
+							
+							<div style="max-height:300px; overflow:auto;">
+								<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+									<thead>
+										<tr>
+											<th>User</th>
+											<th>Claim</th>
+										<th>Date</th>
+										<th>Status</th>
+										<th>Options</th>
+										</tr>
+									</thead>
+									<?php
+										$user = current_user();
+										$username = $user['username'];
+										$name = $user['name'];
+										$user_level = $user['user_level'];
+										$conn = new mysqli('localhost', 'root', '', 'bank');
+										
+										if ($user_level <= 1){
+											$query = $conn->query("SELECT * FROM claim WHERE accepted = '0' ORDER BY claim_id DESC");
+										}
+										else if ($user_level <= 2){
+											$query = $conn->query("SELECT * FROM claim WHERE accepted = '0' AND user_level >= 2 ORDER BY claim_id DESC");
+										}
+										else {
+											$query = $conn->query("SELECT * FROM claim WHERE username = '$username' && accepted = '0' ORDER BY claim_id DESC");
+										}
+										while($user_data = mysqli_fetch_array($query)) {
+											echo "<tr>";
+											echo "<td>".$user_data['name']."</td>";
+											echo "<td>".$user_data['claim']."</td>";
+											echo "<td>".$user_data['claim_date']."</td>";
+											echo "<td>".$user_data['status']."</td>";
+											if ($user_level <= 2) {
+												echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]'>Delete</a> | <a href='claim_accept.php?claim_id=$user_data[claim_id]'>Accept</a> | <a href='claim_reject.php?claim_id=$user_data[claim_id]'>Reject</a></td>";
+												} else {
+												echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]'>Delete</a></td>";
+											}
+											echo "</tr>";
+										}?>
+								</table>
+							</div>
+						</div>
 					</div>
-					
-					<?php include('layouts/table/tablefooter.php');?>
-					<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-					<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-					<script src="dist/js/scripts.js"></script>
-					<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-					<script src="dist/js/datatables-simple-demo.js"></script>
-					
-				</div><?php include_once('layouts/footer.php'); ?>
-			</body>
-		</html>
-		
+				</div>
+				
+				<?php include('layouts/table/tablefooter.php');?>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+				<script src="dist/js/scripts.js"></script>
+				<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+				<script src="dist/js/datatables-simple-demo.js"></script>
+				
+			</div><?php include_once('layouts/footer.php'); ?>
+		</body>
+	</html>

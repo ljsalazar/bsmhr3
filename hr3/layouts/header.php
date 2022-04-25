@@ -47,7 +47,7 @@
       class="navbar-brand me-auto ms-lg-0 ms-2 text-uppercase fw-bold"
       href="#"
       >Banking and Finance</a>
-    <button
+    <!-- <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -71,7 +71,7 @@
             <i class="bi bi-search"></i>
           </button>
         </div>
-      </form>
+      </form> -->
 
       <ul class="navbar-nav">
         <li class="nav-item dropdown">

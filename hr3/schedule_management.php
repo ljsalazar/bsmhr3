@@ -103,7 +103,8 @@ $result = $db->query($sql);
                     <span style="color: blue">waiting for approval</span>
                     <?php } ?>
                   </td>
-                  <td class="text-center"><a href="schedule_view.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:steelblue; color: whitesmoke;"> View Details </a></td>
+                  <td class="text-center"><a href="schedule_view.php?id=<?php echo remove_junk($row[0]);?> "class="btn btn-xs btn-success" data-toggle="tooltip" title="View">
+                   <i class="bi bi-eye-fill"></i></a></td>
                 <?php } } ?>
                 </tr>
 

@@ -163,16 +163,16 @@ validate_fields($req_fields);
     <div class="card h-100">
       <div class="card-header">
         <div class="panel" style="width:100%; display:block; margin:auto">
-  <h4 style="text-align:left; margin-bottom:10px; margin-left:20px"><b>Shift Records:</b></h4>
+  <h4 style="text-align:left; margin-bottom:10px; margin-left:20px"><b>Schedule:</b></h4>
   <div style="max-height:300px">
-      <table class="table" style="table-layout: fixed;">
+      <table class="table" style="table-layout: auto;">
     <tr>
-        <th>#</th> <th>Shift</th> <th>Time</th> <th>Days</th> <th>Action</th>
+        <th>#</th> <th>Shift</th> <th>Days</th> <th>Action</th>
     </tr>
   </table>
 </div>
         <div style="max-height:300px; overflow:auto;">
-      <table class="table" style="table-layout: fixed;">
+      <table class="table" style="table-layout: auto;">
     <?php 
 
               //Query Statement for leave history
@@ -190,12 +190,10 @@ validate_fields($req_fields);
               ?>
     <tr>
                 <td class="text-left"> <?php echo count_id(); ?></td>
-                <td class="text-left"> <?php echo remove_junk($row[4]); ?></td>
-                <td class="text-left"> <?php echo remove_junk($row[3]); ?></td>
-                <td class="text-left"><?php echo remove_junk($row[1]); ?></td>
+                <td class="text-left"> <?php echo remove_junk($row[4]); ?></td>                <td class="text-left"><?php echo remove_junk($row[1]); ?></td>
           <td class="text-left">
-          <a href="edit_schedule.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
-          <a href="delete_schedule.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+          <a href="edit_schedule.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="bi bi-pencil-fill"></i></a>
+          <a href="delete_schedule.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove"><i class="bi bi-eraser-fill"></i></a>
         </td>  
     </tr>
     <?php } }?>

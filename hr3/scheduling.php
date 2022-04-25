@@ -108,7 +108,7 @@
                   <?php $stats=(int)$row[6];
                   if ($stats==1) {
                   ?>
-                  <td class="text-center"><a href="set_schedule.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:steelblue; color: whitesmoke;"><i class="glyphicon glyphicon-calendar"></i> Set Schedule </a></td>
+                  <td class="text-center"><a href="set_schedule.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-success" data-toggle="tooltip" title="Set Schedule"><i class="bi bi-calendar3"></i></a></td>
                 <?php } } }?>
                 </tr>
 

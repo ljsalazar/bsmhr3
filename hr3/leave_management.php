@@ -53,9 +53,9 @@ $result = $db->query($sql);
     <div class="col-md-12">
       <div class="card h-100">
         <div class="card-header">
-          <h2>Leaves</h2>
+          <!-- <h2>Leaves</h2> -->
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-           <a href="leave_credit.php" class="btn btn-primary me-md-2">Add Credits</a>
+           <a href="leave_credit.php" class="btn btn-success me-md-2">CREDIT <span class="bi bi-credit-card-fill"></a>
           </div>
         </div>
         <div class="card-body">
@@ -108,7 +108,8 @@ $result = $db->query($sql);
                   </td>
                 <td class="text-center"><?php echo remove_junk($row[10]." Days"); ?></td>
                 <td class="text-center"><?php echo remove_junk($row[11]." Days"); ?></td>
-                <td class="text-center"><a href="leave_view.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:steelblue; color: whitesmoke;"> View Details </a></td>
+                <td class="text-center"><a href="leave_view.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-info" data-toggle="tooltip" title="View">
+                   <i class="bi bi-eye-fill"></i></a></td>
               </tr>
              <?php } }?>
             </tbody>
