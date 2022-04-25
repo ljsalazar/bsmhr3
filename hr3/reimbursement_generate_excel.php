@@ -36,20 +36,45 @@
 		$userid = (int)$user['id'];
 		$username = $user['username'];
 		$user_level = $user['user_level'];
+		$status = $_POST['status'];
+		
+		switch ($status) {
+			case 'Rejected Only':
+			$accepted = '2';
+			break;
+			case 'Accepted Only':
+			$accepted = '1';
+			break;
+		}
 		
 		if ($user_level <= 2){
 			if ($user_selected == 'All users'){
-				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-				AND reimbursement_date <= '$todate' AND accepted != 0 ORDER BY reimbursement_id DESC");	
+				if ($status == 'All') {
+					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+					AND reimbursement_date <= '$todate' AND accepted != 0 ORDER BY reimbursement_id DESC");	
+					} else {
+					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+					AND reimbursement_date <= '$todate' AND accepted = '$accepted' ORDER BY reimbursement_id DESC");	
+				}
 				
 				} else {
-				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-				AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted != 0 ORDER BY reimbursement_id DESC");	
+				if ($status == 'All') {
+					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+					AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted != 0 ORDER BY reimbursement_id DESC");	
+					} else {
+					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+					AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted = '$accepted' ORDER BY reimbursement_id DESC");	
+				}
 			}
 		} 
 		elseif ($user_level > 2) {
-			$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
-			AND reimbursement_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY reimbursement_id DESC");	
+			if ($status == 'All') {
+				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+				AND reimbursement_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY reimbursement_id DESC");	
+				} else {
+				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+				AND reimbursement_date <= '$todate' AND username = '$username' AND accepted = '$accepted' ORDER BY reimbursement_id DESC");	
+			}
 		}
 		#if($result = $conn->query($sql)){
 			while($row = mysqli_fetch_array($result)){
@@ -71,14 +96,14 @@
 				</tbody>
 				';
 			}
-	#	}
-		$output .= '</table>';
-		date_default_timezone_set('Asia/Manila');
-		$date = date("F j, Y, g:i a");
-		$title = $date."_Reimbursement_". "report.xls";
-		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment; filename="'.$title.'" ');
+			#	}
+			$output .= '</table>';
+			date_default_timezone_set('Asia/Manila');
+			$date = date("F j, Y, g:i a");
+			$title = $date."_Reimbursement_". "report.xls";
+			header('Content-Type: application/vnd.ms-excel');
+			header('Content-Disposition: attachment; filename="'.$title.'" ');
 		echo $output;
-	}
-	
-?>
+		}
+		
+		?>				

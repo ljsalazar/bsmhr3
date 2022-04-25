@@ -77,6 +77,14 @@
 								<div class="form-group">
 									<input type="date" class="form-control" name="todate" value="<?php echo date('Y-m-d'); ?>" />
 								</div>	
+								<div class="form-group">
+									<p style="text-align:left">Status: </p>
+									<select class="form-control" name="status" placeholder="">
+										<option name="All" value="All">All</option>
+										<option name="Rejected Only" value="Rejected Only">Rejected Only</option>
+										<option name="Accepted Only" value="Accepted Only">Accepted Only</option>
+									</select>
+								</div>
 								</br>
 								<button type="submit" name="generate" class="btn btn-primary" value="generate">Generate Report</button>
 							</form></br>

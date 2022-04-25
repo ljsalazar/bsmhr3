@@ -60,24 +60,50 @@
 	$connString =  $db->getConnstring();
 	
 	$header = mysqli_query($connString, "SHOW columns FROM time_attendance");
+	$conn = new mysqli('localhost', 'root', '', 'bank') or die(mysqli_error());   
 	
 	if(isset($_POST['generate'])) {
 		$fromdate = $_POST['fromdate'];
 		$todate = $_POST['todate'];
 		$user_selected = $_POST['user_selected'];
+		$status = $_POST['status'];
+		
+		switch ($status) {
+			case 'Rejected Only':
+			$accepted = '2';
+			break;
+			case 'Accepted Only':
+			$accepted = '1';
+			break;
+		}
 		
 		if ($user_level <= 2){
 			if ($user_selected == 'All users'){
-				$result = mysqli_query($connString, "SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
-				AND claim_date <= '$todate' AND accepted != 0 ORDER BY claim_id DESC");
+				if ($status == 'All') {
+					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					AND claim_date <= '$todate' AND accepted != 0 ORDER BY claim_id DESC");
+					} else {
+					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					AND claim_date <= '$todate' AND accepted = '$accepted' ORDER BY claim_id DESC");
+				}
 				} else {
-				$result = mysqli_query($connString, "SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
-				AND claim_date <= '$todate' AND accepted != 0 AND name = '$user_selected' ORDER BY claim_id DESC");
+				if ($status == 'All'){
+					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					AND claim_date <= '$todate' AND accepted != 0 AND name = '$user_selected' ORDER BY claim_id DESC");
+					} else {
+					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					AND claim_date <= '$todate' AND accepted = '$accepted' AND name = '$user_selected' ORDER BY claim_id DESC");
+				}
 			}
 		} 
 		elseif ($user_level > 2) {
-			$result = mysqli_query($connString, "SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
-			AND claim_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY claim_id DESC");	
+			if ($status == 'All'){
+				$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+				AND claim_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY claim_id DESC");	
+				} else {
+				$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+				AND claim_date <= '$todate' AND username = '$username' AND accepted = '$accepted' ORDER BY claim_id DESC");	
+			}
 		}
 		
 		$pdf = new PDF();
@@ -92,18 +118,17 @@
 		$pdf->Cell(45,10,'Claim Date',1,);
 		$pdf->Cell(45,10,'Status',1,);
 		$bruh = array(45, 45, 35, 55);
-	
-	foreach($header as $heading) {
-	}
-	foreach($result as $row) {
-	$pdf->Ln();
-	$plus = "0";
-	foreach($row as $column) {
-	$pdf->Cell($bruh[$plus],10,$column,1,);
-	$plus+=1;
-	}
-	}
-	$pdf->Output();
-	}
-	?>
 		
+		foreach($header as $heading) {
+			}
+			foreach($result as $row) {
+			$pdf->Ln();
+			$plus = "0";
+			foreach($row as $column) {
+				$pdf->Cell($bruh[$plus],10,$column,1,);
+				$plus+=1;
+			}
+		}
+		$pdf->Output();
+	}
+?>

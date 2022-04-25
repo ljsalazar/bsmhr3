@@ -35,20 +35,44 @@
 		$userid = (int)$user['id'];
 		$username = $user['username'];
 		$user_level = $user['user_level'];
+		$status = $_POST['status'];
+		
+		switch ($status) {
+			case 'Rejected Only':
+			$accepted = '2';
+			break;
+			case 'Accepted Only':
+			$accepted = '1';
+			break;
+		}
 		
 		if ($user_level <= 2){
 			if ($user_selected == 'All users'){
-				$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
-				AND claim_date <= '$todate' AND accepted != 0 ORDER BY claim_id DESC");	
-				
+				if ($status == 'All') {
+					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					AND claim_date <= '$todate' AND accepted != 0 ORDER BY claim_id DESC");
+					} else {
+					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					AND claim_date <= '$todate' AND accepted = '$accepted' ORDER BY claim_id DESC");
+				}
 				} else {
-				$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
-				AND claim_date <= '$todate' AND accepted != 0 AND name = '$user_selected' ORDER BY claim_id DESC");	
+				if ($status == 'All'){
+					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					AND claim_date <= '$todate' AND accepted != 0 AND name = '$user_selected' ORDER BY claim_id DESC");
+					} else {
+					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					AND claim_date <= '$todate' AND accepted = '$accepted' AND name = '$user_selected' ORDER BY claim_id DESC");
+				}
 			}
 		} 
 		elseif ($user_level > 2) {
-			$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
-			AND claim_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY claim_id DESC");	
+			if ($status == 'All'){
+				$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+				AND claim_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY claim_id DESC");	
+				} else {
+				$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+				AND claim_date <= '$todate' AND username = '$username' AND accepted = '$accepted' ORDER BY claim_id DESC");	
+			}
 		}
 		#if($result = $conn->query($sql)){
 			while($row = mysqli_fetch_array($result)){
