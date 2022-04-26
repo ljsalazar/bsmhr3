@@ -75,7 +75,7 @@
 									$add_user_level = $user_data['user_level'];
 									$add_fullname = $user_data['name'];
 								}
-								$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '0', '$add_user_id', '$add_username', '$add_user_level', '$add_fullname')") or die(mysqli_error($conn));
+								$conn->query("INSERT INTO `claim` (claim,claim_date,status,accepted,user_id,username,user_level,name) VALUES ('$claim', '$date', '$status', '0', '$add_user_id', '$add_username', '$add_user_level', '$add_fullname')") or die(mysqli_error($conn));
 								$session->msg('s',"Claim Request Successfully Added");
 								echo "<script>window.location.href='claim_index.php';</script>";
 							}

@@ -5,6 +5,8 @@
   page_require_level(1);
   $groups = find_all('user_groups');
   $departments = find_all('tbldepartments');
+  $conn = new mysqli('localhost', 'root', '', 'bank') or die(mysqli_error());       
+	
 ?>
 <?php
   if(isset($_POST['add_user'])){
@@ -13,21 +15,25 @@
    validate_fields($req_fields);
 
    if(empty($errors)){
-           $name   = remove_junk($db->escape($_POST['full-name']));
-       $username   = remove_junk($db->escape($_POST['username']));
-       $password   = remove_junk($db->escape($_POST['password']));
-       $user_level = (int)$db->escape($_POST['level']);
-       $dept = (int)$db->escape($_POST['dept']);
+           $name   = $_POST['full-name'];
+       $username   = $_POST['username'];
+       $password   = $_POST['password'];
+       $user_level = (int)$_POST['level'];
+       $dept = (int)$_POST['dept'];
        $password = sha1($password);
       
        $credits = 10;
 
-        $query = "INSERT INTO users (";
-        $query .="name,username,password,user_level,status,leave_token,department_id";
-        $query .=") VALUES (";
-        $query .=" '{$name}', '{$username}', '{$password}', '{$user_level}','1','{$credits}','{$dept}'";
-        $query .=")";
-        if($db->query($query)){
+        #$query = "INSERT INTO users (";
+        #$query .="name,username,password,user_level,status,leave_token,department_id";
+        #$query .=") VALUES (";
+        #$query .=" '{$name}', '{$username}', '{$password}', '{$user_level}','1','{$credits}','{$dept}'";
+        #$query .=")";
+		
+		$conn->query("INSERT INTO `users` (name,username,password,user_level,status,leave_token,department_id,reimbursement_budget,reimbursement_notif,claim_notif,complaint_notif) VALUES 
+		('$name', '$username', '$password', '$user_level', '1', '$credits', '$dept', '1000', '0', '0', '0')") or die(mysqli_error($conn));
+								
+        if($conn){
           //sucess
           $session->msg('s',"User account has been created! ");
           redirect('add_user.php', false);

@@ -34,9 +34,9 @@ validate_fields($req_fields);
                 $shift_time = "From ".$start_time." To ".$end_time;
 
      $query  = "INSERT INTO tblschedule (";
-     $query .=" days,Status,IsRead,empid,shift_type_id,shift_type_detail";
+     $query .=" days,Status,IsRead,empid,shift_type_id,shift_type_detail,emp_read";
      $query .=") VALUES (";
-     $query .=" '{$days}', '{$status}', '{$isread}', '{$employee_id}','{$shift_type_ID}','{$shift_time}'";
+     $query .=" '{$days}', '{$status}', '{$isread}', '{$employee_id}','{$shift_type_ID}','{$shift_time}', '0'";
      $query .=")";
     //  $query .=" ON DUPLICATE KEY UPDATE shift_schedule='{$schedule}'";
      if($db->query($query)){

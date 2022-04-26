@@ -59,12 +59,13 @@
 			</div>
 		<?php			
 			if(isset($_POST['login'])) {
-				$session->msg('s',"Shift has started");
+				$session->msg('s',"Shift hassss started");
 				$login_time = date("Y-m-d H:i:s", strtotime("+0 HOURS"));
 				
 				$q_student = $conn->query("SELECT * FROM `users` WHERE `username` = '$username'") or die(mysqli_error());
 				$f_student = $q_student->fetch_array();
-				$conn->query("INSERT INTO `time_attendance` VALUES('', '$user_id', '$login_time', '', '$username', '$name', '$user_level', '', '1')") or die(mysqli_error());
+				$conn->query("INSERT INTO `time_attendance` (user_id,login_time,username,name,user_level,working)
+				VALUES('$user_id', '$login_time', '$username', '$name', '$user_level', '1')") or die(mysqli_error());
 			}
 			
 			if(isset($_POST['logout'])) {
@@ -150,7 +151,8 @@
 								$group_level = $user_data['group_level']; 
 							}
 							
-							$conn->query("INSERT INTO `events` VALUES('', '$event', '$fromdate', '$todate', '$group_level', '$author')") or die(mysqli_error());
+							$conn->query("INSERT INTO `events` (event,fromdate,todate,min_user_level,author)
+							VALUES('$event', '$fromdate', '$todate', '$group_level', '$author')") or die(mysqli_error());
 							
 							$session->msg('s',"Event Successfully Created");
 							echo "<script>window.location.href='time_index.php';</script>";

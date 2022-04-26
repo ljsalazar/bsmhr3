@@ -43,9 +43,9 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
 
      $date    = make_date();
      $query  = "INSERT INTO tblleaves (";
-     $query .=" LeaveType,Description,FromDate,ToDate,Status,IsRead,empid,amount_of_days,remaining_days";
+     $query .=" LeaveType,Description,FromDate,ToDate,Status,IsRead,empid,amount_of_days,remaining_days,emp_read";
      $query .=") VALUES (";
-     $query .=" '{$l_types}', '{$l_description}', '{$l_fromDate}', '{$l_toDate}', '{$status}', '{$isread}', '{$currentUserID}', '{$amount_days}', '{$remaining_days}'";
+     $query .=" '{$l_types}', '{$l_description}', '{$l_fromDate}', '{$l_toDate}', '{$status}', '{$isread}', '{$currentUserID}', '{$amount_days}', '{$remaining_days}', '0'";
      $query .=")";
      $query .=" ON DUPLICATE KEY UPDATE LeaveType='{$l_types}'";
      if($l_fromDate > $l_toDate){

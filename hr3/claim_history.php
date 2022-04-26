@@ -49,7 +49,7 @@
 						<div class="card-header">
 							<div class="row">
 								<div class="col-md-9">
-									<h2>History</h2>
+									<h2>Claims</h2>
 									<p>Browse the current claim history logs</p>
 								</div>
 								<div class="col-md-3" style="text-align:right">

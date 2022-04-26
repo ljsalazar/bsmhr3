@@ -63,7 +63,7 @@
 								
 								$q_student = $conn->query("SELECT * FROM `users` WHERE `username` = '$username'") or die(mysqli_error());
 								$f_student = $q_student->fetch_array();
-								$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '$user_id', '$username', '$user_level', '$fullname')") or die(mysqli_error());
+								$conn->query("INSERT INTO `claim` (claim,claim_date,status,accepted,user_id,username,user_level,name) VALUES ('$claim', '$date', '$status', '0', '$add_user_id', '$add_username', '$add_user_level', '$add_fullname')") or die(mysqli_error($conn));
 								
 								$session->msg('s',"Successfully Added Claim Type");
 								
@@ -85,7 +85,7 @@
 										
 										if(isset($_POST['add_claim_type'])) {
 											$claim_type = $_POST['claim_type'];
-											$conn->query("INSERT INTO `claim_type_admin` VALUES('', '$claim_type')") or die(mysqli_error());
+											$conn->query("INSERT INTO `claim_type_admin` (type) VALUES('$claim_type')") or die(mysqli_error());
 											
 											$session->msg('s',"Successfully Added Claim Type");
 											

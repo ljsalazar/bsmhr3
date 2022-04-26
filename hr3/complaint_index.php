@@ -44,12 +44,18 @@
 					if(isset($_POST['submit'])) {
 						$complaint = $_POST['type'];
 						$complaint_date = date("Y-m-d H:i:s", strtotime("+0 HOURS"));
-						$conn->query("INSERT INTO `complaints` VALUES('', '$complaint', '$complaint_date', 'Pending', '0', '$user_id', '$username', '$user_level', '$name')");
+						$pending = 'Pending';
+						
+						#$conn->query("INSERT INTO `complaints` (complaint,complaint_date,status,accepted,user_id,username,user_level,name)
+						#VALUES ('$complaint', '$complaint_date', '$pending', '0', '$user_id', '$username', '$user_level', '$name')");
+						
+						$conn->query("INSERT INTO `complaints` (complaint,complaint_date,status,accepted,user_id,username,user_level,name) VALUES ('$complaint', '$complaint_date', '$pending', '0', '$user_id', '$username', '$user_level', '$name')") or die(mysqli_error($conn));
+								
 						$session->msg('s',"Complaint successfully requested");
-						echo "<script>window.location.href='complaint_index.php';</script>"; 
+						#echo "<script>window.location.href='complaint_index.php';</script>"; 
 					}
 				?>
-				<form method="post">
+				<form method="post" action="complaint_index.php">
 					<input type="text" name="type" class="form-control" value=""></br>
 					<input type="submit" name="submit" class="btn btn-primary" value="Submit">
 				</form>

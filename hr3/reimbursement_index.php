@@ -87,7 +87,7 @@
 										// Upload file to server
 										if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
 											// Insert image file name into database
-											$insert = $conn->query("INSERT INTO `reimbursements` VALUES('', '$username', '$name', '$user_level', '$user_id', '$reimbursement', '$date', '$amount', '$status', '0','".$fileName."')") or die(mysqli_error());
+											$insert = $conn->query("INSERT INTO `reimbursements` (username,name,user_level,user_id,reimbursement,reimbursement_date,amount,status,accepted,picture) VALUES('$username', '$name', '$user_level', '$user_id', '$reimbursement', '$date', '$amount', '$status', '0','".$fileName."')") or die(mysqli_error());
 											$insert = $conn->query("UPDATE users SET reimbursement_notif = reimbursement_notif + '$one' WHERE 'username' = '$username'") or die(mysqli_error());
 								
 											if($insert){

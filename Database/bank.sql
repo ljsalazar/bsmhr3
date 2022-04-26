@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 24, 2022 at 03:47 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- Host: localhost:3306
+-- Generation Time: Apr 26, 2022 at 03:09 AM
+-- Server version: 10.5.12-MariaDB
+-- PHP Version: 7.3.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bank`
+-- Database: `id18587170_bank`
 --
 
 -- --------------------------------------------------------
@@ -62,16 +63,9 @@ CREATE TABLE `claim` (
 --
 
 INSERT INTO `claim` (`claim_id`, `claim`, `claim_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`) VALUES
-(1, 'Life Insurance Claims', '2022-04-17', 'Pending', 0, 16, 'lj', 1, 'Lawrence'),
-(2, 'Health Insurance Claims', '2022-04-17', 'Rejected by Admin RJ', 2, 17, 'Hanna', 3, 'Hanna'),
-(3, 'Casualty Claims', '2022-04-17', 'Accepted by Admin RJ', 1, 12, 'rjinxed', 3, 'jin rodriguez'),
-(108, 'Payable Leaves( Vacation leave)', '2022-04-18', 'Accepted by Admin RJ', 1, 6, 'employee', 3, 'Employee'),
-(109, 'Payable Leaves( Medical Leave)', '2022-04-18', 'Pending', 0, 7, 'Admin', 1, 'Admin Account'),
-(110, 'Payable Leaves( Casual Leave)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee'),
-(111, 'Payable Leaves( Casual Leave)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee'),
-(112, 'Payable Leaves( Sick Leave)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee'),
-(113, 'Payable Leaves( Leave Type test)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee'),
-(114, 'Claim type test', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee');
+(1, 'Claim type test', '2022-04-25', 'Pending', 0, 6, 'Employee', 3, 'Employee'),
+(3, 'Health Insurance Claims', '2022-04-25', 'Pending', 0, 6, 'Employee', 3, 'Employee'),
+(6, 'Payable Leaves( Casual Leave)', '2022-04-26', 'Accepted by Admin RJx', 1, 22, 'juandc', 3, 'Juan Dela Cruz');
 
 -- --------------------------------------------------------
 
@@ -97,7 +91,11 @@ CREATE TABLE `claim_archive` (
 
 INSERT INTO `claim_archive` (`claim_id`, `claim`, `claim_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`) VALUES
 (2, 'Health Insurance Claims', '2022-01-08', 'Pending', 0, 8, 'staff', 2, 'HR STAFF'),
-(11, 'Payable Leaves( Maternity leave)', '2022-04-17', 'Pending', 0, 7, 'Admin', 1, 'Admin Account');
+(4, 'Claim type test', '2022-04-25', 'Pending', 0, 6, 'Employee', 3, 'Employee'),
+(5, 'Claim type test', '2022-04-25', 'Pending', 0, 11, 'Admin1', 1, 'Admin RJx'),
+(11, 'Payable Leaves( Maternity leave)', '2022-04-17', 'Pending', 0, 7, 'Admin', 1, 'Admin Account'),
+(113, 'Payable Leaves( Leave Type test)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee'),
+(114, 'Claim type test', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee');
 
 -- --------------------------------------------------------
 
@@ -214,7 +212,7 @@ CREATE TABLE `complaints` (
   `complaint` varchar(255) NOT NULL,
   `complaint_date` datetime NOT NULL,
   `status` varchar(255) NOT NULL,
-  `accepted` int(10) UNSIGNED NOT NULL,
+  `accepted` int(10) NOT NULL,
   `user_id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `user_level` int(11) NOT NULL,
@@ -232,7 +230,8 @@ INSERT INTO `complaints` (`complaint_id`, `complaint`, `complaint_date`, `status
 (10, 'Accidentally pressed end shift, I ended my shift in 8:00pm same day', '2022-01-10 19:43:18', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
 (11, 'Complaint Test Jin', '2022-01-11 17:00:11', 'Accepted by Admin RJ', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
 (12, 'Test 2 Jin Support', '2022-01-11 17:02:18', 'Accepted by Admin RJ', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(13, 'set logout time to 8pm', '2022-01-11 18:35:00', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez');
+(13, 'set logout time to 8pm', '2022-01-11 18:35:00', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
+(15, 'I accidentally pressed the end shift. My end shift is 5pm', '2022-04-26 11:04:22', 'Accepted by Admin RJx', 1, 22, 'juandc', 3, 'Juan Dela Cruz');
 
 -- --------------------------------------------------------
 
@@ -258,7 +257,8 @@ INSERT INTO `events` (`event_id`, `event`, `fromdate`, `todate`, `min_user_level
 (2, 'Jin Rodriguez Birthday', '2022-01-01', '2022-01-09', 1, 'Admin RJ'),
 (14, 'Admins Only Event Test', '2022-01-11', '2022-01-11', 1, 'Admin RJ'),
 (15, 'Staff Only Event Test', '2022-01-10', '2022-01-10', 2, 'Admin RJ'),
-(16, 'Employee Only Event Test', '2022-01-10', '2022-01-10', 0, 'Admin RJ');
+(16, 'Employee Only Event Test', '2022-01-10', '2022-01-10', 0, 'Admin RJ'),
+(27, 'aaaaaaaaaaa', '2022-04-26', '2022-04-26', 3, 'Admin Account');
 
 -- --------------------------------------------------------
 
@@ -475,9 +475,9 @@ INSERT INTO `reimbursements` (`reimbursement_id`, `username`, `name`, `user_leve
 (3, 'Admin', 'Admin Account', 1, 7, 'Thinkpad x250 as a workstation laptop', '2022-01-08', 15000, 'Accepted by Admin RJ', 1, 'blank.jpg'),
 (7, 'rjinxed', 'jin rodriguez', 3, 10, 'Reimburse Test Jin', '2022-01-11', 100, 'Accepted by Admin RJ', 1, 'blank.jpg'),
 (10, 'employee', 'Employee', 3, 6, 'test1', '2022-04-17', 100, 'Rejected by Admin Account', 2, 'blank.jpg'),
-(31, 'Admin', 'Admin Account', 1, 7, 'one', '2022-04-24', 1, 'Pending', 0, '728482Untitled.png'),
-(32, 'Admin', 'Admin Account', 1, 7, 'two', '2022-04-24', 2, 'Accepted by Admin RJ', 1, '182740Untitled.png'),
-(33, 'Employee', 'Employee', 3, 6, 'I pulled for Yoimiya', '2022-04-24', 2000, 'Pending', 0, '92258998Screenshot_20210810-191703496~2.jpg');
+(33, 'Employee', 'Employee', 3, 6, 'I pulled for Yoimiya', '2022-04-24', 2000, 'Pending', 0, '92258998Screenshot_20210810-191703496~2.jpg'),
+(34, 'Admin', 'Admin Account', 1, 7, 'A4 Paper', '2022-04-25', 100, 'Pending', 0, '488613416free-floating-a4-paper-sheet-mockup.jpg'),
+(37, 'juandc', 'Juan Dela Cruz', 3, 22, 'A4 Paper', '2022-04-28', 100, 'Accepted by Admin Account', 1, '3521729paper.jpg');
 
 -- --------------------------------------------------------
 
@@ -632,6 +632,16 @@ CREATE TABLE `tblleaves` (
   `paid` int(1) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tblleaves`
+--
+
+INSERT INTO `tblleaves` (`id`, `LeaveType`, `FromDate`, `ToDate`, `Description`, `PostingDate`, `AdminRemark`, `AdminRemarkDate`, `Status`, `IsRead`, `empid`, `emp_read`, `amount_of_days`, `remaining_days`, `paid`) VALUES
+(1, 'Paternity Leave', '2022-04-28', '2022-04-29', 'asd', '2022-04-26', NULL, NULL, 0, 1, 7, 0, 2, 4, 0),
+(2, 'Casual Leave', '2022-04-30', '2022-04-30', 'Getting government ID', '2022-04-26', 'Granted', '2022-04-26 10:38:17 ', 1, 1, 22, 1, 1, 5, 2),
+(3, 'Casual Leave', '2022-05-04', '2022-05-04', 'Going to the dentist for adjusting my braces', '2022-04-26', 'Granted', '2022-04-26 10:42:54 ', 1, 1, 22, 1, 1, 9, 2),
+(4, 'Sick Leave', '2022-04-26', '2022-04-26', 'I have a headache', '2022-04-26', 'Okay', '2022-04-26 11:07:06 ', 1, 1, 22, 0, 1, 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -674,7 +684,10 @@ CREATE TABLE `tblleavetype_archive` (
 --
 
 INSERT INTO `tblleavetype_archive` (`id`, `LeaveType`, `Description`, `DeletionDate`) VALUES
-(19, 'Medical Leave', 'provides certain employees with up to 12 weeks of unpaid, job-protected leave per year. It also requires that their group health benefits be maintained during the leave.', '2022-04-22 08:33:35');
+(19, 'Medical Leave', 'provides certain employees with up to 12 weeks of unpaid, job-protected leave per year. It also requires that their group health benefits be maintained during the leave.', '2022-04-22 08:33:35'),
+(21, 'asd', '123', '2022-04-26 02:03:17'),
+(22, 'dd', 'dd', '2022-04-26 02:03:21'),
+(23, 'asd', 'asd', '2022-04-26 02:17:25');
 
 -- --------------------------------------------------------
 
@@ -703,7 +716,8 @@ CREATE TABLE `tblschedule` (
 INSERT INTO `tblschedule` (`id`, `days`, `PostingDate`, `AdminRemark`, `AdminRemarkDate`, `Status`, `IsRead`, `empid`, `emp_read`, `shift_type_id`, `shift_type_detail`) VALUES
 (7, 'Tue-Thu-Sat-', '2022-04-09 02:56:01', 'Granted', '2022-04-09 10:49:28 ', 1, 1, 6, 1, 13, 'From 8:00 am To 6:00 pm'),
 (8, 'Mon-Wed-Fri-', '2022-04-18 10:43:17', 'ok\r\n', '2022-04-18 18:43:05 ', 1, 1, 6, 1, 14, 'From 6:42 pm To 10:42 pm'),
-(9, 'Mon-Tue-Wed-Thu-Fri-Sat-', '2022-04-19 10:46:48', 'Granted', '2022-04-19 16:40:26 ', 1, 1, 17, 1, 14, 'From 6:42 pm To 10:42 pm');
+(9, 'Mon-Tue-Wed-Thu-Fri-Sat-', '2022-04-19 10:46:48', 'Granted', '2022-04-19 16:40:26 ', 1, 1, 17, 1, 14, 'From 6:42 pm To 10:42 pm'),
+(10, 'Tue-Thu-Sat-', '2022-04-26 02:47:14', 'ok', '2022-04-26 10:46:03 ', 1, 1, 22, 1, 13, 'From 8:00 am To 6:00 pm');
 
 -- --------------------------------------------------------
 
@@ -752,7 +766,8 @@ CREATE TABLE `tblshifttype_archive` (
 
 INSERT INTO `tblshifttype_archive` (`id`, `name`, `fromTime`, `toTime`, `DeletionDate`) VALUES
 (1, 'Premuim', '07:00', '17:00', '2021-12-02 05:27:48'),
-(2, 'shit', '06:00', '20:00', '2021-12-02 05:27:48');
+(2, 'shit', '06:00', '20:00', '2021-12-02 05:27:48'),
+(4, 'asdasdasft', '09:19:00', '14:19:00', '2022-04-26 02:16:56');
 
 -- --------------------------------------------------------
 
@@ -786,11 +801,11 @@ CREATE TABLE `time_attendance` (
   `time_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `login_time` datetime NOT NULL,
-  `logout_time` datetime NOT NULL,
+  `logout_time` datetime DEFAULT NULL,
   `username` varchar(20) NOT NULL,
   `name` varchar(200) NOT NULL,
   `user_level` int(11) NOT NULL,
-  `calculated_work` varchar(200) NOT NULL,
+  `calculated_work` varchar(200) DEFAULT NULL,
   `working` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -799,13 +814,10 @@ CREATE TABLE `time_attendance` (
 --
 
 INSERT INTO `time_attendance` (`time_id`, `user_id`, `login_time`, `logout_time`, `username`, `name`, `user_level`, `calculated_work`, `working`) VALUES
-(4, 11, '2022-03-30 18:53:32', '2022-03-30 18:53:34', 'admin1', 'Admin RJ', 1, '0 Hours (0.03 Minutes)', 0),
-(5, 11, '2022-03-30 21:46:56', '2022-03-30 21:47:13', 'admin1', 'Admin RJ', 1, '0 Hours (0.28 Minutes)', 0),
-(6, 11, '2022-03-30 21:47:20', '2022-03-30 21:48:08', 'admin1', 'Admin RJ', 1, '0.01 Hours (0.8 Minutes)', 0),
-(7, 17, '2022-04-08 10:44:57', '2022-04-08 10:44:59', 'hanna', 'Hanna', 2, '0 Hours (0.03 Minutes)', 0),
-(8, 17, '2022-04-08 11:14:58', '2022-04-08 14:15:00', 'Hanna', 'Hanna', 3, '3 Hours (180.03 Minutes)', 0),
-(10, 6, '2022-04-19 19:10:57', '2022-04-19 19:10:58', 'Employee', 'Employee', 3, '0 Hours (0.02 Minutes)', 0),
-(11, 17, '2022-04-19 18:47:38', '2022-04-19 18:49:36', 'Hanna', 'Hanna', 3, '0.03 Hours (1.97 Minutes)', 0);
+(1, 6, '2022-04-26 10:25:00', '2022-04-26 10:25:10', 'Employee', 'Employee', 3, '0 Hours (0.17 Minutes)', 0),
+(2, 6, '2022-04-26 10:25:22', '2022-04-26 10:25:40', 'Employee', 'Employee', 3, '0.01 Hours (0.3 Minutes)', 0),
+(3, 6, '2022-04-26 10:29:23', '2022-04-26 10:29:27', 'Employee', 'Employee', 3, '0 Hours (0.07 Minutes)', 0),
+(4, 22, '2022-04-26 10:47:48', '2022-04-26 17:47:58', 'juandc', 'Juan Dela Cruz', 3, '7 Hours (420.17 Minutes)', 0);
 
 -- --------------------------------------------------------
 
@@ -871,7 +883,7 @@ INSERT INTO `uexpenses` (`Co_Code`, `UE_Department`, `UE_Requestor`, `UE_date`, 
 --
 
 CREATE TABLE `users` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int(255) UNSIGNED NOT NULL,
   `name` varchar(60) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -892,14 +904,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`, `reimbursement_budget`, `reimbursement_notif`, `claim_notif`, `complaint_notif`, `leave_token`, `department_id`) VALUES
-(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-24 15:41:48', 10010, 0, 0, 0, 10, 3),
-(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-24 15:42:36', 79998, 0, 0, 0, 10, 1),
+(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-26 10:31:20', 10010, 0, 0, 0, 10, 3),
+(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-26 10:42:40', 79998, 0, 0, 0, 10, 1),
 (8, 'HR STAFF', 'Staff', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 2, 'no_image.jpg', 1, '2022-04-22 17:46:13', 25000, 0, 0, 0, 10, 1),
-(11, 'Admin RJ', 'admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-24 15:40:19', 49900, 0, 0, 0, 10, 1),
+(11, 'Admin RJx', 'Admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-26 11:06:43', 49900, 0, 0, 0, 10, 1),
 (12, 'Jin Rodriguez', 'Rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 1, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 2, 0, 10, 2),
 (15, 'asdasd', 'asdasd', '85136c79cbf9fe36bb9d05d0639c70c265c18d37', 1, 'no_image.jpg', 1, '2022-03-21 15:17:30', 100, 0, 0, 0, 10, 1),
-(16, 'Lawrence Joshua', 'lj', '0b8e8bf084b7e49274730f1bf591c1af1459ddf1', 1, 'bso7e8j116.jpg', 1, '2022-04-23 14:13:32', 0, 0, 0, 0, 10, 1),
-(17, 'Hanna', 'Hanna', '26f769205f6a2faa1521d5d628ecf51210aebeb0', 3, 'no_image.jpg', 1, '2022-04-22 18:10:50', 0, 0, 0, 0, 10, 1);
+(16, 'Lawrence Joshua', 'lj', '0b8e8bf084b7e49274730f1bf591c1af1459ddf1', 1, 'bso7e8j116.jpg', 1, '2022-04-23 14:13:32', 900, 0, 0, 0, 10, 1),
+(17, 'Hanna', 'Hanna', '26f769205f6a2faa1521d5d628ecf51210aebeb0', 3, 'no_image.jpg', 1, '2022-04-22 18:10:50', 1000, 0, 0, 0, 10, 1),
+(22, 'Juan Dela Cruz', 'juandc', '29773b568b85fa4ddeb6c08922e319857f7202bf', 3, 'no_image.jpg', 1, '2022-04-26 11:07:13', 900, 0, 0, 0, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -1142,19 +1155,19 @@ ALTER TABLE `budgetreleasing`
 -- AUTO_INCREMENT for table `claim`
 --
 ALTER TABLE `claim`
-  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `claim_archive`
 --
 ALTER TABLE `claim_archive`
-  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `claim_type_admin`
 --
 ALTER TABLE `claim_type_admin`
-  MODIFY `claim_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `claim_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `collection`
@@ -1169,10 +1182,16 @@ ALTER TABLE `collection_transactions`
   MODIFY `LT_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT for table `complaints`
+--
+ALTER TABLE `complaints`
+  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -1208,7 +1227,7 @@ ALTER TABLE `purchases`
 -- AUTO_INCREMENT for table `reimbursements`
 --
 ALTER TABLE `reimbursements`
-  MODIFY `reimbursement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `reimbursement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `reimbursment`
@@ -1226,25 +1245,25 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `tblleaves`
 --
 ALTER TABLE `tblleaves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tblleavetype`
 --
 ALTER TABLE `tblleavetype`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `tblleavetype_archive`
 --
 ALTER TABLE `tblleavetype_archive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tblschedule`
 --
 ALTER TABLE `tblschedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tblschedule_archive`
@@ -1256,19 +1275,19 @@ ALTER TABLE `tblschedule_archive`
 -- AUTO_INCREMENT for table `tblshifttype_archive`
 --
 ALTER TABLE `tblshifttype_archive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tblshift_type`
 --
 ALTER TABLE `tblshift_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `time_attendance`
 --
 ALTER TABLE `time_attendance`
-  MODIFY `time_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `time_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `uexpenses`
@@ -1280,7 +1299,7 @@ ALTER TABLE `uexpenses`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users_1`

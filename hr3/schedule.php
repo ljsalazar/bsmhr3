@@ -8,6 +8,7 @@
    if (!$session->isUserLoggedIn(true)) { redirect('index.php', false);}
 ?>
 <?php
+	include_once('layouts/header.php');
  //code for update to read all new notifications...// 
 //Query Statement for unread leave===
     $conn = new mysqli('localhost', 'root', '', 'bank') or die(mysqli_error());
@@ -19,8 +20,6 @@ $sql="UPDATE tblschedule SET emp_read='{$empread}' WHERE empid='{$userid}' AND S
 $result = $db->query($sql);
 
 ?>
-
-<?php include_once('layouts/header.php'); ?>
 <!-- This will be the body -->
 <div class="row">
      <div class="col-md-12">

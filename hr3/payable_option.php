@@ -33,7 +33,7 @@
 						$claim_notif = $user_data['claim_notif'];
 					}
 				?>
-				<?php if ($user_level <= '2'): ?>
+				<?php if ($user_level <= '3'): ?>
 				<nav class="breadcrumbs">
 					<a href="claim_type.php" class="breadcrumbs__item">Types of Claims</a>
 					<a href="claim_history.php" class="breadcrumbs__item">Claims History <?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a>
@@ -78,7 +78,7 @@
 								} else {
 									$conn->query("UPDATE tblleaves SET paid = 2 WHERE id = '$bruh'");
 								}
-								$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '0', '$add_user_id', '$add_username', '$add_user_level', '$add_fullname')") or die(mysqli_error());
+								$conn->query("INSERT INTO `claim` (claim,claim_date,status,accepted,user_id,username,user_level,name) VALUES ('$claim', '$date', '$status', '0', '$add_user_id', '$add_username', '$add_user_level', '$add_fullname')") or die(mysqli_error($conn));
 								$session->msg('s',"Claim Request Successfully Added");
 								echo "<script>window.location.href='claim_index.php';</script>";
 							}
