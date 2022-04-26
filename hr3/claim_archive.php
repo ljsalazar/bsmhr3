@@ -53,8 +53,8 @@
 							<button name="cancel" class="btn btn-primary" onclick="location.href='claim_history.php'">Back</button>
 						</div>
 						<div class="card-body">
-							<div style="max-height:600px; overflow:auto;">
-								<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+							<div style="max-height:600px">
+								<table id="example" class="table table-striped data-table" style="width:100%">
 									<thead>
 										<tr>
 											<th>User</th>

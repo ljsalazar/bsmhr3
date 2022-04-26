@@ -31,7 +31,7 @@ validate_fields($req_fields);
      $row = $result -> fetch_row();
      $start_time = date("g:i a", strtotime($row[0]));
      $end_time = date("g:i a", strtotime($row[1]));
-                $shift_time = "From ".$start_time." To ".$end_time;
+                $shift_time = $start_time."-".$end_time;
 
      $query  = "INSERT INTO tblschedule (";
      $query .=" days,Status,IsRead,empid,shift_type_id,shift_type_detail,emp_read";
@@ -82,7 +82,7 @@ validate_fields($req_fields);
                       <?php
                       $start_time = date("g:i a", strtotime($shifts['fromTime']));
                       $end_time = date("g:i a", strtotime($shifts['toTime']));
-                       echo $shifts['name']. " (from " .$start_time. " to " .$end_time.")"; ?>
+                       echo $shifts['name']." (".$start_time. "-" .$end_time.")"; ?>
                       </option>
                       <?php endforeach; ?>
                     </select>

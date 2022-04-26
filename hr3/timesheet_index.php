@@ -38,8 +38,8 @@
 					</div>
 					<div class="col-md-3" style="text-align:right">
 						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-							<a href="time_generate_index.php" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open">Generate PDF</a>
-							<a href="time_generate_index_excel.php" class="btn btn-success"><span class="glyphicon glyphicon-floppy-open">Generate Excel</a>
+							<a href="time_generate_index.php" class="btn btn-danger">PDF <span class="bi bi-filetype-pdf"></a>
+							<a href="time_generate_index_excel.php" class="btn btn-success">EXCEL<span class="bi bi-filetype-xls"></a>
 						</div></br>
 						<?php if ($user_level == 1): ?>
 						<!-- <form class="form-inline" method="post" action="time_archive.php">
@@ -53,8 +53,8 @@
 			</div>
 			
 			<div class="card-body">
-				<div style="max-height:600px; overflow:auto;">
-					<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+				<div style="max-height:600px">
+					<table id="example" class="table table-striped data-table" style="width:100%">
 						<thead>
 							<tr>
 								<th>User</th> <th>Login Time</th> <th>Logout Time</th> <th>Hours Worked</th> <th>Options</th>
