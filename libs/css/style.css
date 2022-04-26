@@ -549,9 +549,16 @@ hr .new1forprofile {
 .containerLog{
   max-width: 440px;
   padding: 0 20px;
-  margin: 170px auto;
+  margin: 160px;
   
 }
+@media screen and (min-width: 1024px) {
+     .containerLog{
+         margin-left: 350px;
+     }
+
+}
+
 
 
 .wrapperLog{
@@ -646,10 +653,4 @@ hr .new1forprofile {
 }
 .formlog .signup-link a:hover{
   text-decoration: underline;
-}
-@media screen and (min-width: 1024px) {
-     .containerLog{
-         margin-left: 350px;
-     }
-
 }

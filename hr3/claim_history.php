@@ -54,8 +54,8 @@
 								</div>
 								<div class="col-md-3" style="text-align:right">
 									<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-										<a href="claim_generate_index.php" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open">Generate PDF</a>
-										<a href="claim_generate_index_excel.php" class="btn btn-success"><span class="glyphicon glyphicon-floppy-open">Generate Excel</a>
+										<a href="claim_generate_index.php" class="btn btn-danger">PDF <span class="bi bi-filetype-pdf"></a>
+										<a href="claim_generate_index_excel.php" class="btn btn-success">EXCEL <span class="bi bi-filetype-xls"></a>
 									</div></br>
 									<?php if ($user_level == 1): ?>
 									<!-- <form class="form-inline" method="post" action="claim_archive.php">
@@ -85,8 +85,8 @@
 								<li role="presentation"><a href="claim_history_rejected.php" class="btn" style="margin-bottom:10px">Rejected</a></li>
 							</ul>
 							
-							<div style="max-height:300px; overflow:auto;">
-								<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+							<div style="max-height:300px">
+								<table id="example" class="table table-striped data-table" style="width:100%">
 									<thead>
 										<tr>
 											<th>User</th>
@@ -119,9 +119,9 @@
 											echo "<td>".$user_data['claim_date']."</td>";
 											echo "<td>".$user_data['status']."</td>";
 											if ($user_level <= 2) {
-												echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]'>Delete</a> | <a href='claim_accept.php?claim_id=$user_data[claim_id]'>Accept</a> | <a href='claim_reject.php?claim_id=$user_data[claim_id]'>Reject</a></td>";
+												echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a> <a href='claim_accept.php?claim_id=$user_data[claim_id]' class='btn btn-success'data-toggle='tooltip' title='Accept'><i class='bi bi-check-circle-fill'></i></a> <a href='claim_reject.php?claim_id=$user_data[claim_id]' class='btn btn-danger'data-toggle='tooltip' title='Reject'><i class='bi bi-x-circle-fill'></i></a></td>";
 												} else {
-												echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]'>Delete</a></td>";
+												echo "<td><a href='claim_delete.php?claim_id=$user_data[claim_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a></td>";
 											}
 											echo "</tr>";
 										}?>

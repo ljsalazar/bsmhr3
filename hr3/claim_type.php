@@ -114,8 +114,8 @@
 										<div class="card-body">
 											<?php endif;?>
 											<h6 style="text-align:left">Types of Claim</h6>
-											<div style="max-height:600px; overflow:auto;">
-												<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+											<div style="max-height:600px">
+												<table id="example" class="table table-striped data-table" style="width:100%">
 													<thead>
 														<tr>
 															<th>Type</th>
@@ -136,7 +136,7 @@
 															echo "<tr>";
 															echo "<td>".$user_data['type']."</td>";
 															if ($user_level <= 2) {
-																echo "<td><a href='claim_type_edit.php?claim_type_id=$user_data[claim_type_id]'>Edit | </a><a href='claim_type_delete.php?claim_type_id=$user_data[claim_type_id]'>Delete</a></td>";
+																echo "<td><a href='claim_type_edit.php?claim_type_id=$user_data[claim_type_id]' class='btn btn-xs btn-warning' data-toggle='tooltip' title='Edit'><i class='bi bi-pencil-fill'></i></a> <a href='claim_type_delete.php?claim_type_id=$user_data[claim_type_id]' class='btn btn-xs btn-danger' data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a></td>";
 															}
 															echo "</tr>";
 														}?>

@@ -5,9 +5,9 @@
 ?>
 <?php include_once('layouts/header.php'); ?>
 
-<div class="containerLog">
+<div style=" max-width: 440px;padding: 0 20px;margin: 170px ;">
       <?php echo display_msg($msg); ?>
-      <div class="wrapperLog">
+      <div class="wrapper wrapperLog">
         <div class="title"><span>Welcome <p>Sign in to start your session</p></span> </div>
         <form class="clearfix" method="post" action="auth_v2.php">
           <div class="row">

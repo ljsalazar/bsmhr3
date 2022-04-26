@@ -112,8 +112,8 @@
 								</br></br></br>
 								<h4>Payable Leaves</h4></br>
 								<div class="panel-body">
-									<div style="max-height:600px; overflow:auto;">
-										<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+									<div style="max-height:600px">
+										<table id="example" class="table table-striped data-table" style="width:100%">
 											<thead>
 												<tr>
 													<th class="text-center" style="width: 50px;">User</th>

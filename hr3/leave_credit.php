@@ -112,7 +112,7 @@
 					<div class="col-md-7">
 						<div class="card-body">
 							<h6 style="text-align:left">Credits Table</h6>
-							<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+							<table id="example" class="table table-striped data-table" style="width:100%">
 								<thead>
 									<tr>
 										<th>Name</th>
@@ -128,7 +128,7 @@
 										echo "<td>".$user_data['name']."</td>";
 										echo "<td>".$user_data['leave_token']."</td>";
 										if ($user_level <= 2) {
-											echo "<td><a href='leave_credit_edit.php?credit_id=$user_data[id]'>Edit</a></td>";
+											echo "<td><a href='leave_credit_edit.php?credit_id=$user_data[id]' class='btn btn-xs btn-warning' data-toggle='tooltip' title='Edit'><i class='bi bi-pencil-fill'></i></a></td>";
 										}
 										echo "</tr>";
 									}?>

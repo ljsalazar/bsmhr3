@@ -53,13 +53,13 @@
 							<h3>Deleted Leave Type Logs</h3>
 							<button name="cancel" class="btn btn-primary" onclick="location.href='leave_type.php'">Back</button>
 							<div class="card-body">
-							<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
-									<tr>
+							<table id="example" class="table table-striped data-table" style="width:100%">
+									<thead><tr>
 										<th>#</th>
 										<th>Leave Type</th>
 										<th>Deletion Date</th>
 										<th>Options</th>
-									</tr>
+									</tr></thead>
 								<tbody>
 										<?php
 											$query = $conn->query("SELECT * FROM tblleavetype_archive ORDER BY id DESC");

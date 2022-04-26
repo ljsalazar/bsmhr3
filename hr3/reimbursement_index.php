@@ -125,7 +125,7 @@
 							</div></br>
 							<div class="form-group">
 								<p>Upload a photo</p>
-								<input type="file" name="file" id="file">
+								<input type="file" name="file" id="file" class="btn btn-secondary btn-file">
 							</div></br>
 							<button type="submit" name="add_reimbursement" class="btn btn-primary" value="add_reimbursement">Add</button>
 						</form>
