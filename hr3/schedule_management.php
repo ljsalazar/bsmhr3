@@ -59,7 +59,7 @@ $result = $db->query($sql);
         </div>
         <div class="card-body">
           <!--<table class="table table-bordered" class="table table-sm table-striped table-bordered table-hover" style="width:100%">-->
-            <table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+            <table id="example" class="table table-striped data-table" style="width:100%">
             <thead>
               <tr>
                 <th class="text-center" style="width: 50px;">#</th>
@@ -93,7 +93,7 @@ $result = $db->query($sql);
                 <td class="text-center"><?php echo remove_junk($row[9]); ?></td>
                 <td class="text-center"> <?php echo remove_junk($row[1]); ?></td>
                 <td class="text-center"><?php echo remove_junk($row[2]); ?></td>                  
-                <td><?php $stats=(int)$row[5];
+                <td class="text-center"><?php $stats=(int)$row[5];
                 if($stats==1){
                   ?>
                   <span style="color: green">Approved</span>
@@ -103,7 +103,7 @@ $result = $db->query($sql);
                     <span style="color: blue">waiting for approval</span>
                     <?php } ?>
                   </td>
-                  <td class="text-center"><a href="schedule_view.php?id=<?php echo remove_junk($row[0]);?> "class="btn btn-xs btn-success" data-toggle="tooltip" title="View">
+                  <td class="text-center"><a href="schedule_view.php?id=<?php echo remove_junk($row[0]);?> "class="btn btn-xs btn-info" data-toggle="tooltip" title="View">
                    <i class="bi bi-eye-fill"></i></a></td>
                 <?php } } ?>
                 </tr>

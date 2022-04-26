@@ -53,15 +53,15 @@
 							<h3>Deleted Shift Logs</h3>
 							<button name="cancel" class="btn btn-primary" onclick="location.href='set_shift.php'">Back</button>
 							<div class="card-body">
-							<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
-									<tr>
+							<table id="example" class="table table-striped data-table" style="width:100%">
+									<thead><tr>
 										<th>#</th>
 										<th>Shift Type</th>
 										<th>From Time</th>
 										<th>To Time</th>
 										<th>Deletion Date</th>
 										<th>Options</th>
-									</tr>
+									</tr></thead>
 								<tbody>
 									
 										<?php

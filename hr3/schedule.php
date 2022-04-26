@@ -61,14 +61,14 @@ $result = $db->query($sql);
         </div>
         <div class="card-body">
           <!--<table class="table table-bordered" class="table table-sm table-striped table-bordered table-hover" style="width:100%">-->
-            <table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+            <table id="example" class="table table-striped data-table" style="width:100%">
             <thead>
               <tr>
-                <th class="text-center" style="width: 50px;">#</th>
-                <th class="text-center" style="width: 50px;">Shift Schedule</th>
-                <th class="text-center" style="width: 10%;">Days</th>
-                <th class="text-center" style="width: 10%;">Posting Date</th>
-                <th class="text-center" style="width: 10%;">Action taken date</th>
+                <th class="text-center">#</th>
+                <th class="text-center">Shift Schedule</th>
+                <th class="text-center">Days</th>
+                <th class="text-center">Posting Date</th>
+                <th class="text-center">Action taken date</th>
               </tr>
             </thead>
             <tbody>
@@ -91,7 +91,7 @@ $result = $db->query($sql);
                 <td class="text-center"> <?php 
                   $start_time = date("g:i a", strtotime($row[8]));
                   $end_time = date("g:i a", strtotime($row[9])); 
-                  echo remove_junk($row[7]." (From: ".$start_time." To: ".$end_time.")"); ?></td>
+                  echo remove_junk($row[7]." (".$start_time."-".$end_time.")"); ?></td>
                 <td class="text-center"><?php echo remove_junk($row[1]); ?></td>                   
                 <td class="text-center"><?php echo read_date($row[2]); ?></td> 
                 <td class="text-center"> <?php echo read_date($row[3]); ?></td>

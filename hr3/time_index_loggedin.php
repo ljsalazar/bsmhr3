@@ -190,7 +190,7 @@
 					</div>
 					</div>
 				</div>
-				<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+				<table id="example" class="table table-striped data-table" style="width:100%">
 					<thead>
 						<tr>
 							<th>Description</th> <th>From</th> <th>To</th> <th>Created by</th> <th>Options</th>

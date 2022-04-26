@@ -75,7 +75,7 @@
         </div>
         <div class="card-body">
           <!--<table class="table table-bordered" class="table table-sm table-striped table-bordered table-hover" style="width:100%">-->
-            <table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+            <table id="example" class="table table-striped data-table" style="width:100%">
             <thead>
               <tr>
                 <th class="text-center" style="width: 50px;">#</th>

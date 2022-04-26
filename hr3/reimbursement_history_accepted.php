@@ -74,8 +74,8 @@
 							</div>
 							<div class="col-md-3" style="text-align:right">
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-									<a href="reimbursement_generate_index.php" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open">Generate PDF</a>
-									<a href="reimbursement_generate_index_excel.php" class="btn btn-success"><span class="glyphicon glyphicon-floppy-open">Generate Excel</a>
+									<a href="reimbursement_generate_index.php" class="btn btn-danger">PDF <span class="bi bi-filetype-pdf"></a>
+									<a href="reimbursement_generate_index_excel.php" class="btn btn-success">EXCEL <span class="bi bi-filetype-xls"></a>
 								</div></br>
 								<?php if ($user_level == 1): ?>
 								<!-- <form class="form-inline" method="post" action="reimbursement_archive.php">
@@ -100,8 +100,8 @@
 								<li role="presentation"><a href="reimbursement_history_rejected.php" class="btn" style="margin-bottom:10px">Rejected</a></li>
 							</ul>
 							
-							<div style="max-height:300px; overflow:auto;">
-								<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+							<div style="max-height:300px">
+								<table id="example" class="table table-striped data-table" style="width:100%">
 									<thead>
 										<tr>
 											<th>User</th>
@@ -133,10 +133,10 @@
 											echo "<td>".$user_data['status']."</td>";
 											$imageURL = 'uploads/'.$user_data["picture"];
 										?>
-										<td><a href="reimbursement_download.php?picture=<?php echo $user_data['picture'] ?>">Picture</a></td>
+										<td class="text-center"><a href="reimbursement_download.php?picture=<?php echo $user_data['picture'] ?>" class="btn btn-outline-danger"><i class="bi bi-download"></i></a></td>
 										<?php
 											
-											echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a></td>";
+											echo "<td><a href='reimbursement_delete.php?reimbursement_id=$user_data[reimbursement_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a></td>";
 											echo "</tr>";
 										}?>
 								</table>
