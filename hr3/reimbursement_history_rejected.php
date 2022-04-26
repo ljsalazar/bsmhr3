@@ -56,10 +56,16 @@
 					<div class="card-header">
 						<div class="row">
 							<div class="col-md-9">
-								<h2>Reimbursements</h2>
+								<!-- <h2>Reimbursements</h2> -->
+								<?php if ($user_level == 1): ?>
+								<!-- <form class="form-inline" method="post" action="reimbursement_archive.php">
+									<button type="submit" id="pdf" name="generate_pdf" class="btn">Archive</button>
+								</form> -->
+								<a href="reimbursement_archive.php" class="btn btn-danger">TRASH <span class="bi bi-trash3-fill"></span></a>
+									<?php endif;?>
 								<?php
-									echo "<p>Hello, ".$name."!</p>";
-									echo "<p>Current Reimbursement budget: ".$reimbursement_budget." PHP</p>";
+									// echo "<p>Hello, ".$name."!</p>";
+									// echo "<p>Current Reimbursement budget: <b>".$reimbursement_budget." PHP</b></p>";
 									
 									if(isset($_POST['add_claim'])) {
 										$claim = $_POST['claim'];;
@@ -76,13 +82,8 @@
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 									<a href="reimbursement_generate_index.php" class="btn btn-danger">PDF <span class="bi bi-filetype-pdf"></a>
 									<a href="reimbursement_generate_index_excel.php" class="btn btn-success">EXCEL <span class="bi bi-filetype-xls"></a>
-								</div></br>
-								<?php if ($user_level == 1): ?>
-								<!-- <form class="form-inline" method="post" action="reimbursement_archive.php">
-									<button type="submit" id="pdf" name="generate_pdf" class="btn">Archive</button>
-								</form> -->
-								<a href="reimbursement_archive.php" class="btn btn-outline-danger"><span class="bi bi-trash3-fill"></a>
-									<?php endif;?>
+								</div>
+								
 								</div>
 							</div>
 						</div>
@@ -95,12 +96,11 @@
 								}
 							?>
 							<ul class="nav nav-pills">
-								<li role="presentation"><a href="reimbursement_history.php" class="btn" style="margin-bottom:10px">Pending</a></li>
-								<li role="presentation"><a href="reimbursement_history_accepted.php" class="btn" style="margin-bottom:10px">Accepted<?php if(!$reimbursement_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$reimbursement_notif; ?></span><?php } ?></a></li>
+								<li role="presentation"><a href="reimbursement_history.php" class="btn" style="margin-bottom:10px"><b>Pending</b></a></li>
+								<li role="presentation"><a href="reimbursement_history_accepted.php" class="btn" style="margin-bottom:10px"><b>Accepted<?php if(!$reimbursement_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$reimbursement_notif; ?></span><?php } ?></b></a></li>
 								<li role="presentation" class="active"><a href="reimbursement_history_rejected.php" class="btn btn-primary" style="margin-bottom:10px">Rejected</a></li>
 							</ul>
 							
-							<div style="max-height:300px">
 								<table id="example" class="table table-striped data-table" style="width:100%">
 									<thead>
 										<tr>
@@ -140,7 +140,6 @@
 											echo "</tr>";
 										}?>
 								</table>
-							</div>
 						</div>
 						
 					</div>
