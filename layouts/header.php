@@ -19,7 +19,7 @@
            echo remove_junk($page_title);
             elseif(!empty($user))
            echo ucfirst($user['name']);
-            else echo "Finance Management System";?>
+            else echo "Banking and Finance Management System";?>
     </title>
   </head>
   <body>
