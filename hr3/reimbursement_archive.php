@@ -75,7 +75,7 @@
 											echo "<td>".$user_data['reimbursement_date']."</td>";
 											echo "<td>".$user_data['amount']."</td>";
 											echo "<td>".$user_data['status']."</td>";
-											echo "<td><a href='reimbursement_retrieve_archive.php?reimbursement_id=$user_data[reimbursement_id]'>Retrieve | </a><a href='reimbursement_delete_archive.php?reimbursement_id=$user_data[reimbursement_id]'>Delete</a></td>";
+											echo "<td><a href='reimbursement_retrieve_archive.php?reimbursement_id=$user_data[reimbursement_id]'class='btn btn-secondary'data-toggle='tooltip' title='Retrieve'><i class='bi bi-folder-symlink-fill'></i></a> <a href='reimbursement_delete_archive.php?reimbursement_id=$user_data[reimbursement_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a></td>";
 											echo "</tr>";
 										}?>
 								</table>

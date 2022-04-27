@@ -69,7 +69,7 @@
 										echo "<td>".$user_data['login_time']."</td>";
 										echo "<td>".$user_data['logout_time']."</td>";
 										echo "<td>".$user_data['calculated_work']."</td>";
-										echo "<td><a href='time_retrieve_archive.php?time_id=$user_data[time_id]'>Retrieve | </a><a href='time_delete_archive.php?time_id=$user_data[time_id]'>Delete</a></td>";
+										echo "<td><a href='time_retrieve_archive.php?time_id=$user_data[time_id]'class='btn btn-secondary'data-toggle='tooltip' title='Retrieve'><i class='bi bi-folder-symlink-fill'></i></a> <a href='time_delete_archive.php?time_id=$user_data[time_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a></td>";
 										echo "</tr>";
 									}?>
 							</table>

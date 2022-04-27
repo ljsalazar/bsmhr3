@@ -70,7 +70,7 @@
 												echo "<td>".$user_data['LeaveType']."</td>";
 												echo "<td>".$user_data['DeletionDate']."</td>";
 												
-												echo "<td><a href='leave_type_retrieve_archive.php?leavetype_id=$user_data[id]'>Retrieve | </a><a href='leave_type_delete_archive.php?leavetype_id=$user_data[id]'>Delete</a></td>";
+												echo "<td><a href='leave_type_retrieve_archive.php?leavetype_id=$user_data[id]'class='btn btn-secondary'data-toggle='tooltip' title='Retrieve'><i class='bi bi-folder-symlink-fill'></i></a> <a href='leave_type_delete_archive.php?leavetype_id=$user_data[id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a></td>";
 												echo "</tr>";
 											}?>
 										</tbody>
