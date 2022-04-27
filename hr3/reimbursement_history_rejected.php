@@ -56,27 +56,14 @@
 					<div class="card-header">
 						<div class="row">
 							<div class="col-md-9">
-								<!-- <h2>Reimbursements</h2> -->
+								<h2>Reimbursements</h2>
+								<p>Browse the current reimbursed history logs</p>
 								<?php if ($user_level == 1): ?>
 								<!-- <form class="form-inline" method="post" action="reimbursement_archive.php">
 									<button type="submit" id="pdf" name="generate_pdf" class="btn">Archive</button>
 								</form> -->
 								<a href="reimbursement_archive.php" class="btn btn-danger">TRASH <span class="bi bi-trash3-fill"></span></a>
 									<?php endif;?>
-								<?php
-									// echo "<p>Hello, ".$name."!</p>";
-									// echo "<p>Current Reimbursement budget: <b>".$reimbursement_budget." PHP</b></p>";
-									
-									if(isset($_POST['add_claim'])) {
-										$claim = $_POST['claim'];;
-										$status = "Pending";
-										$date = date("Y-m-d", strtotime("+7 HOURS"));
-										
-										$q_student = $conn->query("SELECT * FROM `users` WHERE `username` = '$username'") or die(mysqli_error());
-										$f_student = $q_student->fetch_array();
-										$conn->query("INSERT INTO `claim` VALUES('', '$claim', '$date', '$status', '$user_id', '$username', '$user_level', '$fullname')") or die(mysqli_error());
-									}
-								?>
 							</div>
 							<div class="col-md-3" style="text-align:right">
 								<div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -96,8 +83,8 @@
 								}
 							?>
 							<ul class="nav nav-pills">
-								<li role="presentation"><a href="reimbursement_history.php" class="btn" style="margin-bottom:10px"><b>Pending</b></a></li>
-								<li role="presentation"><a href="reimbursement_history_accepted.php" class="btn" style="margin-bottom:10px"><b>Accepted<?php if(!$reimbursement_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$reimbursement_notif; ?></span><?php } ?></b></a></li>
+								<li role="presentation"><a href="reimbursement_history.php" class="btn" style="margin-bottom:10px">Pending</a></li>
+								<li role="presentation"><a href="reimbursement_history_accepted.php" class="btn" style="margin-bottom:10px">Accepted<?php if(!$reimbursement_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$reimbursement_notif; ?></span><?php } ?></a></li>
 								<li role="presentation" class="active"><a href="reimbursement_history_rejected.php" class="btn btn-primary" style="margin-bottom:10px">Rejected</a></li>
 							</ul>
 							
@@ -109,6 +96,7 @@
 											<th>Date</th>
 											<th>Amount</th>
 											<th>Status</th>
+											<th>Remarks</th>
 											<th>Download</th>
 											<th>Options</th>
 										</tr>
@@ -131,6 +119,7 @@
 											echo "<td>".$user_data['reimbursement_date']."</td>";
 											echo "<td>".$user_data['amount']."</td>";
 											echo "<td>".$user_data['status']."</td>";
+											echo "<td>".$user_data['remarks']."</td>";
 											$imageURL = 'uploads/'.$user_data["picture"];
 										?>
 										<td class="text-center"><a href="reimbursement_download.php?picture=<?php echo $user_data['picture'] ?>" class="btn btn-outline-danger"><i class="bi bi-download"></i></a></td>

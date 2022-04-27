@@ -50,6 +50,8 @@
 							<?php
 								if(isset($_POST['yes'])) {
 								$read = 1;
+								$remarks = $_POST['remarks'];
+								
 									$query1 = $conn->query("SELECT * FROM claim WHERE claim_id='$claim_id'");
 									while($user_data = mysqli_fetch_array($query1)){
 										$getusername = $user_data['username'];
@@ -59,6 +61,7 @@
 											echo "<script>window.location.href='claim_history.php';</script>";
 											} else {
 											$conn->query("UPDATE claim SET status='Rejected by $name' WHERE claim_id='$claim_id'") or die(mysqli_error());
+											$conn->query("UPDATE claim SET remarks='$remarks' WHERE claim_id='$claim_id'") or die(mysqli_error());
 											$conn->query("UPDATE claim SET accepted=2 WHERE claim_id='$claim_id'") or die(mysqli_error());
 											#$conn->query("UPDATE users SET claim_notif=claim_notif+$read WHERE id=$id");
 											$session->msg('s',"Claim Successfully Rejected");
@@ -69,6 +72,8 @@
 							?>
 							<h2>Are you sure you want to reject?</h2>	
 							<form method="post" action="">
+								</br>
+								<textarea placeholder="Remarks" rows="4" class="form-control" name="remarks" placeholder="" length="500" maxlength="500" required></textarea>
 								</br>
 								<button type="submit" name="yes" class="btn btn-primary" value="yes">Yes</button>
 							</form></br>

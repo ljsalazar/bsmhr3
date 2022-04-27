@@ -24,6 +24,7 @@
 		<th>Claim</th>  
 		<th>Claim Date</th>  
 		<th>Status</th>  
+		<th>Remarks</th>  
 		</tr>
 		</thead>
 		';
@@ -49,28 +50,28 @@
 		if ($user_level <= 2){
 			if ($user_selected == 'All users'){
 				if ($status == 'All') {
-					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					$result = $conn->query("SELECT name, claim, claim_date, status, remarks FROM claim WHERE claim_date >= '$fromdate' 
 					AND claim_date <= '$todate' AND accepted != 0 ORDER BY claim_id DESC");
 					} else {
-					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					$result = $conn->query("SELECT name, claim, claim_date, status, remarks FROM claim WHERE claim_date >= '$fromdate' 
 					AND claim_date <= '$todate' AND accepted = '$accepted' ORDER BY claim_id DESC");
 				}
 				} else {
 				if ($status == 'All'){
-					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					$result = $conn->query("SELECT name, claim, claim_date, status, remarks FROM claim WHERE claim_date >= '$fromdate' 
 					AND claim_date <= '$todate' AND accepted != 0 AND name = '$user_selected' ORDER BY claim_id DESC");
 					} else {
-					$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+					$result = $conn->query("SELECT name, claim, claim_date, status, remarks FROM claim WHERE claim_date >= '$fromdate' 
 					AND claim_date <= '$todate' AND accepted = '$accepted' AND name = '$user_selected' ORDER BY claim_id DESC");
 				}
 			}
 		} 
 		elseif ($user_level > 2) {
 			if ($status == 'All'){
-				$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+				$result = $conn->query("SELECT name, claim, claim_date, status, remarks FROM claim WHERE claim_date >= '$fromdate' 
 				AND claim_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY claim_id DESC");	
 				} else {
-				$result = $conn->query("SELECT name, claim, claim_date, status FROM claim WHERE claim_date >= '$fromdate' 
+				$result = $conn->query("SELECT name, claim, claim_date, status, remarks FROM claim WHERE claim_date >= '$fromdate' 
 				AND claim_date <= '$todate' AND username = '$username' AND accepted = '$accepted' ORDER BY claim_id DESC");	
 			}
 		}
@@ -87,7 +88,8 @@
 				<td class="text-center"> '.$row['name']. '</td>  
 				<td class="text-center"> '.$row['claim']. '</td>  
 				<td class="text-center"> '.$row['claim_date']. '</td>  
-				<td class="text-center"> '.$row['status']. '</td>  
+				<td class="text-center"> '.$row['status']. '</td> 
+				<td class="text-center"> '.$row['remarks']. '</td> 
 				</tr>
 				
 				</tbody>

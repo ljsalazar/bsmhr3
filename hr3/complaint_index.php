@@ -67,7 +67,7 @@
 					<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
 						<thead>
 							<tr>
-								<th>User</th> <th>Complaint</th> <th>Date</th> <th>Status</th> <th>Options</th>
+								<th>User</th> <th>Complaint</th> <th>Date</th> <th>Status</th> <th>Remarks</th> <th>Options</th>
 							</tr>
 						</thead>
 						<?php
@@ -92,18 +92,19 @@
 								echo "<td>".$user_data['complaint']."</td>";
 								echo "<td>".$user_data['complaint_date']."</td>";
 								echo "<td>".$user_data['status']."</td>";
+								echo "<td>".$user_data['remarks']."</td>";
 								
 								$accepted = $user_data['accepted'];
 								
 								if ($user_level <= 1) {
 									if ($accepted == 1) {
-										echo "<td><a href='complaint_delete.php?complaint_id=$user_data[complaint_id]'>Delete</a></td>";
+										echo "<td><a href='complaint_delete.php?complaint_id=$user_data[complaint_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a>";
 										} else {
-										echo "<td><a href='complaint_delete.php?complaint_id=$user_data[complaint_id]'>Delete</a> | <a href='complaint_accept.php?complaint_id=$user_data[complaint_id]'>Accept</a></td>";
+										echo "<td><a href='complaint_delete.php?complaint_id=$user_data[complaint_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a> <a href='complaint_accept.php?complaint_id=$user_data[complaint_id]' class='btn btn-success'data-toggle='tooltip' title='Accept'><i class='bi bi-check-circle-fill'></i></a> <a href='complaint_reject.php?complaint_id=$user_data[complaint_id]' class='btn btn-danger'data-toggle='tooltip' title='Reject'><i class='bi bi-x-circle-fill'></i></a></td>";
 									}
 									
 									} else {
-									echo "<td><a href='complaint_delete.php?complaint_id=$user_data[complaint_id]'>Delete</a></td>";
+									echo "<td><a href='complaint_delete.php?complaint_id=$user_data[complaint_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a>";
 								}
 								echo "</tr>";
 							}?>

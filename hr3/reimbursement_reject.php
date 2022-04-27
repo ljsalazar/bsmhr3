@@ -45,6 +45,8 @@
 							<?php
 								$read = 1;
 								if(isset($_POST['yes'])) {
+									$remarks = $_POST['remarks'];
+									
 									$query1 = $conn->query("SELECT * FROM reimbursements WHERE reimbursement_id='$reimbursement_id'");
 									while($user_data = mysqli_fetch_array($query1)){
 										$amount = $user_data['amount'];
@@ -53,9 +55,11 @@
 										if ($user_id == $id){
 											$session->msg('d',"You can't reject your own reimburse");
 											echo "<script>window.location.href='reimbursement_history.php';</script>"; 
-										} else {
+											} else {
 											$query = $conn->query("UPDATE reimbursements SET status='Rejected by $name' WHERE reimbursement_id='$reimbursement_id'") or die(mysqli_error());
 											$query = $conn->query("UPDATE reimbursements SET accepted='2' WHERE reimbursement_id='$reimbursement_id'") or die(mysqli_error());
+											$query = $conn->query("UPDATE reimbursements SET remarks='$remarks' WHERE reimbursement_id='$reimbursement_id'") or die(mysqli_error());
+											
 											#$query2 = $conn->query("UPDATE users SET reimbursement_budget=reimbursement_budget-$amount WHERE id=$user_id");
 											#$query2 = $conn->query("UPDATE users SET reimbursement_notif=reimbursement_notif+$read WHERE id=$user_id");
 											$session->msg('s',"Reimbursement Successfully Rejected");
@@ -67,6 +71,9 @@
 							?>
 							<h2>Are you sure you want to reject?</h2>	
 							<form method="post" action="">
+								<input type="hidden" name="id" value="<?php echo (int)$_GET['reimbursement_id'] ?>" readonly>
+								</br>
+								<textarea placeholder="Remarks" rows="4" class="form-control" name="remarks" placeholder="" length="500" maxlength="500" required></textarea>
 								</br>
 								<button type="submit" name="yes" class="btn btn-primary" value="yes">Yes</button>
 							</form></br>

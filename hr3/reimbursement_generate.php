@@ -64,7 +64,7 @@
 		case 'Accepted Only':
 		$accepted = '1';
 		break;
-	}
+		}
 	
 	$db = new dbObj();
 	$connString =  $db->getConnstring();

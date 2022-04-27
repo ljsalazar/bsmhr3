@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 26, 2022 at 03:09 AM
--- Server version: 10.5.12-MariaDB
--- PHP Version: 7.3.32
+-- Host: 127.0.0.1
+-- Generation Time: Apr 27, 2022 at 08:19 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `id18587170_bank`
+-- Database: `bank`
 --
 
 -- --------------------------------------------------------
@@ -55,17 +54,19 @@ CREATE TABLE `claim` (
   `user_id` int(11) NOT NULL,
   `username` varchar(200) NOT NULL,
   `user_level` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL
+  `name` varchar(200) NOT NULL,
+  `remarks` varchar(255) NOT NULL DEFAULT 'No remarks'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `claim`
 --
 
-INSERT INTO `claim` (`claim_id`, `claim`, `claim_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`) VALUES
-(1, 'Claim type test', '2022-04-25', 'Pending', 0, 6, 'Employee', 3, 'Employee'),
-(3, 'Health Insurance Claims', '2022-04-25', 'Pending', 0, 6, 'Employee', 3, 'Employee'),
-(6, 'Payable Leaves( Casual Leave)', '2022-04-26', 'Accepted by Admin RJx', 1, 22, 'juandc', 3, 'Juan Dela Cruz');
+INSERT INTO `claim` (`claim_id`, `claim`, `claim_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`, `remarks`) VALUES
+(1, 'Claim type test', '2022-04-25', 'Rejected by Admin Account', 2, 6, 'Employee', 3, 'Employee', 'asd'),
+(3, 'Health Insurance Claims', '2022-04-25', 'Pending', 0, 6, 'Employee', 3, 'Employee', 'No remarks'),
+(6, 'Payable Leaves( Casual Leave)', '2022-04-26', 'Accepted by Admin RJx', 1, 22, 'juandc', 3, 'Juan Dela Cruz', 'No remarks'),
+(7, 'Payable Leaves( Vacation leave)', '2022-04-26', 'Accepted by Admin Account', 1, 23, 'yaboirj', 3, 'Robert John Mamuyac', 'No remarks');
 
 -- --------------------------------------------------------
 
@@ -216,22 +217,22 @@ CREATE TABLE `complaints` (
   `user_id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `user_level` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL DEFAULT 'No remarks'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `complaints`
 --
 
-INSERT INTO `complaints` (`complaint_id`, `complaint`, `complaint_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`) VALUES
-(1, 'I accidentally pressed end shift', '2022-01-08 18:45:32', 'Pending', 0, 7, 'Admin', 1, 'Admin Account'),
-(2, 'My login time bugged, please edit it.', '2022-01-08 18:59:22', 'Accepted by Admin Account', 1, 8, 'staff', 2, 'HR STAFF'),
-(9, 'I accidentally pressed end shift, I ended work at 6pm', '2022-01-10 15:34:49', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(10, 'Accidentally pressed end shift, I ended my shift in 8:00pm same day', '2022-01-10 19:43:18', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(11, 'Complaint Test Jin', '2022-01-11 17:00:11', 'Accepted by Admin RJ', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(12, 'Test 2 Jin Support', '2022-01-11 17:02:18', 'Accepted by Admin RJ', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(13, 'set logout time to 8pm', '2022-01-11 18:35:00', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez'),
-(15, 'I accidentally pressed the end shift. My end shift is 5pm', '2022-04-26 11:04:22', 'Accepted by Admin RJx', 1, 22, 'juandc', 3, 'Juan Dela Cruz');
+INSERT INTO `complaints` (`complaint_id`, `complaint`, `complaint_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`, `remarks`) VALUES
+(1, 'I accidentally pressed end shift', '2022-01-08 18:45:32', 'Pending', 0, 7, 'Admin', 1, 'Admin Account', 'No remarks'),
+(2, 'My login time bugged, please edit it.', '2022-01-08 18:59:22', 'Accepted by Admin Account', 1, 8, 'staff', 2, 'HR STAFF', 'No remarks'),
+(9, 'I accidentally pressed end shift, I ended work at 6pm', '2022-01-10 15:34:49', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez', 'No remarks'),
+(10, 'Accidentally pressed end shift, I ended my shift in 8:00pm same day', '2022-01-10 19:43:18', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez', 'No remarks'),
+(13, 'set logout time to 8pm', '2022-01-11 18:35:00', 'Accepted by Admin Account', 1, 10, 'rjinxed', 3, 'jin rodriguez', 'No remarks'),
+(15, 'I accidentally pressed the end shift. My end shift is 5pm', '2022-04-26 11:04:22', 'Accepted by Admin RJx', 1, 22, 'juandc', 3, 'Juan Dela Cruz', 'No remarks'),
+(16, 'I accidentally pressed the end shift. My end shift is 5pm', '2022-04-26 11:27:49', 'Accepted by Admin Account', 1, 23, 'yaboirj', 3, 'Robert John Mamuyac', 'No remarks');
 
 -- --------------------------------------------------------
 
@@ -258,7 +259,8 @@ INSERT INTO `events` (`event_id`, `event`, `fromdate`, `todate`, `min_user_level
 (14, 'Admins Only Event Test', '2022-01-11', '2022-01-11', 1, 'Admin RJ'),
 (15, 'Staff Only Event Test', '2022-01-10', '2022-01-10', 2, 'Admin RJ'),
 (16, 'Employee Only Event Test', '2022-01-10', '2022-01-10', 0, 'Admin RJ'),
-(27, 'aaaaaaaaaaa', '2022-04-26', '2022-04-26', 3, 'Admin Account');
+(27, 'Pimps only. special shit for admins', '2022-04-26', '2022-04-26', 2, 'Admin Account'),
+(28, 'Wack ass employee event lol', '2022-04-26', '2022-04-26', 3, 'Admin Account');
 
 -- --------------------------------------------------------
 
@@ -462,22 +464,23 @@ CREATE TABLE `reimbursements` (
   `amount` int(11) NOT NULL,
   `status` varchar(50) NOT NULL,
   `accepted` int(11) NOT NULL,
-  `picture` varchar(255) NOT NULL
+  `picture` varchar(255) NOT NULL,
+  `remarks` varchar(255) NOT NULL DEFAULT 'No remarks'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reimbursements`
 --
 
-INSERT INTO `reimbursements` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`, `picture`) VALUES
-(1, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Papers', '2022-01-08', 100, 'Accepted by Admin Account', 1, 'blank.jpg'),
-(2, 'rjinxed', 'jin rodriguez', 3, 10, '19.5 inch ThinkVision Computer Monitor', '2022-01-08', 6000, 'Accepted by Admin Account', 1, 'blank.jpg'),
-(3, 'Admin', 'Admin Account', 1, 7, 'Thinkpad x250 as a workstation laptop', '2022-01-08', 15000, 'Accepted by Admin RJ', 1, 'blank.jpg'),
-(7, 'rjinxed', 'jin rodriguez', 3, 10, 'Reimburse Test Jin', '2022-01-11', 100, 'Accepted by Admin RJ', 1, 'blank.jpg'),
-(10, 'employee', 'Employee', 3, 6, 'test1', '2022-04-17', 100, 'Rejected by Admin Account', 2, 'blank.jpg'),
-(33, 'Employee', 'Employee', 3, 6, 'I pulled for Yoimiya', '2022-04-24', 2000, 'Pending', 0, '92258998Screenshot_20210810-191703496~2.jpg'),
-(34, 'Admin', 'Admin Account', 1, 7, 'A4 Paper', '2022-04-25', 100, 'Pending', 0, '488613416free-floating-a4-paper-sheet-mockup.jpg'),
-(37, 'juandc', 'Juan Dela Cruz', 3, 22, 'A4 Paper', '2022-04-28', 100, 'Accepted by Admin Account', 1, '3521729paper.jpg');
+INSERT INTO `reimbursements` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`, `picture`, `remarks`) VALUES
+(1, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Papers', '2022-01-08', 100, 'Accepted by Admin Account', 1, 'blank.jpg', 'No remarks'),
+(2, 'rjinxed', 'jin rodriguez', 3, 10, '19.5 inch ThinkVision Computer Monitor', '2022-01-08', 6000, 'Accepted by Admin Account', 1, 'blank.jpg', 'No remarks'),
+(3, 'Admin', 'Admin Account', 1, 7, 'Thinkpad x250 as a workstation laptop', '2022-01-08', 15000, 'Accepted by Admin RJ', 1, 'blank.jpg', 'No remarks'),
+(7, 'rjinxed', 'jin rodriguez', 3, 10, 'Reimburse Test Jin', '2022-01-11', 100, 'Accepted by Admin RJ', 1, 'blank.jpg', 'No remarks'),
+(33, 'Employee', 'Employee', 3, 6, 'I pulled for Yoimiya', '2022-04-24', 2000, 'Pending', 0, '92258998Screenshot_20210810-191703496~2.jpg', 'No remarks'),
+(34, 'Admin', 'Admin Account', 1, 7, 'A4 Paper', '2022-04-25', 100, 'Pending', 0, '488613416free-floating-a4-paper-sheet-mockup.jpg', 'No remarks'),
+(37, 'juandc', 'Juan Dela Cruz', 3, 22, 'A4 Paper', '2022-04-28', 100, 'Accepted by Admin Account', 1, '3521729paper.jpg', 'No remarks'),
+(38, 'yaboirj', 'Robert John Mamuyac', 3, 23, 'I bought this signed paper from a famous person', '2022-04-26', 500, 'Accepted by Admin Account', 1, '888105844270855879_1115444689210059_392038304273054031_n.jpg', 'No remarks');
 
 -- --------------------------------------------------------
 
@@ -640,7 +643,8 @@ INSERT INTO `tblleaves` (`id`, `LeaveType`, `FromDate`, `ToDate`, `Description`,
 (1, 'Paternity Leave', '2022-04-28', '2022-04-29', 'asd', '2022-04-26', NULL, NULL, 0, 1, 7, 0, 2, 4, 0),
 (2, 'Casual Leave', '2022-04-30', '2022-04-30', 'Getting government ID', '2022-04-26', 'Granted', '2022-04-26 10:38:17 ', 1, 1, 22, 1, 1, 5, 2),
 (3, 'Casual Leave', '2022-05-04', '2022-05-04', 'Going to the dentist for adjusting my braces', '2022-04-26', 'Granted', '2022-04-26 10:42:54 ', 1, 1, 22, 1, 1, 9, 2),
-(4, 'Sick Leave', '2022-04-26', '2022-04-26', 'I have a headache', '2022-04-26', 'Okay', '2022-04-26 11:07:06 ', 1, 1, 22, 0, 1, 1, 0);
+(4, 'Sick Leave', '2022-04-26', '2022-04-26', 'I have a headache', '2022-04-26', 'Okay', '2022-04-26 11:07:06 ', 1, 1, 22, 0, 1, 1, 0),
+(5, 'Vacation leave', '2022-04-30', '2022-05-03', 'I\'m finna go to Disneyland', '2022-04-26', 'OK. Enjoy ', '2022-04-26 11:29:29 ', 1, 1, 23, 1, 4, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -717,7 +721,8 @@ INSERT INTO `tblschedule` (`id`, `days`, `PostingDate`, `AdminRemark`, `AdminRem
 (7, 'Tue-Thu-Sat-', '2022-04-09 02:56:01', 'Granted', '2022-04-09 10:49:28 ', 1, 1, 6, 1, 13, 'From 8:00 am To 6:00 pm'),
 (8, 'Mon-Wed-Fri-', '2022-04-18 10:43:17', 'ok\r\n', '2022-04-18 18:43:05 ', 1, 1, 6, 1, 14, 'From 6:42 pm To 10:42 pm'),
 (9, 'Mon-Tue-Wed-Thu-Fri-Sat-', '2022-04-19 10:46:48', 'Granted', '2022-04-19 16:40:26 ', 1, 1, 17, 1, 14, 'From 6:42 pm To 10:42 pm'),
-(10, 'Tue-Thu-Sat-', '2022-04-26 02:47:14', 'ok', '2022-04-26 10:46:03 ', 1, 1, 22, 1, 13, 'From 8:00 am To 6:00 pm');
+(10, 'Tue-Thu-Sat-', '2022-04-26 02:47:14', 'ok', '2022-04-26 10:46:03 ', 1, 1, 22, 1, 13, 'From 8:00 am To 6:00 pm'),
+(11, 'Mon-Tue-Wed-Thu-Fri-', '2022-04-26 03:27:31', 'Granted. 5 days a week, let him suffer lmao', '2022-04-26 11:27:11 ', 1, 1, 23, 1, 13, 'From 8:00 am To 6:00 pm');
 
 -- --------------------------------------------------------
 
@@ -817,7 +822,8 @@ INSERT INTO `time_attendance` (`time_id`, `user_id`, `login_time`, `logout_time`
 (1, 6, '2022-04-26 10:25:00', '2022-04-26 10:25:10', 'Employee', 'Employee', 3, '0 Hours (0.17 Minutes)', 0),
 (2, 6, '2022-04-26 10:25:22', '2022-04-26 10:25:40', 'Employee', 'Employee', 3, '0.01 Hours (0.3 Minutes)', 0),
 (3, 6, '2022-04-26 10:29:23', '2022-04-26 10:29:27', 'Employee', 'Employee', 3, '0 Hours (0.07 Minutes)', 0),
-(4, 22, '2022-04-26 10:47:48', '2022-04-26 17:47:58', 'juandc', 'Juan Dela Cruz', 3, '7 Hours (420.17 Minutes)', 0);
+(4, 22, '2022-04-26 10:47:48', '2022-04-26 17:47:58', 'juandc', 'Juan Dela Cruz', 3, '7 Hours (420.17 Minutes)', 0),
+(5, 23, '2022-04-26 11:27:40', '2022-04-26 15:27:21', 'yaboirj', 'Robert John Mamuyac', 3, '3.99 Hours (239.68 Minutes)', 0);
 
 -- --------------------------------------------------------
 
@@ -904,15 +910,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`, `reimbursement_budget`, `reimbursement_notif`, `claim_notif`, `complaint_notif`, `leave_token`, `department_id`) VALUES
-(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-26 10:31:20', 10010, 0, 0, 0, 10, 3),
-(7, 'Admin Account', 'Admin', 'b3aca92c793ee0e9b1a9b0a5f5fc044e05140df3', 1, 'hjwkjm57.jpg', 1, '2022-04-26 10:42:40', 79998, 0, 0, 0, 10, 1),
+(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-27 19:58:37', 10010, 0, 0, 0, 10, 3),
+(7, 'Admin Account', 'Admin', 'efacc4001e857f7eba4ae781c2932dedf843865e', 1, 'hjwkjm57.jpg', 1, '2022-04-27 19:58:53', 79998, 0, 0, 0, 10, 1),
 (8, 'HR STAFF', 'Staff', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 2, 'no_image.jpg', 1, '2022-04-22 17:46:13', 25000, 0, 0, 0, 10, 1),
 (11, 'Admin RJx', 'Admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-26 11:06:43', 49900, 0, 0, 0, 10, 1),
 (12, 'Jin Rodriguez', 'Rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 1, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 2, 0, 10, 2),
 (15, 'asdasd', 'asdasd', '85136c79cbf9fe36bb9d05d0639c70c265c18d37', 1, 'no_image.jpg', 1, '2022-03-21 15:17:30', 100, 0, 0, 0, 10, 1),
 (16, 'Lawrence Joshua', 'lj', '0b8e8bf084b7e49274730f1bf591c1af1459ddf1', 1, 'bso7e8j116.jpg', 1, '2022-04-23 14:13:32', 900, 0, 0, 0, 10, 1),
 (17, 'Hanna', 'Hanna', '26f769205f6a2faa1521d5d628ecf51210aebeb0', 3, 'no_image.jpg', 1, '2022-04-22 18:10:50', 1000, 0, 0, 0, 10, 1),
-(22, 'Juan Dela Cruz', 'juandc', '29773b568b85fa4ddeb6c08922e319857f7202bf', 3, 'no_image.jpg', 1, '2022-04-26 11:07:13', 900, 0, 0, 0, 7, 1);
+(22, 'Juan Dela Cruz', 'juandc', '29773b568b85fa4ddeb6c08922e319857f7202bf', 3, 'no_image.jpg', 1, '2022-04-26 11:07:13', 900, 0, 0, 0, 7, 1),
+(23, 'Robert John Mamuyac', 'yaboirj', '3557ad7bbafb6b2f93f789bcbd707d2165cffb90', 3, 'no_image.jpg', 1, '2022-04-26 11:31:51', 500, 1, 0, 0, 9, 2);
 
 -- --------------------------------------------------------
 
@@ -1155,7 +1162,7 @@ ALTER TABLE `budgetreleasing`
 -- AUTO_INCREMENT for table `claim`
 --
 ALTER TABLE `claim`
-  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `claim_archive`
@@ -1185,13 +1192,13 @@ ALTER TABLE `collection_transactions`
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `complaint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -1227,7 +1234,7 @@ ALTER TABLE `purchases`
 -- AUTO_INCREMENT for table `reimbursements`
 --
 ALTER TABLE `reimbursements`
-  MODIFY `reimbursement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `reimbursement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `reimbursment`
@@ -1245,7 +1252,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `tblleaves`
 --
 ALTER TABLE `tblleaves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblleavetype`
@@ -1263,7 +1270,7 @@ ALTER TABLE `tblleavetype_archive`
 -- AUTO_INCREMENT for table `tblschedule`
 --
 ALTER TABLE `tblschedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tblschedule_archive`
@@ -1287,7 +1294,7 @@ ALTER TABLE `tblshift_type`
 -- AUTO_INCREMENT for table `time_attendance`
 --
 ALTER TABLE `time_attendance`
-  MODIFY `time_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `time_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `uexpenses`
@@ -1299,7 +1306,7 @@ ALTER TABLE `uexpenses`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users_1`

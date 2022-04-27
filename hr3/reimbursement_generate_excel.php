@@ -25,6 +25,7 @@
 		<th>Reimbursement Date</th>  
 		<th>Amount</th>  
 		<th>Status</th>  
+		<th>Remarks</th>  
 		</tr>
 		</thead>
 		';
@@ -50,29 +51,29 @@
 		if ($user_level <= 2){
 			if ($user_selected == 'All users'){
 				if ($status == 'All') {
-					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status, remarks FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
 					AND reimbursement_date <= '$todate' AND accepted != 0 ORDER BY reimbursement_id DESC");	
 					} else {
-					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status, remarks FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
 					AND reimbursement_date <= '$todate' AND accepted = '$accepted' ORDER BY reimbursement_id DESC");	
 				}
 				
 				} else {
 				if ($status == 'All') {
-					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status, remarks FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
 					AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted != 0 ORDER BY reimbursement_id DESC");	
 					} else {
-					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+					$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status, remarks FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
 					AND reimbursement_date <= '$todate' AND name = '$user_selected' AND accepted = '$accepted' ORDER BY reimbursement_id DESC");	
 				}
 			}
 		} 
 		elseif ($user_level > 2) {
 			if ($status == 'All') {
-				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status, remarks FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
 				AND reimbursement_date <= '$todate' AND username = '$username' AND accepted != 0 ORDER BY reimbursement_id DESC");	
 				} else {
-				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
+				$result = $conn->query("SELECT name, reimbursement, reimbursement_date, amount, status, remarks FROM reimbursements WHERE reimbursement_date >= '$fromdate' 
 				AND reimbursement_date <= '$todate' AND username = '$username' AND accepted = '$accepted' ORDER BY reimbursement_id DESC");	
 			}
 		}
@@ -91,6 +92,7 @@
 				<td class="text-center"> '.$row['reimbursement_date']. '</td>  
 				<td class="text-center"> '.$row['amount']. '</td>  
 				<td class="text-center"> '.$row['status']. '</td>  
+				<td class="text-center"> '.$row['remarks']. '</td>  
 				</tr>
 				
 				</tbody>
