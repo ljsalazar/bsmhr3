@@ -213,7 +213,7 @@ $Collections=$Expense['Collection'];
 
 
 <!-- Data table start -->
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-12 mb-3">
     <div class="card">
       <div class="card-header">
@@ -280,6 +280,6 @@ $Collections=$Expense['Collection'];
       </div>
     </div>
   </div>
-  </div>
+  </div> -->
 <!-- End of Data table  -->
 <?php include_once('layouts/footer.php'); ?>

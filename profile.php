@@ -37,8 +37,8 @@
               <?php if( $user_p['id'] === $user['id']):?>
               <div class=" d-flex mt-2"> <a href="edit_account.php" class="btn btn-success btn1forprofile" >Edit Profile</a></div>
                <?php endif;?>
-            <div class="d-flex flex-row justify-content-center align-items-center mt-3"><span class="followforprofile">Your Links</span> </div>
-            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center iconsforprofile"> <span><i class="bi bi-twitter"></i></span> <span><i class="bi bi-facebook"></i></span> <span><i class="bi bi-messenger"></i></span> <span><i class="bi bi-google"></i></span> </div>
+           <!--  <div class="d-flex flex-row justify-content-center align-items-center mt-3"><span class="followforprofile">Your Links</span> </div>
+            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center iconsforprofile"> <span><i class="bi bi-twitter"></i></span> <span><i class="bi bi-facebook"></i></span> <span><i class="bi bi-messenger"></i></span> <span><i class="bi bi-google"></i></span> </div> -->
             <div class=" px-2 rounded mt-4 date dateforprofile"> <span class="joinforpofile">Last Login: <?php echo read_date($user_p['last_login'])?></span> </div>
         </div>
     </div>

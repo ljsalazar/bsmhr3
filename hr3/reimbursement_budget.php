@@ -50,10 +50,10 @@
 			<div class="col-md-12">
 				<div class="card h-100">
 					<div class="card-header">
-						<h2>Reimbursements</h2>
+						<h2>Reimbursement Budget</h2>
 						<?php
-							echo "<p>Hello, ".$name."!</p>";
-							echo "<p>Current Reimbursement budget: ".$reimbursement_budget." PHP</p>";
+							// echo "<p>Hello, ".$name."!</p>";
+							echo "<p>Current Reimbursement budget: <b>".$reimbursement_budget." PHP</b></p>";
 						?>
 					</div>
 					<div class="row">

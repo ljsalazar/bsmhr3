@@ -165,7 +165,7 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
   <div class="col-md-12">
     <div class="card h-100">
       <div class="card-header">
-         <h2>Apply Leave</h2>
+         <h2>Leave Application</h2>
         <form action="apply_leave.php" method="POST">
             <div class="card-body">
               <!-- This block is for appointing leave to user as an Admin or Super Admin -->

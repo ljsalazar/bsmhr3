@@ -116,7 +116,7 @@
                         </div>
                       </div>
                       <input type="hidden" name="user_id" value="<?php echo $user['id'];?>">
-                       <button type="submit" name="submit" class="btn btn-outline-success">Change</button>
+                       <button type="submit" name="submit" class="btn btn-success">Change</button>
                       </form>
                     </div>
                   </div>
@@ -150,7 +150,7 @@
                       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                       Change Password
                     </button> &nbsp;
-                      <button type="submit" name="update" class="btn btn-info">Update</button>
+                      <button type="submit" name="update" class="btn btn-warning">Update</button>
                     </div>
                   </div>
                   </form>
@@ -189,7 +189,7 @@
               </div>
 
 
-              <div class="row gutters-sm">
+              <!-- <div class="row gutters-sm">
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
@@ -244,7 +244,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
 
 
