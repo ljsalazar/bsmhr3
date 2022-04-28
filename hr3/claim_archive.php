@@ -73,7 +73,7 @@
 											echo "<td>".$user_data['claim']."</td>";
 											echo "<td>".$user_data['claim_date']."</td>";
 											echo "<td>".$user_data['status']."</td>";
-											echo "<td><a href='claim_retrieve_archive.php?claim_id=$user_data[claim_id]'>Retrieve | </a><a href='claim_delete_archive.php?claim_id=$user_data[claim_id]'>Delete</a></td>";
+											echo "<td><a href='claim_retrieve_archive.php?claim_id=$user_data[claim_id]'class='btn btn-secondary'data-toggle='tooltip' title='Retrieve'><i class='bi bi-folder-symlink-fill'></i></a> <a href='claim_delete_archive.php?claim_id=$user_data[claim_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a></td>";
 											echo "</tr>";
 										}?>
 								</table>

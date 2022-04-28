@@ -113,7 +113,8 @@
 						<form method="post" action="reimbursement_index.php" enctype="multipart/form-data">
 							<div class="form-group">
 								<p>Reimbursement Description</p>
-								<input required type="text" class="form-control" name="reimbursement" placeholder="Reimbursement" />
+								<textarea required type="text" class="form-control" name="reimbursement" placeholder="Reimbursement"></textarea>
+								<!-- <input required type="text" class="form-control" name="reimbursement" placeholder="Reimbursement" /> -->
 							</div></br>
 							<div class="form-group">
 								<p>Date Reimbursed</p>
@@ -123,10 +124,13 @@
 								<p>Reimbursement Amount (PHP)</p>
 								<input required type="text" class="form-control" name="amount" placeholder="Amount" />
 							</div></br>
-							<div class="form-group">
-								<p>Upload a photo</p>
-								<input type="file" name="file" id="file" class="btn btn-secondary btn-file">
-							</div></br>
+							  <div class="form-group">
+							   <p>Upload a photo</p>
+							    <div class="input-group">
+							      <span class="input-group-text px-3 text-muted"><i class="bi bi-image"></i></span>
+							      <input type="file" name="file" id="file" class="btn btn-secondary">
+							    </div>
+							  </div></br>
 							<button type="submit" name="add_reimbursement" class="btn btn-primary" value="add_reimbursement">Add</button>
 						</form>
 					</div>
