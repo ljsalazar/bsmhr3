@@ -41,7 +41,7 @@
 						<div class="jumbotron text-center">
 							<?php
 								if(isset($_POST['yes'])) {
-									$query1 = $conn->query("INSERT INTO reimbursements_archive WHERE reimbursement_id=$reimbursement_id");
+									$query1 = $conn->query("INSERT INTO reimbursements_archive SELECT * FROM reimbursements WHERE reimbursement_id=$reimbursement_id");
 									$query = $conn->query("DELETE FROM reimbursements WHERE reimbursement_id=$reimbursement_id");
 									$session->msg('s',"Successfully Deleted");
 									

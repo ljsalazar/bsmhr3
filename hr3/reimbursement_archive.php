@@ -62,6 +62,7 @@
 											<th>Date</th>
 											<th>Amount</th>
 											<th>Status</th>
+											<th>Download</th>
 											<th>Options</th>
 										</tr>
 									</thead>
@@ -75,6 +76,10 @@
 											echo "<td>".$user_data['reimbursement_date']."</td>";
 											echo "<td>".$user_data['amount']."</td>";
 											echo "<td>".$user_data['status']."</td>";
+											$imageURL = 'uploads/'.$user_data["picture"];
+										?>
+										<td class="text-center"><a href="reimbursement_download.php?picture=<?php echo $user_data['picture'] ?>" class="btn btn-outline-danger"><i class="bi bi-download"></i></a></td>
+										<?php
 											echo "<td><a href='reimbursement_retrieve_archive.php?reimbursement_id=$user_data[reimbursement_id]'class='btn btn-secondary'data-toggle='tooltip' title='Retrieve'><i class='bi bi-folder-symlink-fill'></i></a> <a href='reimbursement_delete_archive.php?reimbursement_id=$user_data[reimbursement_id]' class='btn btn-danger'data-toggle='tooltip' title='Remove'><i class='bi bi-eraser-fill'></i></a></td>";
 											echo "</tr>";
 										}?>

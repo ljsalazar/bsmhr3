@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2022 at 08:19 PM
+-- Generation Time: Apr 28, 2022 at 12:02 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -63,10 +63,11 @@ CREATE TABLE `claim` (
 --
 
 INSERT INTO `claim` (`claim_id`, `claim`, `claim_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`, `remarks`) VALUES
-(1, 'Claim type test', '2022-04-25', 'Rejected by Admin Account', 2, 6, 'Employee', 3, 'Employee', 'asd'),
-(3, 'Health Insurance Claims', '2022-04-25', 'Pending', 0, 6, 'Employee', 3, 'Employee', 'No remarks'),
-(6, 'Payable Leaves( Casual Leave)', '2022-04-26', 'Accepted by Admin RJx', 1, 22, 'juandc', 3, 'Juan Dela Cruz', 'No remarks'),
-(7, 'Payable Leaves( Vacation leave)', '2022-04-26', 'Accepted by Admin Account', 1, 23, 'yaboirj', 3, 'Robert John Mamuyac', 'No remarks');
+(2, 'Health Insurance Claims', '2022-01-08', 'Rejected by Admin Account', 2, 8, 'staff', 2, 'HR STAFF', 'You already have a health insurance'),
+(3, 'Health Insurance Claims', '2022-04-25', 'Accepted by Admin Account', 1, 6, 'Employee', 3, 'Employee', 'No remarks'),
+(7, 'Payable Leaves( Vacation leave)', '2022-04-26', 'Accepted by Admin Account', 1, 23, 'yaboirj', 3, 'Robert John Mamuyac', 'No remarks'),
+(11, 'Payable Leaves( Maternity leave)', '2022-04-17', 'Pending', 0, 7, 'Admin', 1, 'Admin Account', 'No remarks'),
+(113, 'Payable Leaves( Leave Type test)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee', 'No remarks');
 
 -- --------------------------------------------------------
 
@@ -83,20 +84,18 @@ CREATE TABLE `claim_archive` (
   `user_id` int(11) NOT NULL,
   `username` varchar(200) NOT NULL,
   `user_level` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL
+  `name` varchar(200) NOT NULL,
+  `remarks` varchar(255) NOT NULL DEFAULT 'No remarks'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `claim_archive`
 --
 
-INSERT INTO `claim_archive` (`claim_id`, `claim`, `claim_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`) VALUES
-(2, 'Health Insurance Claims', '2022-01-08', 'Pending', 0, 8, 'staff', 2, 'HR STAFF'),
-(4, 'Claim type test', '2022-04-25', 'Pending', 0, 6, 'Employee', 3, 'Employee'),
-(5, 'Claim type test', '2022-04-25', 'Pending', 0, 11, 'Admin1', 1, 'Admin RJx'),
-(11, 'Payable Leaves( Maternity leave)', '2022-04-17', 'Pending', 0, 7, 'Admin', 1, 'Admin Account'),
-(113, 'Payable Leaves( Leave Type test)', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee'),
-(114, 'Claim type test', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee');
+INSERT INTO `claim_archive` (`claim_id`, `claim`, `claim_date`, `status`, `accepted`, `user_id`, `username`, `user_level`, `name`, `remarks`) VALUES
+(4, 'Claim type test', '2022-04-25', 'Pending', 0, 6, 'Employee', 3, 'Employee', 'No remarks'),
+(5, 'Claim type test', '2022-04-25', 'Pending', 0, 11, 'Admin1', 1, 'Admin RJx', 'No remarks'),
+(114, 'Claim type test', '2022-04-18', 'Accepted by Admin Account', 1, 6, 'employee', 3, 'Employee', 'No remarks');
 
 -- --------------------------------------------------------
 
@@ -464,7 +463,7 @@ CREATE TABLE `reimbursements` (
   `amount` int(11) NOT NULL,
   `status` varchar(50) NOT NULL,
   `accepted` int(11) NOT NULL,
-  `picture` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL DEFAULT 'blank.jpg',
   `remarks` varchar(255) NOT NULL DEFAULT 'No remarks'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -473,11 +472,8 @@ CREATE TABLE `reimbursements` (
 --
 
 INSERT INTO `reimbursements` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`, `picture`, `remarks`) VALUES
-(1, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Papers', '2022-01-08', 100, 'Accepted by Admin Account', 1, 'blank.jpg', 'No remarks'),
 (2, 'rjinxed', 'jin rodriguez', 3, 10, '19.5 inch ThinkVision Computer Monitor', '2022-01-08', 6000, 'Accepted by Admin Account', 1, 'blank.jpg', 'No remarks'),
-(3, 'Admin', 'Admin Account', 1, 7, 'Thinkpad x250 as a workstation laptop', '2022-01-08', 15000, 'Accepted by Admin RJ', 1, 'blank.jpg', 'No remarks'),
 (7, 'rjinxed', 'jin rodriguez', 3, 10, 'Reimburse Test Jin', '2022-01-11', 100, 'Accepted by Admin RJ', 1, 'blank.jpg', 'No remarks'),
-(33, 'Employee', 'Employee', 3, 6, 'I pulled for Yoimiya', '2022-04-24', 2000, 'Pending', 0, '92258998Screenshot_20210810-191703496~2.jpg', 'No remarks'),
 (34, 'Admin', 'Admin Account', 1, 7, 'A4 Paper', '2022-04-25', 100, 'Pending', 0, '488613416free-floating-a4-paper-sheet-mockup.jpg', 'No remarks'),
 (37, 'juandc', 'Juan Dela Cruz', 3, 22, 'A4 Paper', '2022-04-28', 100, 'Accepted by Admin Account', 1, '3521729paper.jpg', 'No remarks'),
 (38, 'yaboirj', 'Robert John Mamuyac', 3, 23, 'I bought this signed paper from a famous person', '2022-04-26', 500, 'Accepted by Admin Account', 1, '888105844270855879_1115444689210059_392038304273054031_n.jpg', 'No remarks');
@@ -498,8 +494,17 @@ CREATE TABLE `reimbursements_archive` (
   `reimbursement_date` date NOT NULL,
   `amount` int(11) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `accepted` int(11) NOT NULL
+  `accepted` int(11) NOT NULL,
+  `picture` varchar(255) NOT NULL DEFAULT 'blank.jpg',
+  `remarks` varchar(255) NOT NULL DEFAULT 'No remarks'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reimbursements_archive`
+--
+
+INSERT INTO `reimbursements_archive` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`, `picture`, `remarks`) VALUES
+(1, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Papers', '2022-01-08', 100, 'Accepted by Admin Account', 1, 'blank.jpg', 'No remarks');
 
 -- --------------------------------------------------------
 
@@ -910,8 +915,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`, `reimbursement_budget`, `reimbursement_notif`, `claim_notif`, `complaint_notif`, `leave_token`, `department_id`) VALUES
-(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-27 19:58:37', 10010, 0, 0, 0, 10, 3),
-(7, 'Admin Account', 'Admin', 'efacc4001e857f7eba4ae781c2932dedf843865e', 1, 'hjwkjm57.jpg', 1, '2022-04-27 19:58:53', 79998, 0, 0, 0, 10, 1),
+(6, 'Employee', 'Employee', 'caf322f0bbed721eac4a36bf7aff1103079faf25', 3, 'no_image.jpg', 1, '2022-04-27 19:58:37', 10010, 0, 1, 0, 10, 3),
+(7, 'Admin Account', 'Admin', 'efacc4001e857f7eba4ae781c2932dedf843865e', 1, 'hjwkjm57.jpg', 1, '2022-04-28 11:43:28', 79998, 0, 0, 0, 10, 1),
 (8, 'HR STAFF', 'Staff', '6ccb4b7c39a6e77f76ecfa935a855c6c46ad5611', 2, 'no_image.jpg', 1, '2022-04-22 17:46:13', 25000, 0, 0, 0, 10, 1),
 (11, 'Admin RJx', 'Admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-26 11:06:43', 49900, 0, 0, 0, 10, 1),
 (12, 'Jin Rodriguez', 'Rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 1, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 2, 0, 10, 2),
@@ -1162,7 +1167,7 @@ ALTER TABLE `budgetreleasing`
 -- AUTO_INCREMENT for table `claim`
 --
 ALTER TABLE `claim`
-  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `claim_archive`
