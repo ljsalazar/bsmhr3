@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2022 at 12:02 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- Generation Time: Apr 29, 2022 at 08:34 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -474,7 +474,6 @@ CREATE TABLE `reimbursements` (
 INSERT INTO `reimbursements` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`, `picture`, `remarks`) VALUES
 (2, 'rjinxed', 'jin rodriguez', 3, 10, '19.5 inch ThinkVision Computer Monitor', '2022-01-08', 6000, 'Accepted by Admin Account', 1, 'blank.jpg', 'No remarks'),
 (7, 'rjinxed', 'jin rodriguez', 3, 10, 'Reimburse Test Jin', '2022-01-11', 100, 'Accepted by Admin RJ', 1, 'blank.jpg', 'No remarks'),
-(34, 'Admin', 'Admin Account', 1, 7, 'A4 Paper', '2022-04-25', 100, 'Pending', 0, '488613416free-floating-a4-paper-sheet-mockup.jpg', 'No remarks'),
 (37, 'juandc', 'Juan Dela Cruz', 3, 22, 'A4 Paper', '2022-04-28', 100, 'Accepted by Admin Account', 1, '3521729paper.jpg', 'No remarks'),
 (38, 'yaboirj', 'Robert John Mamuyac', 3, 23, 'I bought this signed paper from a famous person', '2022-04-26', 500, 'Accepted by Admin Account', 1, '888105844270855879_1115444689210059_392038304273054031_n.jpg', 'No remarks');
 
@@ -504,7 +503,8 @@ CREATE TABLE `reimbursements_archive` (
 --
 
 INSERT INTO `reimbursements_archive` (`reimbursement_id`, `username`, `name`, `user_level`, `user_id`, `reimbursement`, `reimbursement_date`, `amount`, `status`, `accepted`, `picture`, `remarks`) VALUES
-(1, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Papers', '2022-01-08', 100, 'Accepted by Admin Account', 1, 'blank.jpg', 'No remarks');
+(1, 'rjinxed', 'jin rodriguez', 3, 10, 'A4 Papers', '2022-01-08', 100, 'Accepted by Admin Account', 1, 'blank.jpg', 'No remarks'),
+(34, 'Admin', 'Admin Account', 1, 7, 'A4 Paper', '2022-04-25', 100, 'Rejected by Lawrence Joshua', 2, '488613416free-floating-a4-paper-sheet-mockup.jpg', '--');
 
 -- --------------------------------------------------------
 
@@ -637,19 +637,9 @@ CREATE TABLE `tblleaves` (
   `emp_read` int(1) NOT NULL,
   `amount_of_days` int(50) NOT NULL,
   `remaining_days` int(50) UNSIGNED NOT NULL,
-  `paid` int(1) UNSIGNED NOT NULL DEFAULT 0
+  `paid` int(1) UNSIGNED NOT NULL DEFAULT 0,
+  `emp_name` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tblleaves`
---
-
-INSERT INTO `tblleaves` (`id`, `LeaveType`, `FromDate`, `ToDate`, `Description`, `PostingDate`, `AdminRemark`, `AdminRemarkDate`, `Status`, `IsRead`, `empid`, `emp_read`, `amount_of_days`, `remaining_days`, `paid`) VALUES
-(1, 'Paternity Leave', '2022-04-28', '2022-04-29', 'asd', '2022-04-26', NULL, NULL, 0, 1, 7, 0, 2, 4, 0),
-(2, 'Casual Leave', '2022-04-30', '2022-04-30', 'Getting government ID', '2022-04-26', 'Granted', '2022-04-26 10:38:17 ', 1, 1, 22, 1, 1, 5, 2),
-(3, 'Casual Leave', '2022-05-04', '2022-05-04', 'Going to the dentist for adjusting my braces', '2022-04-26', 'Granted', '2022-04-26 10:42:54 ', 1, 1, 22, 1, 1, 9, 2),
-(4, 'Sick Leave', '2022-04-26', '2022-04-26', 'I have a headache', '2022-04-26', 'Okay', '2022-04-26 11:07:06 ', 1, 1, 22, 0, 1, 1, 0),
-(5, 'Vacation leave', '2022-04-30', '2022-05-03', 'I\'m finna go to Disneyland', '2022-04-26', 'OK. Enjoy ', '2022-04-26 11:29:29 ', 1, 1, 23, 1, 4, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -921,10 +911,10 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`
 (11, 'Admin RJx', 'Admin1', '6c7ca345f63f835cb353ff15bd6c5e052ec08e7a', 1, 'no_image.jpg', 1, '2022-04-26 11:06:43', 49900, 0, 0, 0, 10, 1),
 (12, 'Jin Rodriguez', 'Rjinxed', 'edfe1a7498382498795c8aec7c4c2f18db6d10e4', 1, 'ism81pq10.jpg', 1, '2022-03-30 17:49:32', 700, 0, 2, 0, 10, 2),
 (15, 'asdasd', 'asdasd', '85136c79cbf9fe36bb9d05d0639c70c265c18d37', 1, 'no_image.jpg', 1, '2022-03-21 15:17:30', 100, 0, 0, 0, 10, 1),
-(16, 'Lawrence Joshua', 'lj', '0b8e8bf084b7e49274730f1bf591c1af1459ddf1', 1, 'bso7e8j116.jpg', 1, '2022-04-23 14:13:32', 900, 0, 0, 0, 10, 1),
-(17, 'Hanna', 'Hanna', '26f769205f6a2faa1521d5d628ecf51210aebeb0', 3, 'no_image.jpg', 1, '2022-04-22 18:10:50', 1000, 0, 0, 0, 10, 1),
+(16, 'Lawrence Joshua', 'lj', '846251899cbc801a4d307becd54393a88ad1536d', 1, 'bso7e8j116.jpg', 1, '2022-04-29 19:41:14', 900, 0, 0, 0, 10, 1),
+(17, 'Hanna', 'Hanna', '26f769205f6a2faa1521d5d628ecf51210aebeb0', 3, 'no_image.jpg', 1, '2022-04-29 19:40:20', 1000, 0, 0, 0, 9, 1),
 (22, 'Juan Dela Cruz', 'juandc', '29773b568b85fa4ddeb6c08922e319857f7202bf', 3, 'no_image.jpg', 1, '2022-04-26 11:07:13', 900, 0, 0, 0, 7, 1),
-(23, 'Robert John Mamuyac', 'yaboirj', '3557ad7bbafb6b2f93f789bcbd707d2165cffb90', 3, 'no_image.jpg', 1, '2022-04-26 11:31:51', 500, 1, 0, 0, 9, 2);
+(23, 'Robert John Mamuyac', 'yaboirj', '3557ad7bbafb6b2f93f789bcbd707d2165cffb90', 3, 'no_image.jpg', 1, '2022-04-26 11:31:51', 500, 1, 0, 0, 8, 2);
 
 -- --------------------------------------------------------
 
@@ -1257,7 +1247,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `tblleaves`
 --
 ALTER TABLE `tblleaves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tblleavetype`

@@ -49,9 +49,9 @@
 							<h2>Are you sure you want to delete?</h2>	
 							<form method="post" action="">
 								</br>
-								<button type="submit" name="yes" class="btn btn-primary" value="yes">Yes</button>
-							</form></br>
-							<button name="cancel" class="btn" onclick="location.href='timesheet_index.php'">Cancel</button>
+								<button style="float:right; margin-left: 20px;" type="submit" name="yes" class="btn btn-success" value="yes">Yes</button>
+							</form>
+							<button style="float:right;" name="cancel" class="btn btn-danger" onclick="location.href='timesheet_index.php'">Cancel</button>
 						</div>
 					</div>
 				</div>

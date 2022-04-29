@@ -14,8 +14,15 @@ validate_fields($req_fields);
    if(empty($errors)){
     if ($user['user_level'] <= '2'){
     $currentUserID = (int)$_POST['user_selected'];
+    // OPEN query statement
+    $query = $db->query("SELECT name FROM users WHERE id = '{$currentUserID}'");
+    while($row = mysqli_fetch_array($query)){
+      $e_name =$row['name'];
+    }
+    // END query Statement
     }else{
-      $currentUserID = (int)$user['id'];
+     $currentUserID = (int)$user['id'];
+     $e_name = $user['name'];
     }
      $l_types = remove_junk($db->escape($_POST['leavetypes']));
      $l_description  = remove_junk($db->escape($_POST['description']));
@@ -39,13 +46,12 @@ $amount_days = round($datediff / (60 * 60 * 24) + 1); // prints the how many day
 
 $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to the remaining days of leave allowed
 
-     
 
      $date    = make_date();
      $query  = "INSERT INTO tblleaves (";
-     $query .=" LeaveType,Description,FromDate,ToDate,Status,IsRead,empid,amount_of_days,remaining_days,emp_read";
+     $query .=" LeaveType,Description,FromDate,ToDate,Status,IsRead,empid,amount_of_days,remaining_days,emp_read,emp_name";
      $query .=") VALUES (";
-     $query .=" '{$l_types}', '{$l_description}', '{$l_fromDate}', '{$l_toDate}', '{$status}', '{$isread}', '{$currentUserID}', '{$amount_days}', '{$remaining_days}', '0'";
+     $query .=" '{$l_types}', '{$l_description}', '{$l_fromDate}', '{$l_toDate}', '{$status}', '{$isread}', '{$currentUserID}', '{$amount_days}', '{$remaining_days}', '0','{$e_name}'";
      $query .=")";
      $query .=" ON DUPLICATE KEY UPDATE LeaveType='{$l_types}'";
      if($l_fromDate > $l_toDate){

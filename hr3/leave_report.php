@@ -101,17 +101,17 @@
               $user = current_user();
               $userid = (int)$user['id'];
 
-              $sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,u.username";
-              $sql .=" FROM tblleaves l";
-              $sql .=" LEFT JOIN users u ON u.id = l.empid";
-              $sql .=" WHERE l.Status = 1";
+              $sql  =" SELECT id,LeaveType,FromDate,ToDate,Description,PostingDate,AdminRemarkDate,AdminRemark,Status,empid,amount_of_days,remaining_days,emp_name";
+              $sql .=" FROM tblleaves";
+              // $sql .=" LEFT JOIN users u ON u.id = l.empid";
+              $sql .=" WHERE Status = 1";
               $sql .=" ORDER BY id DESC";
               if($result = $conn->query($sql)){
               while ($row = $result -> fetch_row()) {
               ?>
               <tr>
                 <td class="text-center"><?php echo count_id();?></td>
-                <td class="text-center"><?php echo $row[10];?></td>
+                <td class="text-center"><?php echo $row[12];?></td>
                 <td class="text-center"> <?php echo remove_junk($row[1]); ?></td>
                 <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[2])); echo $posting_date; ?></td>                   
                 <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[3])); echo $posting_date; ?></td> 

@@ -9,9 +9,11 @@
   <!-- All Bootstrap Links -->
       <link rel="stylesheet" href="libs/css/bootstrap.min.css" />
       <link rel="stylesheet" href="libs/css/dataTables.bootstrap5.min.css" />
-      <link rel="stylesheet" href="libs/css/style.css" />
+      <link rel="stylesheet" href="libs/css/style.css?v=<?php echo time(); ?>" />
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-<!-- End of Links -->
+
+  <!-- End of Links -->
+
 
     <title><?php if (!empty($page_title))
            echo remove_junk($page_title);
@@ -57,8 +59,8 @@
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="topNavBar">
+    </button> -->
+    <!-- <div class="collapse navbar-collapse" id="topNavBar">
       <form class="d-flex ms-auto my-3 my-lg-0">
         <div class="input-group">
           <input
@@ -82,12 +84,12 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-          <img src="../uploads/users/<?php echo $user['image'];?>" width="30" height="30" class="rounded-circle"> <span class="badge rounded-pill bg-success"><?php echo remove_junk(ucfirst($user['name'])); ?></span>
+          <img src="../uploads/users/<?php echo $user['image'];?>" width="30" height="30"  border="1px solid" class="rounded-circle"> <?php echo remove_junk(ucfirst($user['name'])); ?>
      </a>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="../profile.php?id=<?php echo (int)$user['id'];?>"><i class="bi bi-person-badge-fill"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="../Settings.php"><i class="bi bi-gear-fill"></i> Settings</a></li>
+            <li><a class="dropdown-item" href="profile.php?id=<?php echo (int)$user['id'];?>"><i class="bi bi-person-badge-fill"></i> Profile</a></li>
+            <li><a class="dropdown-item" href="Settings.php"><i class="bi bi-gear-fill"></i> Settings</a></li>
             <li>
               <a class="dropdown-item" href="../logout.php"><i class="bi bi-door-open-fill"></i> Log-out</a>
             </li>

@@ -90,9 +90,9 @@
 									<h4 style="text-align:left">Logout time: <?#= htmlspecialchars($logout_time) ?></h4>
 									<input type="datetime" name="type2" class="form-control" value="<?= htmlspecialchars($logout_time) ?>"></br>
 									
-									<input type="submit" name="update" class="btn btn-primary" value="Update">
-									</form></br>
-									<button name="cancel" class="btn" onclick="location.href='timesheet_index.php'">Cancel</button>
+									<input style="float:right; margin-left: 20px; " type="submit" name="update" class="btn btn-success" value="Update">
+									</form>
+									<button style="float:right;" name="cancel" class="btn btn-danger" onclick="location.href='timesheet_index.php'">Cancel</button>
 									</div>
 									</div>
 									</div>

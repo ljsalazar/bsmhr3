@@ -74,9 +74,9 @@
 								<div class="form-group">
 									<input required type="datetime-local" class="form-control" name="todate" value="<?php echo date('Y-m-d'); ?>" />
 								</div></br>
-								<button type="submit" name="generate" class="btn btn-primary" value="generate">Generate Report</button>
-							</form></br>
-							<button name="cancel" class="btn" onclick="location.href='timesheet_index.php'">Cancel</button>
+								<button style="float:right;" type="submit" name="generate" class="btn btn-success" value="generate">Generate Report</button>
+							</form>
+							<button style="float:right; margin-right: 20px" type="submit" name="cancel" class="btn btn-danger" onclick="location.href='timesheet_index.php'">Cancel</button>
 						</div>
 					</div>
 				</div>

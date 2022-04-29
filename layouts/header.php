@@ -84,7 +84,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-          <img src="uploads/users/<?php echo $user['image'];?>" width="30" height="30" class="rounded-circle"> <span class="badge rounded-pill bg-success"><?php echo remove_junk(ucfirst($user['name'])); ?></span>
+          <img src="uploads/users/<?php echo $user['image'];?>" width="30" height="30"  border="1px solid" class="rounded-circle"> <?php echo remove_junk(ucfirst($user['name'])); ?>
      </a>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">

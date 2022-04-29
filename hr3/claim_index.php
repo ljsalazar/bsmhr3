@@ -1,4 +1,4 @@
-1<?php
+<?php
 	$page_title = 'Request Claims';
 	require_once('includes/load.php');
 	// Checkin What level user has permission to view this page
@@ -22,7 +22,7 @@
 	<head>
 		<meta name="generator"
 		content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
-		<title>Request Claims</title>
+		<title></title>
 	</head>
 	<body>
 		<div class="row">
@@ -116,12 +116,12 @@
 										<table id="example" class="table table-striped data-table" style="width:100%">
 											<thead>
 												<tr>
-													<th class="text-center" style="width: 50px;">User</th>
-													<th class="text-center" style="width: 50px;">Leave Type</th>
-													<th class="text-center" style="width: 50px;">Posting Date</th>
-													<th class="text-center" style="width: 50px;">From-To</th>
+													<th class="text-left" style="width: 50px;">User</th>
+													<th class="text-left" style="width: 50px;">Leave Type</th>
+													<th class="text-left" style="width: 50px;">Posting Date</th>
+													<th class="text-left" style="width: 50px;">From-To</th>
 													<?php if ($user_level <= 2){?>
-														<th class="text-center" style="width: 50px;">Options</th>
+														<th class="text-left" style="width: 50px;">Options</th>
 													<?php }?>
 												</tr>
 											</thead>
@@ -151,12 +151,12 @@
 														while ($row = $result -> fetch_row()) {
 														?>
 														<tr>
-															<td class="text-center"> <?php echo remove_junk($row[12]); ?></td>
-															<td class="text-center"><?php echo remove_junk($row[1]); ?></td>                   
-															<td class="text-center"><?php echo read_date($row[5]); ?></td>
-															<td class="text-center"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
+															<td class="text-left"> <?php echo remove_junk($row[12]); ?></td>
+															<td class="text-left"><?php echo remove_junk($row[1]); ?></td>                   
+															<td class="text-left"><?php echo read_date($row[5]); ?></td>
+															<td class="text-left"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
 															<?php if ($user_level <= 2){?>
-																<td class="text-center"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="background-color:steelblue; color: whitesmoke;"> Action </a></td>
+																<td class="text-left"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="background-color:steelblue; color: whitesmoke;"> Action </a></td>
 															<?php }?>
 														</tr>
 														<?php } 
@@ -188,17 +188,17 @@
 													$userid = (int)$user['id'];
 													
 													if ($user_level <= 2){
-														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
-														$sql .=" FROM tblleaves l";
-														$sql .=" LEFT JOIN users u ON l.empid = u.id";
-														$sql .=" WHERE l.Status = 1 AND paid = 0";
+														$sql  =" SELECT id,LeaveType,FromDate,ToDate,Description,PostingDate,AdminRemarkDate,AdminRemark,Status,empid,amount_of_days,remaining_days,emp_name";
+														$sql .=" FROM tblleaves";
+														// $sql .=" LEFT JOIN users u ON l.empid = u.id";
+														$sql .=" WHERE Status = 1 AND paid = 0";
 														// $sql .=" WHERE l.empid= '{$userid}'";
 														$sql .=" ORDER BY id DESC";
 														} else {
-														$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
-														$sql .=" FROM tblleaves l";
-														$sql .=" LEFT JOIN users u ON l.empid = u.id";
-														$sql .=" WHERE l.Status = 1 AND paid = 0 AND empid='{$userid}'";
+														$sql  =" SELECT id,LeaveType,FromDate,ToDate,Description,PostingDate,AdminRemarkDate,AdminRemark,Status,empid,amount_of_days,remaining_days,emp_name";
+														$sql .=" FROM tblleaves";
+														// $sql .=" LEFT JOIN users u ON l.empid = u.id";
+														$sql .=" WHERE Status = 1 AND paid = 0 AND empid='{$userid}'";
 														$sql .=" ORDER BY id DESC";
 													}
 													if($result = $conn->query($sql)){

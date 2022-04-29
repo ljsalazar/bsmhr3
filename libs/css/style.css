@@ -547,25 +547,30 @@ hr .new1forprofile {
 /* Css for login page ---------------------------------------------------------*/
 
 .containerLog{
-  max-width: 440px;
-  padding: 0 20px;
-  margin: 160px;
-  
+  width: 440px;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
 }
+
 @media screen and (min-width: 1024px) {
      .containerLog{
-         margin-left: 350px;
+        width: 440px;
      }
 
 }
-
+a{
+  text-decoration:none;
+}
 
 
 .wrapperLog{
   width: 100%;
   background: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px 5px rgba(0,0,0,0.1);
+
 }
 .wrapperLog .title{
   height: 90px;
@@ -577,15 +582,16 @@ hr .new1forprofile {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .wrapperLog .title p{
   font-size: 11px;
 }
 .wrapperLog form{
-  padding: 30px 25px 25px 25px;
+  padding: 50px 25px 25px 25px;
 }
 .wrapperLog form .row{
-  height: 45px;
+  height: 60px;
   margin-bottom: 15px;
   position: relative;
 }
@@ -613,7 +619,7 @@ hr .new1forprofile {
   color: #fff;
   font-size: 18px;
   background: #343a40;
-  border: 1px solid #16a085;
+  border: 1px;
   border-radius: 5px 0 0 5px;
   display: flex;
   align-items: center;
@@ -636,7 +642,7 @@ hr .new1forprofile {
   font-weight: 500;
   padding-left: 0px;
   background: #343a40;
-  border: 1px solid #16a085;
+  border: 1px ;
   cursor: pointer;
 }
 .formlog .button button:hover{

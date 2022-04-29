@@ -1,5 +1,8 @@
 <?php
 	require_once('includes/load.php');
+	// // Functions for Leaves JOIN Table
+	// $leaves = join_leaves_table();
+		$count_id = count_id();
 	//include connection file
 	Class dbObj{
 		/* Database connection start */
@@ -65,29 +68,30 @@
 		$fromdate = $_POST['fromdate'];
 		$todate = $_POST['todate'];
 		
-// 		if ($user_level == 1){
-// 			$result = mysqli_query($connString, "SELECT LeaveType, FromDate, ToDate, AdminRemarkDate FROM tblleaves WHERE PostingDate >= '$fromdate' 
-// AND PostingDate <= '$todate' AND status = 1 ORDER BY PostingDate ASC");
-// 		} else {
-// 			$result = mysqli_query($connString, "SELECT LeaveType, FromDate, ToDate, AdminRemarkDate FROM tblleaves WHERE PostingDate >= '$fromdate' 
-// AND PostingDate <= '$todate' AND username = '$username' AND status = 1 ORDER BY PostingDate ASC");		
-// 		}
-if ($user_level == 1){
 
-	$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name,u.username,u.status";
-	$sql .=" FROM tblleaves l";
-	$sql .=" LEFT JOIN users u ON l.empid = u.id";
-	$sql .=" WHERE l.PostingDate >= '$fromdate' AND l.PostingDate <= '$todate' AND u.status = 1 ";
-	$sql .=" ORDER BY id DESC";
-	}else{
-	  $sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
-	  $sql .=" FROM tblleaves l";
-	  $sql .=" LEFT JOIN users u ON l.empid = u.id";
-	  $sql .=" WHERE l.PostingDate >= '$fromdate' AND l.PostingDate <= '$todate' AND u.username = '$username'  AND u.status = 1 ";
-	  $sql .=" ORDER BY id DESC";
-	}
-	if($result = mysqli_query($connString,$sql)){
-	while ($row = $result -> fetch_row()) {
+		if ($user_level == 1){
+			$result = mysqli_query($connString, "SELECT emp_name, LeaveType, amount_of_days, AdminRemarkDate FROM tblleaves WHERE PostingDate >= '$fromdate' 
+		AND PostingDate <= '$todate' AND status = 1 ORDER BY PostingDate ASC");
+				} else {
+					$result = mysqli_query($connString, "SELECT emp_name, LeaveType, amount_of_days, AdminRemarkDate FROM tblleaves WHERE PostingDate >= '$fromdate' 
+		AND PostingDate <= '$todate' AND username = '$username' AND status = 1 ORDER BY PostingDate ASC");		
+				}
+// if ($user_level == 1){
+
+// 	$sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name,u.username,u.status";
+// 	$sql .=" FROM tblleaves l";
+// 	$sql .=" LEFT JOIN users u ON l.empid = u.id";
+// 	$sql .=" WHERE l.PostingDate >= '$fromdate' AND l.PostingDate <= '$todate' AND u.status = 1 ";
+// 	$sql .=" ORDER BY l.id DESC";
+// 	}else{
+// 	  $sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
+// 	  $sql .=" FROM tblleaves l";
+// 	  $sql .=" LEFT JOIN users u ON l.empid = u.id";
+// 	  $sql .=" WHERE l.PostingDate >= '$fromdate' AND l.PostingDate <= '$todate' AND u.username = '$username'  AND u.status = 1 ";
+// 	  $sql .=" ORDER BY l.id DESC";
+// 	}
+// 	if($result = mysqli_query($connString,$sql)){
+	// while ($row = $result -> fetch_row()) {
 	
 		$pdf = new PDF();
 		$pdf->SetLeftMargin(14.5);
@@ -96,39 +100,38 @@ if ($user_level == 1){
 		//foter page
 		$pdf->AliasNbPages();
 		$pdf->SetFont('Arial','',10);
-		$pdf->Cell(10,10,'#',1,);
 		$pdf->Cell(40,10,'Employee Name',1,);
-		$pdf->Cell(40,10,'Leave types',1,);
-		$pdf->Cell(43,10,'From-To (mm-dd-yy)',1,);
-		$pdf->Cell(20,10,'No. of Days',1,);
-		$pdf->Cell(40,10,'Remark Date',1,);
+		$pdf->Cell(40,10,'Types of Leave',1,);
+		$pdf->Cell(40,10,'No. of Days',1,);
+		$pdf->Cell(40,10,'Remarks Date',1,);
 
 		$bruh = array(35, 35, 35, 20, 50);
 		
 		foreach($header as $heading) {
 		}
-		// foreach($result as $row) {
+		foreach($result as $rows) {
 			$pdf->Ln();
 					$plus = "0";
-			// foreach($row as $column) {
-				// $pdf->Cell($bruh[$plus],10,$column,1,);
+			foreach($rows as $row) {
+				// $pdf->Cell($bruh[$plus],10,$row,1,);
 				// $plus+=1;
-				 $pdf->Cell(10,8,$row[0],1,);
-				 $pdf->Cell(40,8,$row[12],1,);
-				 $pdf->Cell(40,8,$row[1],1,);
-				 $fdate = date("m-j-Y", strtotime($row[2]));
-				 $tdate = date("m-j-Y", strtotime($row[3]));
-				 $pdf->Cell(43,8,$fdate." - ".$tdate,1,);
-				 if($row[10]<="1"){
-				 $pdf->Cell(20,8,"   ".$row[10]." Day",1,);	 
-				 }else{
-				 $pdf->Cell(20,8,"   ".$row[10]." Days",1,);
-				 }
-				 $posting_date = date("F j, Y - g:i a", strtotime($row[6]));
-				 $pdf->Cell(40,8,$posting_date,1,);
+				$pdf->Cell(40,8,$row,1,);
 
+				 // $pdf->Cell(10,8,$count_id,1,);
+				 // $pdf->Cell(40,8,$name,1,);
+				 // $pdf->Cell(40,8,$row[0],1,);
+				 // $fdate = date("m-j-Y", strtotime($row[1]));
+				 // $tdate = date("m-j-Y", strtotime($row[2]));
+				 // $pdf->Cell(43,8,$fdate." - ".$tdate,1,);
+				 // if($row[3]<="1"){
+				 // $pdf->Cell(20,8,"   ".$row[3]." Day",1,);	 
+				 // }else{
+				 // $pdf->Cell(20,8,"   ".$row[3]." Days",1,);
+				 // }
+				 // $AdminRemarkDate = date("F j, Y-g:i a", strtotime($row[4]));
+				 // $pdf->Cell(40,8,$AdminRemarkDate,1,);
 			}
 		}
 		$pdf->Output();
-	}
+}
 ?>
