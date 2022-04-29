@@ -140,69 +140,69 @@ $Collections=$Expense['Collection'];
 <!-- Starting point for HR3 Data Analytics -->
 
 <?php
-	$claim          = count_by_claim('claim');
-	$reimbursements          = count_by_reimbursements('reimbursements');
-	$tblleaves          = count_by_id('tblleaves');
-	$schedules 		= count_by_id('tblschedule');
+  $claim          = count_by_claim('claim');
+  $reimbursements          = count_by_reimbursements('reimbursements');
+  $tblleaves          = count_by_id('tblleaves');
+  $schedules    = count_by_id('tblschedule');
 ?>
 <div class="col-md-13">
-	<div class="card h-100">
+  <div class="card h-100">
         <div class="card-body">
-			
+      
         <div class="row">
         
     <div class="col-md-3 mb-3">
-      <div class="card bg-primary text-white h-100">
-        <div class="card-body py-5"><h4><?php  echo $claim['total']; ?> <br><span><i class="bi bi-bank"></i> Claims </span></h4></div>
+      <div class="card bg-primary text-black h-100">
+        <div class="card-body py-5"><h4> <br><span><i class="bi bi-safe-fill"></i> <?php  echo $claim['total']; ?> Claims </span></h4></div>
           <div class="card-footer d-flex">
-            <a href="hr3/claim_history.php" style="color:white;">View Details</a>
+            <a href="hr3/claim_history.php" style="color:black; ">View Details</a>
               <span class="ms-auto">
               <i class="bi bi-chevron-right"></i>
               </span>
-						</div>
-					</div>
-				</div>
-				
+            </div>
+          </div>
+        </div>
+        
         <div class="col-md-3 mb-3">
       <div class="card bg-warning text-black h-100">
-        <div class="card-body py-5"><h4><?php  echo $reimbursements['total']; ?> <br><span><i class="bi bi-bank2"></i> Reimbursed </span></h4></div>
+        <div class="card-body py-5"><h4> <br><span><i class="bi bi-wallet-fill"></i> <?php  echo $reimbursements['total']; ?> Reimbursed </span></h4></div>
           <div class="card-footer d-flex">
             <a href="hr3/reimbursement_history.php" style="color:black;">View Details</a>
               <span class="ms-auto">
               <i class="bi bi-chevron-right"></i>
               </span>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-3 mb-3">
-      <div class="card bg-info text-black h-100">
-        <div class="card-body py-5"><h4><?php  echo $tblleaves['total']; ?> <br><span><i class="bi bi-briefcase-fill"></i> Leaves </span></h4></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-3 mb-3">
+      <div class="card bg-success text-black h-100">
+        <div class="card-body py-5"><h4> <br><span><i class="bi bi-briefcase-fill"></i> <?php  echo $tblleaves['total']; ?> Leaves </span></h4></div>
           <div class="card-footer d-flex">
             <a href="hr3/leave_management.php" style="color:black;">View Details</a>
               <span class="ms-auto">
               <i class="bi bi-chevron-right"></i>
               </span>
-						</div>
-					</div>
-				</div>
+            </div>
+          </div>
+        </div>
 
         <div class="col-md-3 mb-3">
-      <div class="card bg-danger text-white h-100">
-        <div class="card-body py-5"><h4><?php  echo $schedules['total']; ?> <br><span><i class="bi bi-calendar-fill"></i> Schedules </span></h4></div>
+      <div class="card bg-danger text-black h-100">
+        <div class="card-body py-5"><h4> <br><span><i class="bi bi-calendar-fill"></i> <?php  echo $schedules['total']; ?> Schedules </span></h4></div>
           <div class="card-footer d-flex">
-            <a href="hr3/schedule_management.php" style="color:white;">View Details</a>
+            <a href="hr3/schedule_management.php" style="color:black;">View Details</a>
               <span class="ms-auto">
               <i class="bi bi-chevron-right"></i>
               </span>
-						</div>
-					</div>
-				</div>
-				
-				
-			</div>
-		</div>
-	</div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
 </div>
 
 

@@ -34,9 +34,9 @@
   <div class="col-md-12 mb-3">
     <div class="card">
       <div class="card-header">
-        <span class="badge rounded-pill bg-success"><i class="bi bi-table"></i>User management Table</span>
+     
          <div class="text-end">
-          <a href="add_user.php" class="btn btn-info pull-right"> Add New User</a>
+          <a href="add_user.php" class="btn btn-success pull-right"> Add New User</a>
          </div>
       </div>
       <div class="card-body">
@@ -100,7 +100,7 @@
             </tr>
             <?php else: ?>
               <tr>
-               <td class="text-center"><?php echo count_id();?></td>
+               <td><?php echo count_id();?></td>
                <td><?php echo remove_junk(ucwords($a_user['name']))?></td>
                <td><?php echo remove_junk(ucwords($a_user['username']))?></td>
                <td><?php echo remove_junk(ucwords($a_user['group_name']))?></td>
@@ -127,18 +127,7 @@
           <?php endif; ?>
         <?php endforeach;?>
        </tbody>
-       <tfoot>
-         <tr>
-           <th>#</th>
-           <th>Name </th>
-           <th>Username</th>
-           <th>User Role</th>
-           <th>Department</th>
-           <th>Status</th>
-           <!-- <th>Last Login</th> -->
-           <th>Actions</th>
-         </tr>
-       </tfoot>
+      
      </table>
    </div>
  </div>

@@ -82,9 +82,9 @@ $result = $db->query($sql);
               $user = current_user();
               $userid = (int)$user['id'];
 
-              $sql  =" SELECT l.id,l.LeaveType,l.FromDate,l.ToDate,l.Description,l.PostingDate,l.AdminRemarkDate,l.AdminRemark,l.Status,l.empid,l.amount_of_days,l.remaining_days,u.name";
-              $sql .=" FROM tblleaves l";
-              $sql .=" LEFT JOIN users u ON l.empid = u.id";
+              $sql  =" SELECT id,LeaveType,FromDate,ToDate,Description,PostingDate,AdminRemarkDate,AdminRemark,Status,empid,amount_of_days,remaining_days,emp_name";
+              $sql .=" FROM tblleaves";
+              // $sql .=" LEFT JOIN users u ON l.empid = u.id";
               // $sql .=" WHERE l.empid= '{$userid}'";
               $sql .=" ORDER BY id DESC";
               if($result = $conn->query($sql)){
