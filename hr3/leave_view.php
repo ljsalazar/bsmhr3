@@ -141,7 +141,8 @@
 									?>
 									<tr>
 										<td colspan="5">
-											<a href="leave_approval_form.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:steelblue; color: whitesmoke;"> Take Action</a>
+											<!-- <a href="leave_approval_form.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:steelblue; color: whitesmoke;"> Take Action</a> -->
+											<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Take Action</button>
 											
 										</td>
 									</tr>
@@ -150,6 +151,45 @@
 							<?php } }?>
 					</tbody>
 				</table>
+
+				<!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header bg-secondary">
+                      <h5 class="modal-title" id="exampleModalLabel" style="Color:white">Leave Approval prompt</h5>
+                      <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close">
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="leave_approval_form.php?id=<?php echo (int)$_GET['id'] ?>" method="POST">
+                      <div class="form-group">
+                            <label for="status" class="control-label">APPROVAL OPTION</label>
+                            <select class="form-control btn-default" name="status" required>
+                                            <option value=""></option>
+                                            <option value="1">Approved</option>
+                                            <option value="2">Not Approved</option>
+                                        </select>
+                      </div>
+                      <br>
+                      <div class="form-group">
+                            <label for="remarks" class="control-label">REMARKS</label>
+                            <textarea rows="4" class="form-control" name="remarks" placeholder="" length="500" maxlength="500" required></textarea>
+                      </div>
+                    </div>
+                    <div class="modal-footer bg-secondary">
+                      <input type="hidden" name="id" value="<?php echo (int)$_GET['id'] ?>" readonly>
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancel</button>
+                       <button type="Submit" name="update" class="btn btn-success"><i class="bi bi-check-circle-fill"></i> OK</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END OF MODAL -->
+
+
+
 			</div>
 		</div>
 	</div>
