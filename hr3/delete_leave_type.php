@@ -10,8 +10,9 @@
 
 <?php
 if(isset($_POST['btn_delete_leave_type'])){
-  
-  $delete_l_id = $_POST['id'];
+  $l_types = remove_junk($db->escape($_POST['leavetypes']));
+  $l_description  = remove_junk($db->escape($_POST['description']));
+  $delete_l_id = $_POST['leavetypes_id'];
      $query  = "DELETE FROM tblleavetype WHERE id = '{$delete_l_id}'";
      if($db->query($query)){
        $session->msg('d',"Leave Type Deleted! ");
@@ -46,23 +47,13 @@ if(isset($_POST['btn_delete_leave_type'])){
                 // $query .=" ON DUPLICATE KEY UPDATE name='{$currentUser}'";
                 // $db->query($query);             
 
-                $req_fields = array('a_leave_type','a_description');
-                validate_fields($req_fields);
-                if(empty($errors)){
-                //Query Statement for Archiving Leave Type...
-                $a_leavetype = $_POST['a_leave_type'];
-                $a_description = $_POST['a_description'];
+                
                 $query  = "INSERT INTO tblleavetype_archive (";
                 $query .=" LeaveType,Description";
                 $query .=") VALUES (";
-                $query .=" '{$a_leavetype}', '{$a_description}'";
+                $query .=" '{$l_types}', '{$l_description}'";
                 $query .=")";
-                $db->query($query);
-                }
-                 else{
-            $session->msg("d", "Invalid Deletion");
-            redirect('leave_type.php',false);
-              }             
+                $db->query($query);            
 
 
        redirect('leave_type.php', false);
@@ -87,7 +78,7 @@ if(isset($_POST['btn_delete_leave_type'])){
         <form action="delete_leave_type.php" method="POST">
             <div class="card-body">
               <p>Are you sure you want to delete this Leave Type ?</p>
-                <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                <input type="hidden" name="leavetypes_id" value="<?php echo $_GET['id'] ?>">
                 <?php 
                 //==================================================
                 //Query Statement for leave history

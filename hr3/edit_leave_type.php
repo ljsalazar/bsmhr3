@@ -24,7 +24,7 @@ validate_fields($req_fields);
    if(empty($errors)){
      $l_types = remove_junk($db->escape($_POST['leavetypes']));
      $l_description  = remove_junk($db->escape($_POST['description']));
-     $l_id = remove_junk($db->escape($_POST['id']));
+     $l_id = remove_junk($db->escape($_POST['leavetypes_id']));
      //SQL Statement Update leave type
      $query  ="UPDATE tblleavetype SET LeaveType='{$l_types}',Description='{$l_description}'";
      $query .=" WHERE id = '{$l_id}'";
@@ -94,7 +94,7 @@ validate_fields($req_fields);
               <p>Leave Type:</p>
                 <div class="row">
                   <div class="col-md-6">
-                    <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
+                    <input type="hidden" name="leavetypes_id" value="<?php echo $_GET['id'];?>">
                     <input type="text" name="leavetypes" class="form-control" value="<?php echo $row[1]; ?>">
                   </div>
               </div>
