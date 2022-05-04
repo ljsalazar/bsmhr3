@@ -1,5 +1,5 @@
 <?php
-  $page_title = 'Schedule ';
+  $page_title = 'Schedule';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
    page_require_level(3);
@@ -44,7 +44,7 @@ $result = $db->query($sql);
       <?php elseif($user['user_level'] === '3'): ?>
         <!-- User menu -->
         <nav class="breadcrumbs">
-        <a href="schedule.php" class="breadcrumbs__item is-active">Your Schedule</a>
+        <a href="schedule.php" class="breadcrumbs__item is-active">Schedule</a>
         </nav>
       
     <?php endif;?>
@@ -53,7 +53,7 @@ $result = $db->query($sql);
      <div class="col-md-12">
      <div class="card h-100">
 					<div class="card-header">
-          <h2>Shift and Scheduling:</h2>
+         
           <div class="pull-right">
            <a href="generate_schedule_report.php?id=<?php $user = current_user();
     $userid = (int)$user['id']; echo $userid; ?>" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open"></span>Print</a>

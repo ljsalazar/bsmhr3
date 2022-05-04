@@ -172,11 +172,11 @@
 									while ($row = $result -> fetch_row()) {
 									?>
 									<tr>
-										<td class="text-center"> <?php echo count_id(); ?></td>
-										<td class="text-center"> <?php echo remove_junk($row[1]); ?></td>
-										<td class="text-center"><?php $f_time = date("g:i a", strtotime($row[2])); echo $f_time; ?></td>                   
-										<td class="text-center"><?php $f_time = date("g:i a", strtotime($row[3])); echo $f_time; ?></td>
-										<td class="text-center">
+										<td class="text-left"> <?php echo count_id(); ?></td>
+										<td class="text-left"> <?php echo remove_junk($row[1]); ?></td>
+										<td class="text-left"><?php $f_time = date("g:i a", strtotime($row[2])); echo $f_time; ?></td>                   
+										<td class="text-left"><?php $f_time = date("g:i a", strtotime($row[3])); echo $f_time; ?></td>
+										<td class="text-left">
 											<a href="edit_shift.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="bi bi-pencil-fill"></i></a>
 											<a href="delete_shift.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Remove"><i class="bi bi-eraser-fill"></i></a>
 										</td>  

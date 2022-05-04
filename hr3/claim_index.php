@@ -37,7 +37,7 @@
 				<nav class="breadcrumbs">
 					<a href="claim_type.php" class="breadcrumbs__item">Types of Claims</a>
 					<a href="claim_history.php" class="breadcrumbs__item">Claims History <?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a>
-					<a href="claim_index.php" class="breadcrumbs__item is-active">Request Claims</a>
+					<a href="claim_index.php" class="breadcrumbs__item is-active">Appoint Claims</a>
 				</nav>
 				
 				<?php else: ?>
@@ -51,8 +51,8 @@
 					<div class="card h-100">
 						<div class="card-header">
 						<?php if ($user_level <= '2'): ?>
-							<h2>Request</h2>
-							<p>Provide a type of claim for a user</p>
+							<h2 style="text-align:center;">CLAIM FORM</h2>
+						
 						<?php else: ?>
 							<h2>Payable Leaves</h2>
 							<p>Suitable payable leaves</p>
@@ -80,12 +80,13 @@
 								echo "<script>window.location.href='claim_index.php';</script>";
 							}
 						?>
-						<div class="panel-body" style="margin:50px">
+						<div class="card-body">
 							<form method="post" action="claim_index.php">
 								<?php if ($user_level <= '2'): ?>
 								<p>Select Claim: </p>
 								<div class="form-group">
-									<select required class="form-control" name="claim" placeholder="Claim Type">
+									<select required class="form-select form-select-md" name="claim">
+										  <option value="">Choose type</option>
 										<?php
 											$query = $conn->query("SELECT type FROM claim_type_admin");
 											
@@ -97,8 +98,10 @@
 								</div>
 								</br>
 								<div class="form-group">
-									<p>Select User:</p>
-									<select class="form-control" name="user_selected" placeholder="Claim Type"><?php
+									<p>Select Employee:</p>
+									<select class="form-select form-select-md" name="user_selected" >
+										  <option value="">Appoint claim to</option>
+										<?php
 										$query = $conn->query("SELECT name FROM users");
 										
 										while($row = mysqli_fetch_array($query)){
@@ -110,7 +113,8 @@
 								</br>
 								<button type="submit" name="add_claim" class="btn btn-primary" value="add_claim">Add</button>
 								</br></br></br>
-								<h4>Payable Leaves</h4></br>
+
+								<h4 style="text-align:center;">PAYABLE LEAVES</h4>
 								<div class="panel-body">
 									<div style="max-height:600px">
 										<table id="example" class="table table-striped data-table" style="width:100%">
@@ -121,7 +125,7 @@
 													<th class="text-left" style="width: 50px;">Posting Date</th>
 													<th class="text-left" style="width: 50px;">From-To</th>
 													<?php if ($user_level <= 2){?>
-														<th class="text-left" style="width: 50px;">Options</th>
+														<th class="text-left" style="width: 50px; ">Options</th>
 													<?php }?>
 												</tr>
 											</thead>
@@ -156,7 +160,7 @@
 															<td class="text-left"><?php echo read_date($row[5]); ?></td>
 															<td class="text-left"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
 															<?php if ($user_level <= 2){?>
-																<td class="text-left"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="background-color:steelblue; color: whitesmoke;"> Action </a></td>
+																<td class="text-center"><a href="payable_option.php?id=<?php echo remove_junk($row[0]);?>"class="btn btn-xs btn-success" data-toggle="tooltip" title="View"><i class="bi bi-check-circle-fill"></i></a></td>
 															<?php }?>
 														</tr>
 														<?php } 

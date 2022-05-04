@@ -144,7 +144,7 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
         <a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
         <a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
         <a href="leave_management.php" class="breadcrumbs__item">Leave Management <?php if(!$totalAdminUnread==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$totalAdminUnread; ?></span><?php } ?></a>
-        <a href="apply_leave.php" class="breadcrumbs__item is-active">Apply Leave</a>
+        <a href="apply_leave.php" class="breadcrumbs__item is-active">Appoint Leave</a>
         </nav>
       
     <?php elseif($user['user_level'] === '2'): ?>
@@ -154,7 +154,7 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
         <a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
         <a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
         <a href="leave_management.php" class="breadcrumbs__item">Leave Management <?php if(!$totalAdminUnread==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$totalAdminUnread; ?></span><?php } ?></a>
-        <a href="apply_leave.php" class="breadcrumbs__item is-active">Apply Leave</a>
+        <a href="apply_leave.php" class="breadcrumbs__item is-active">Appoint Leave</a>
         </nav>
 
 
@@ -171,15 +171,16 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
   <div class="col-md-12">
     <div class="card h-100">
       <div class="card-header">
-         <h2>Leave Application</h2>
+         <h2 style="text-align: center;">LEAVE REQUEST FORM</h2>
         <form action="apply_leave.php" method="POST">
             <div class="card-body">
               <!-- This block is for appointing leave to user as an Admin or Super Admin -->
             <?php if ($user['user_level'] <= '2'): ?>
-              <p>Fill up those fields:</p>
+              <p>Please Fill up the form completely:</p>
               <div class="card-body">
-            <select class="form-control" name="user_selected" placeholder="Appoint Leave" required>
-              <option value="">Appoint leave to:</option>
+                <h6>Select Employee:</h6>
+            <select class="form-select form-select-md" name="user_selected" placeholder="Appoint Leave" required>
+              <option value="">Appoint leave to</option>
               <?php
 										$query = $conn->query("SELECT id,name FROM users");
 										while($row = mysqli_fetch_array($query)){
@@ -192,24 +193,17 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
                     <!-- End point -->
 
                   <div class="card-body">
-                    <select class="form-control btn-default" name="leavetypes">
-                      <option value="">Types of Leave...</option>
+                     <h6>Select Leave:</h6>
+                    <select class="form-select form-select-md" name="leavetypes">
+                      <option value="">Choose type</option>
                     <?php  foreach ($leavetype as $types): ?>
                       <option value="<?php echo $types['LeaveType'] ?>">
                         <?php echo $types['LeaveType'] ?></option>
                     <?php endforeach; ?>
                     </select>
                   </div>
-              <div class="card-body">
-                  <p>Description:</p>
-                    <div class="input_group">
-                    <textarea rows="4" class="form-control" name="description" placeholder=""></textarea>
-                     </div>
-                  </div>
-                </div>
-
-            <div class="card-body">
-              <p>From Date:</p>
+                          <div class="card-body">
+              <h6>Start Date:</h6>
                 <div class="input-group">
                   <span class="input-group-addon">
                    <i class="glyphicon glyphicon-calendar"></i>
@@ -219,7 +213,7 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
               </div>
 
               <div class="card-body">
-              <p>To Date:</p>
+              <h6>End Date:</h6>
                 <div class="input-group">
                   <span class="input-group-addon">
                    <i class="glyphicon glyphicon-calendar"></i>
@@ -227,6 +221,16 @@ $remaining_days = $amount_days - $consumed_days; // subtract the days elapsed to
                   <input type="date" class="form-control" name="toDate" placeholder="To Date" >
                </div>
               </div>
+
+              <div class="card-body">
+                  <h6>Reason of leave:</h6>
+                    <div class="input_group">
+                    <textarea rows="4" class="form-control" name="description" placeholder=""></textarea>
+                     </div>
+                  </div>
+                </div>
+
+    
 
                 <input type="submit" name="btn_apply_leave" value="APPLY" class="btn btn-primary" style="font-size:15px">         
          </form>

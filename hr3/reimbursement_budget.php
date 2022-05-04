@@ -50,16 +50,12 @@
 			<div class="col-md-12">
 				<div class="card h-100">
 					<div class="card-header">
-						<h2>Reimbursement Budget</h2>
-						<?php
-							// echo "<p>Hello, ".$name."!</p>";
-							echo "<p>Current Reimbursement budget: <b>".$reimbursement_budget." PHP</b></p>";
-						?>
-					</div>
+						<h2>Provide Budget</h2>
+									</div>
 					<div class="row">
 					<div class="col-md-5">
 						<div class="card-body">
-							<h6 style="text-align:left">Provide Budget</h6>
+						
 							<div style="max-height:300px; overflow:auto;">
 								<?php
 									$fullname = $user['name'];
@@ -82,7 +78,9 @@
 								<form method="post" action="">
 									<div class="form-group">
 										<p>Select User:</p>
-										<select class="form-control" name="user_selected" placeholder="Claim Type"><?php
+										<select class="form-control" name="user_selected" placeholder="Claim Type">
+										<option value="">Allocate to:</option>
+											<?php
 											$query = $conn->query("SELECT name FROM users");
 											
 											while($row = mysqli_fetch_array($query)){
@@ -102,7 +100,7 @@
 					
 					<div class="col-md-7">
 						<div class="card-body">
-							<h6 style="text-align:left">Budget</h6>
+							<h6 style="text-align:left">Allocated Budget</h6>
 							<table id="example" class="table table-striped data-table" style="width:100%">
 								<thead>
 									<tr>

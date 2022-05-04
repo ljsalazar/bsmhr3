@@ -54,10 +54,10 @@
 			<div class="col-md-12">
 				<div class="card h-100">
 					<div class="card-header">
-						<h2>Reimbursement Application</h2>
+						 <h2 style="text-align: center;">EXPENSE REIMBURSEMENT FORM</h2>
 						<?php
 							// echo "<p>Hello, ".$name."!</p>";
-							echo "<p>Current Reimbursement budget: <b>".$reimbursement_budget." PHP</b></p>";
+							echo "<p>Current budget: <b>".$reimbursement_budget." PHP</b></p>";
 							
 							if(isset($_POST['add_reimbursement'])) {    
 								$reimbursement = $_POST['reimbursement'];
@@ -109,27 +109,31 @@
 							}
 						?>
 					</div>
-					<div class="card-body" style="margin:50px">
+					<div class="card-body">
 						<form method="post" action="reimbursement_index.php" enctype="multipart/form-data">
 							<div class="form-group">
-								<p>Reimbursement Description</p>
+								<p>Reimbursement Description:</p>
 								<textarea required type="text" class="form-control" name="reimbursement" placeholder="Reimbursement"></textarea>
 								<!-- <input required type="text" class="form-control" name="reimbursement" placeholder="Reimbursement" /> -->
 							</div></br>
 							<div class="form-group">
-								<p>Date Reimbursed</p>
+							
+								<p>Date of Reimbursement:</p>
 								<input type="date" class="form-control" name="date" value="<?php echo date('Y-m-d'); ?>" />
 							</div>	</br>
 							<div class="form-group">
-								<p>Reimbursement Amount (PHP)</p>
-								<input required type="text" class="form-control" name="amount" placeholder="Amount" />
+								<p>Amount:</p>
+								<input required type="text" class="form-control" name="amount"/>
 							</div></br>
 							  <div class="form-group">
-							   <p>Upload a photo</p>
-							    <div class="input-group">
+							
+							    <div class="input-group mb-3">
+							      <input class="form-control" type="file" name="file" id="file" class="btn btn-secondary">
 							      <span class="input-group-text px-3 text-muted"><i class="bi bi-image"></i></span>
-							      <input type="file" name="file" id="file" class="btn btn-secondary">
 							    </div>
+
+					
+
 							  </div></br>
 							<button type="submit" name="add_reimbursement" class="btn btn-primary" value="add_reimbursement">Add</button>
 						</form>
