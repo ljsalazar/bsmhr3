@@ -15,7 +15,7 @@
 		<?php if($user['user_level'] === '1'): ?>
         <!-- admin menu -->
         <nav class="breadcrumbs">
-			<a href="apply_leave.php" class="breadcrumbs__item">Apply Leave</a>
+			<a href="apply_leave.php" class="breadcrumbs__item">Appoint Leave</a>
 			<a href="leave_history.php" class="breadcrumbs__item">Leave History</a>
 			<a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
 			<a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
@@ -25,7 +25,7 @@
 		<?php elseif($user['user_level'] === '2'): ?>
         <!-- Special menu -->
         <nav class="breadcrumbs">
-			<a href="apply_leave.php" class="breadcrumbs__item">Apply Leave</a>
+			<a href="apply_leave.php" class="breadcrumbs__item">Appoint Leave</a>
 			<a href="leave_history.php" class="breadcrumbs__item">Leave History</a>
 			<a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
 			<a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
@@ -156,28 +156,27 @@
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
-                    <div class="modal-header bg-secondary">
-                      <h5 class="modal-title" id="exampleModalLabel" style="Color:white">Leave Approval prompt</h5>
-                      <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close">
-                      </button>
+                    <div class="modal-header bg-dark text-white">
+                      <h5 class="modal-title" id="exampleModalLabel" style="Color:white">APPROVAL</h5>
+                  
                     </div>
                     <div class="modal-body">
                       <form action="leave_approval_form.php?id=<?php echo (int)$_GET['id'] ?>" method="POST">
                       <div class="form-group">
-                            <label for="status" class="control-label">APPROVAL OPTION</label>
-                            <select class="form-control btn-default" name="status" required>
+                            <label for="status" class="control-label">Choose option:</label>
+                            <select class="form-select form-select-md" name="status" required>
                                             <option value=""></option>
-                                            <option value="1">Approved</option>
-                                            <option value="2">Not Approved</option>
+                                            <option value="1"> ACCEPT APPLICATION</option>
+                                            <option value="2"> REJECT APPLICATION</option>
                                         </select>
                       </div>
                       <br>
                       <div class="form-group">
-                            <label for="remarks" class="control-label">REMARKS</label>
+                            <label for="remarks" class="control-label">Add Remarks:</label>
                             <textarea rows="4" class="form-control" name="remarks" placeholder="" length="500" maxlength="500" required></textarea>
                       </div>
                     </div>
-                    <div class="modal-footer bg-secondary">
+                    <div class="modal-footer">
                       <input type="hidden" name="id" value="<?php echo (int)$_GET['id'] ?>" readonly>
                       <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancel</button>
                        <button type="Submit" name="update" class="btn btn-success"><i class="bi bi-check-circle-fill"></i> OK</button>
@@ -187,7 +186,6 @@
                 </div>
               </div>
               <!-- END OF MODAL -->
-
 
 
 			</div>

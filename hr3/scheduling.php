@@ -70,11 +70,11 @@
             <table id="example" class="table table-striped data-table" style="width:100%">
             <thead>
               <tr>
-                <th class="text-center" style="width: 50px;">#</th>
-                <th class="text-center" style="width: 50px;">Employee Name</th>
-                <th class="text-center" style="width: 50px;">Username</th>
-                <th class="text-center" style="width: 100px;"> Status </th>
-                <th class="text-center" style="width: 100px;"> Action </th>
+                <th class="text-left" style="width: 50px;">#</th>
+                <th class="text-left" style="width: 50px;">Employee Name</th>
+                <th class="text-left" style="width: 50px;">Username</th>
+                <th class="text-left" style="width: 100px;"> Status </th>
+                <th class="text-left" style="width: 100px;"> Action </th>
               </tr>
             </thead>
             <tbody>
@@ -94,10 +94,10 @@
 
               ?>
               <tr>
-                <td class="text-center"><?php echo count_id();?></td>
-                <td class="text-center"> <?php echo remove_junk($row[1]); ?></td>
-                <td class="text-center"><?php echo remove_junk($row[2]); ?></td>                   
-                <td class="text-center"><?php $stats=(int)$row[6];
+                <td class="text-left"><?php echo count_id();?></td>
+                <td class="text-left"> <?php echo remove_junk($row[1]); ?></td>
+                <td class="text-left"><?php echo remove_junk($row[2]); ?></td>                   
+                <td class="text-left"><?php $stats=(int)$row[6];
                 if($stats==1){
                   ?>
                   <span style="color: green">Active</span>
@@ -108,7 +108,7 @@
                   <?php $stats=(int)$row[6];
                   if ($stats==1) {
                   ?>
-                  <td class="text-center"><a href="set_schedule.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-success" data-toggle="tooltip" title="Set Schedule"><i class="bi bi-calendar3"></i></a></td>
+                  <td class="text-left"><a href="set_schedule.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-success" data-toggle="tooltip" title="Set Schedule"><i class="bi bi-calendar3"></i></a></td>
                 <?php } } }?>
                 </tr>
 

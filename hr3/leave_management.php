@@ -25,7 +25,7 @@ $result = $db->query($sql);
       <?php if($user['user_level'] === '1'): ?>
         <!-- admin menu -->
         <nav class="breadcrumbs">
-        <a href="apply_leave.php" class="breadcrumbs__item">Apply Leave</a>
+        <a href="apply_leave.php" class="breadcrumbs__item">Appoint Leave</a>
         <a href="leave_history.php" class="breadcrumbs__item">Leave History</a>
         <a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
         <a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
@@ -35,7 +35,7 @@ $result = $db->query($sql);
     <?php elseif($user['user_level'] === '2'): ?>
         <!-- Special menu -->
         <nav class="breadcrumbs">
-        <a href="apply_leave.php" class="breadcrumbs__item">Apply Leave</a>
+        <a href="apply_leave.php" class="breadcrumbs__item">Appoint Leave</a>
         <a href="leave_history.php" class="breadcrumbs__item">Leave History</a>
         <a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
         <a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
@@ -55,7 +55,7 @@ $result = $db->query($sql);
         <div class="card-header">
           <!-- <h2>Leaves</h2> -->
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-           <a href="leave_credit.php" class="btn btn-success me-md-2">CREDIT <span class="bi bi-credit-card-fill"></a>
+           <a href="leave_credit.php" class="btn btn-success me-md-2">ADD CREDITS <span class="bi bi-credit-card-fill"></a>
           </div>
         </div>
         <div class="card-body">
@@ -63,15 +63,15 @@ $result = $db->query($sql);
             <table id="example" class="table table-striped data-table" style="width:100%">
             <thead>
               <tr>
-                <th class="text-center" style="width: 50px;">#</th>
-                <th class="text-center" style="width: 50px;">Employee Name</th>
-                <th class="text-center" style="width: 50px;">Leave Type</th>
-                <th class="text-center" style="width: 10%;"> Posting Date </th>
-                <th class="text-center" style="width: 10%;"> From-To </th>
-                <th class="text-center" style="width: 100px;"> Status </th>
-                <th class="text-center" style="width: 100px;"> Total Days </th>
-                <th class="text-center" style="width: 100px;"> Remaining Days </th>
-                <th class="text-center" style="width: 100px;"> Action </th>
+                <th class="text-left" style="width: 50px;">#</th>
+                <th class="text-left" style="width: 50px;">Employee Name</th>
+                <th class="text-left" style="width: 50px;">Leave Type</th>
+                <th class="text-left" style="width: 10%;"> Posting Date </th>
+                <th class="text-left" style="width: 10%;"> From-To </th>
+                <th class="text-left" style="width: 100px;"> Status </th>
+                <th class="text-left" style="width: 100px;"> Total Days </th>
+                <th class="text-left" style="width: 100px;"> Remaining Days </th>
+                <th class="text-left" style="width: 100px;"> Action </th>
               </tr>
             </thead>
             <tbody>
@@ -91,11 +91,11 @@ $result = $db->query($sql);
               while ($row = $result -> fetch_row()) {
               ?>
               <tr>
-                <td class="text-center"><?php echo count_id();?></td>
-                <td class="text-center"> <?php echo remove_junk($row[12]); ?></td>
-                <td class="text-center"><?php echo remove_junk($row[1]); ?></td>                   
-                <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[5])); echo $posting_date; ?></td>
-                <td class="text-center"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
+                <td class="text-left"><?php echo count_id();?></td>
+                <td class="text-left"> <?php echo remove_junk($row[12]); ?></td>
+                <td class="text-left"><?php echo remove_junk($row[1]); ?></td>                   
+                <td class="text-left"><?php $posting_date = date("F j, Y", strtotime($row[5])); echo $posting_date; ?></td>
+                <td class="text-left"><?php echo remove_junk("From:".$row[2]." To:".$row[3]); ?></td>
                 <td><?php $stats=(int)$row[8];
                 if($stats==1){
                   ?>
@@ -106,9 +106,9 @@ $result = $db->query($sql);
                     <span style="color: blue">waiting for approval</span>
                     <?php } ?>
                   </td>
-                <td class="text-center"><?php echo remove_junk($row[10]." Days"); ?></td>
-                <td class="text-center"><?php echo remove_junk($row[11]." Days"); ?></td>
-                <td class="text-center"><a href="leave_view.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-info" data-toggle="tooltip" title="View">
+                <td class="text-left"><?php echo remove_junk($row[10]." Days"); ?></td>
+                <td class="text-left"><?php echo remove_junk($row[11]." Days"); ?></td>
+                <td class="text-left"><a href="leave_view.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-info" data-toggle="tooltip" title="View">
                    <i class="bi bi-eye-fill"></i></a></td>
               </tr>
              <?php } }?>

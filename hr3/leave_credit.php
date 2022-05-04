@@ -52,7 +52,7 @@
 					<div class="card-header">
 						<h2>Leave Credits</h2>
 						<?php
-							echo "<p>Hello, <b>".$name."!</b></p>";
+							
 							echo "<p>Current Leave Credits: <b>".$credits."</b></p>";
 						?>
 					</div>
@@ -103,7 +103,11 @@
 									<div class="form-group">
 										<input required type="number" class="form-control" name="credit_leaves" placeholder="0" min="0" value="10" readonly />
 									</div></br>
-									<button type="submit" name="add_budget" class="btn btn-primary" value="add_budget">Add</button>
+									<button type="submit" name="add_budget" class="btn btn-primary " value="add_budget">Add</button>
+									<br>
+									<br>
+									<a href="leave_management.php" class="btn btn-danger">Cancel</a>
+								
 								</form>
 							</div>
 						</div>

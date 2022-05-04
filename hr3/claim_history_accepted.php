@@ -52,8 +52,7 @@
 						<div class="card-header">
 							<div class="row">
 								<div class="col-md-9">
-									<h2>Claims</h2>
-									<p>Browse the current claim history logs</p>
+							
 									<?php if ($user_level == 1): ?>
 									<a href="claim_archive.php" class="btn btn-danger">TRASH <span class="bi bi-trash3-fill"></span></a>
 									<?php endif;?>
@@ -62,7 +61,7 @@
 									<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 										<a href="claim_generate_index.php" class="btn btn-danger">PDF <span class="bi bi-filetype-pdf"></a>
 										<a href="claim_generate_index_excel.php" class="btn btn-success">EXCEL <span class="bi bi-filetype-xls"></a>
-									</div></br>
+									</div>
 								</div>
 							</div>
 						</div>

@@ -1,0 +1,37 @@
+1. all th & td = class="text-left" / leave_type.php
+2. Labels ng leave type
+3. color ng modal
+4. change nav name to appoint leave
+5. change apply leave.
+6. admin & hr - breadcrumbs change name to appoint leave
+7. Add cancel button on leave credits 
+8. LEAVE MANAGEMENT - TAKE ACTION MODAL
+9. LEAVE MANAGEMENT all th & td = class="text-left"
+10. note: restriction in hr staff can approve itself - pls change it!!!
+11.LEAVE report all th & td = class="text-left"
+12.Schedule manahement all th & td = class="text-left"
+13. Scheduling all th & td = class="text-left"
+14. Set shift th & td = class="text-left"
+14. edit shift th & td = class="text-left"
+15. remove shifting records in edit shift
+16. Add label on set-schdule  <p>Select shift:</p> <h2>Appoint Schedule</h2>
+17. scheduling radio button to switch
+18. changed edit in scheduling<div class="col-md-12">
+19. remove title of table in employee side (shift and scheduling)
+20. note: pls fix employee side schedule header dropdown button not clickable
+20. note: pls fix employee side ALL LEAVES header dropdown button not clickable
+21. Choose file design/ reimbursement index changed
+22. Edit account / choose file design changed
+23. Center the title of reimbursement form
+24. claim history title removed
+24. Claim type Table title Removed / placeholder removed
+25. Change claim_index class="form-select form-select-md"/ style="margin:20px"
+26. remove style margin at reimbursement_index.php
+27. change card panel into card body and remove style margin at claim_index.php
+28. add userinfo.php / add it to activitylog_user
+
+
+as of 5-4-22:
+29. schedule_view.php
+30.sched_approval_form.php
+31. edit_schedule.php

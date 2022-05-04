@@ -56,7 +56,7 @@ $result = $db->query($sql);
         <a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
         <a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
         <a href="leave_management.php" class="breadcrumbs__item">Leave Management <?php if(!$totalAdminUnread==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$totalAdminUnread; ?></span><?php } ?></a>
-        <a href="apply_leave.php" class="breadcrumbs__item is-active">Apply Leave</a>
+        <a href="apply_leave.php" class="breadcrumbs__item is-active">Appoint Leave</a>
         </nav>
       
     <?php elseif($user['user_level'] === '2'): ?>
@@ -66,7 +66,7 @@ $result = $db->query($sql);
         <a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
         <a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
         <a href="leave_management.php" class="breadcrumbs__item">Leave Management <?php if(!$totalAdminUnread==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$totalAdminUnread; ?></span><?php } ?></a>
-        <a href="apply_leave.php" class="breadcrumbs__item is-active">Apply Leave</a>
+        <a href="apply_leave.php" class="breadcrumbs__item is-active">Appoint Leave</a>
         </nav>
 
 

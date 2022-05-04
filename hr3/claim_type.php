@@ -30,7 +30,7 @@
 				?>
 				<?php if ($user_level <= '3'): ?>
 				<nav class="breadcrumbs">
-					<a href="claim_index.php" class="breadcrumbs__item">Request Claims</a>
+					<a href="claim_index.php" class="breadcrumbs__item">Appoint Claims</a>
 					<a href="claim_history.php" class="breadcrumbs__item">Claims History <?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a>
 					<a href="claim_type.php" class="breadcrumbs__item is-active">Types of Claims</a>
 				</nav>
@@ -45,8 +45,8 @@
 				<div class="col-md-12">
 					<div class="card h-100">
 						<div class="card-header">
-							<h2>Types</h2>
-							<p>Add an additional type of claim available</p>
+							<h2>ADD CLAIM TYPES</h2>
+							
 						</div>
 						<?php
 							$conn = new mysqli('localhost', 'root', '', 'bank') or die(mysqli_error());       
@@ -94,10 +94,10 @@
 										}
 									?>
 									
-									<h6 style="text-align:left">Add a Type of Claim</h6>
+									<h6 style="text-align:left">Claim name:</h6>
 									<form method="post" action="claim_type.php">
 										<div class="form-group">
-											<input required type="text" class="form-control" name="claim_type" placeholder="Claim Type" />
+											<input required type="text" class="form-control" name="claim_type" />
 										</div>
 										</br>
 										<button type="submit" name="add_claim_type" class="btn btn-primary">Add</button>
@@ -113,7 +113,7 @@
 									<div class="col-md-12">
 										<div class="card-body">
 											<?php endif;?>
-											<h6 style="text-align:left">Types of Claim</h6>
+											
 											<div style="max-height:600px">
 												<table id="example" class="table table-striped data-table" style="width:100%">
 													<thead>

@@ -90,8 +90,8 @@ if(empty($errors)){
   <div class="col-md-6">
   <div class="card h-100">
 			<div class="card-header">
-         <h2>Shift and Scheduling</h2>
-         <p>edit shift:</p>
+         <h2>EDIT SHIFT</h2>
+        
          <form method="post" action="edit_shift.php">
           <input type="hidden" name="id" value="<?php echo (int)$_GET['id']; ?>">
 
@@ -135,7 +135,7 @@ if(empty($errors)){
 
  </div>
   <!-- ==============MINI TABLE FOR SHIFT RECORDS============== -->
-<div class="col-md-6">
+<!-- <div class="col-md-6">
     <div class="panel">
       <div class="jumbotron">
         <div class="panel" style="width:100%; display:block; margin:auto">
@@ -162,18 +162,15 @@ if(empty($errors)){
               while ($row = $result -> fetch_row()) {
               ?>
     <tr>
-                <td class="text-center"> <?php echo remove_junk($row[1]); ?></td>
-                <td class="text-center"><?php $f_time = date("g:i a", strtotime($row[2])); echo $f_time; ?></td>                   
-								<td class="text-center"><?php $f_time = date("g:i a", strtotime($row[3])); echo $f_time; ?></td>
-          <td class="text-center">
-          <a href="edit_shift.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
-          <a href="delete_shift.php?id=<?php echo remove_junk($row[0]);?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
-        </td>  
+                <td class="text-left"> <?php echo remove_junk($row[1]); ?></td>
+                <td class="text-left"><?php $f_time = date("g:i a", strtotime($row[2])); echo $f_time; ?></td>                   
+								<td class="text-left"><?php $f_time = date("g:i a", strtotime($row[3])); echo $f_time; ?></td>
+        
     </tr>
     <?php } }?>
     </table>
   </div>
-</div>
+</div> -->
 <!-- ==================== ==============-->
 
 

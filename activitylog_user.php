@@ -5,7 +5,9 @@
 page_require_level(2);
 //pull out all user form database
  $all_users = find_all_user();
- $ip = $_SERVER['REMOTE_ADDR']; //client IP
+?>
+<?php 
+require('UserInfo.php');
 ?>
 <?php include_once('layouts/header.php'); ?>
 
@@ -23,26 +25,33 @@ page_require_level(2);
         </div>
         <div class="card-body">
           <!--<table class="table table-bordered"> datatablesSimple-->
-          <table id="datatablesSimple" class="table table-striped data-table" style="width:100%"">
+          <table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
             <thead>
               <tr>
-              <th class="text-center" style="width: 50px;">#</th>
+              <th class="text-left" style="width: 50px;">#</th>
                 <th>Name </th>
                 <th>Username</th>
-                <th class="text-center">User Role</th>
-                <th class="text-center">Last Login </th>
-                <th>IP Address </th>
+                <th class="text-left">User Role</th>
+                <th class="text-left">Last Login </th>
+                <th>Device</th>
+                <th>OS</th>
+                <th>IP</th>
+                  <th>Browser</th>
+
               </tr>
             </thead>
             <tbody>
             <?php foreach($all_users as $a_user): ?>
           <tr>
-                <td class="text-center"><?php echo count_id();?></td>
+                <td class="text-left"><?php echo count_id();?></td>
                 <td><?php echo remove_junk(ucwords($a_user['name']))?></td>
                 <td><?php echo remove_junk(ucwords($a_user['username']))?></td>
-                <td class="text-center"><?php echo remove_junk(ucwords($a_user['group_name']))?></td>
-                <td class="text-center"><?php $posting_date = date("F j, Y - g:i a", strtotime($a_user['last_login'])); echo $posting_date; ?></td>
-                <td><?php echo remove_junk($ip)?></td>
+                <td class="text-left"><?php echo remove_junk(ucwords($a_user['group_name']))?></td>
+                <td class="text-left"><?php $posting_date = date("F j, Y - g:i a", strtotime($a_user['last_login'])); echo $posting_date; ?></td>
+                <td><?= UserInfo::get_device();?></td>
+                <td><?= UserInfo::get_os();?></td>
+                <td><?= UserInfo::get_ip();?></td>
+                <td><?= UserInfo::get_browser();?></td>
               </tr>
               <?php endforeach; ?>
             </tbody>

@@ -132,9 +132,9 @@
 
                     ?>
                     <tr>
-                     <td colspan="5">
-                      <a href="sched_approval_form.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:steelblue; color: whitesmoke;"> Take Action</a>
-                      
+                     <td   colspan="7">
+                      <!-- <a href="sched_approval_form.php?id=<?php echo remove_junk($row[0]);?>" class="btn" style="margin-bottom:10px; background-color:steelblue; color: whitesmoke;"> Take Action</a>-->
+                      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Take Action</button>
                       </td>
                     </tr>
                     <?php } ?>
@@ -142,6 +142,42 @@
               <?php } }?>
           </tbody>
         </table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header bg-dark text-white">
+                      <h5 class="modal-title" id="exampleModalLabel" style="Color:white">APPROVAL</h5>
+                  
+                    </div>
+                    <div class="modal-body">
+                      <form action="sched_approval_form.php?id=<?php echo (int)$_GET['id'] ?>" method="POST">
+                      <div class="form-group">
+                            <label for="status" class="control-label">Choose option:</label>
+                            <select class="form-select form-select-md" name="status" required>
+                                            <option value=""></option>
+                                            <option value="1"> ACCEPT APPLICATION</option>
+                                            <option value="2"> REJECT APPLICATION</option>
+                                        </select>
+                      </div>
+                      <br>
+                      <div class="form-group">
+                            <label for="remarks" class="control-label">Add Remarks:</label>
+                            <textarea rows="4" class="form-control" name="remarks" placeholder="" length="500" maxlength="500" required></textarea>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="hidden" name="id" value="<?php echo (int)$_GET['id'] ?>" readonly>
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill"></i> Cancel</button>
+                       <button type="Submit" name="update" class="btn btn-success"><i class="bi bi-check-circle-fill"></i> OK</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- END OF MODAL -->
+
       </div>
       </div>
     </div>

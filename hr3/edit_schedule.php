@@ -31,12 +31,12 @@ validate_fields($req_fields);
     $employee_id = remove_junk($db->escape($_POST['id']));
     $schedule = remove_junk($db->escape($_POST['schedule']));
      //Days
-     $mon  = remove_junk($db->escape($_POST['mon']));
-     $tue  = remove_junk($db->escape($_POST['tue']));
-     $wed  = remove_junk($db->escape($_POST['wed']));
-     $thu  = remove_junk($db->escape($_POST['thu']));
-     $fri  = remove_junk($db->escape($_POST['fri']));
-     $sat  = remove_junk($db->escape($_POST['sat']));
+     $mon  = remove_junk($db->escape($_POST['Monday']));
+     $tue  = remove_junk($db->escape($_POST['Tuesday']));
+     $wed  = remove_junk($db->escape($_POST['Wednesday']));
+     $thu  = remove_junk($db->escape($_POST['Thursday']));
+     $fri  = remove_junk($db->escape($_POST['Friday']));
+     $sat  = remove_junk($db->escape($_POST['Saturday']));
      $days  = $mon."".$tue."".$wed."".$thu."".$fri."".$sat;
 
      $status=0;
@@ -73,17 +73,19 @@ validate_fields($req_fields);
   </div>
 
 
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div class="card h-100">
       <div class="card-header">
-         <h2>Shift and Scheduling</h2>
-         <label>edit schedule here:</label>
+        <h2>Edit Schedule</h2>
+
          <form method="post" action="edit_schedule.php">
            <div class="card-body">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+                     <p>Select shift</p>
                     <select class="form-control btn-default" name="schedule" required>
+
                       <option value="<?php echo $row[8];?>"><?php echo $row[11]." (from ".$row[12]." to ".$row[13].")";?></option>
                       <?php  foreach ($shift_type as $shifts): ?>
                       <option value="<?php echo $shifts['id']; ?>"><?php echo $shifts['name']. " (from " .$shifts['fromTime']. " to " .$shifts['toTime'].")"; ?></option>
@@ -94,46 +96,42 @@ validate_fields($req_fields);
                 </div>
                 </div>
 
-                <div class="card-body">
+      <div class="card-body">
                 <div class="row">
                   <div class="col-md-12">
-                    <p>DAYS:</p>
-
-                  <div class="form-group">
-                <div class="row">
-                  <div class="col-md-12">
-
-                <div class="weekdaysbtn">
-                  <input type="checkbox" name="mon" id="radio1" value="Mon-" class="radio"/>
+                    <p>Select Days:</p>
+          
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" name="Monday" id="radio1" value="Mon-" class="radio"/>
                   <label class="weekdayslabel" for="radio1">Monday</label>
                   </div>
 
-                  <div class="weekdaysbtn">
-                  <input type="checkbox" name="tue" id="radio2" value="Tue-" class="radio"/>
+                  <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" name="Tuesday" id="radio2" value="Tue-" class="radio"/>
                   <label class="weekdayslabel" for="radio2">Tuesday</label>
                   </div>
 
-                  <div class="weekdaysbtn"> 
-                  <input type="checkbox" name="wed" id="radio3" value="Wed-" class="radio"/>
+                  <div class="form-check form-switch"> 
+                  <input class="form-check-input" type="checkbox" name="Wednesday" id="radio3" value="Wed-" class="radio"/>
                   <label class="weekdayslabel" for="radio3">Wednesday</label>
                   </div>
-
-                  <div class="weekdaysbtn"> 
-                  <input type="checkbox" name="thu" id="radio4" value="Thu-" class="radio"/>
+                
+                  <div class="form-check form-switch"> 
+                  <input class="form-check-input" type="checkbox" name="Thursday" id="radio4" value="Thu-" class="radio"/>
                   <label class="weekdayslabel" for="radio4">Thursday</label>
                   </div>
 
-                  <div class="weekdaysbtn"> 
-                  <input type="checkbox" name="fri" id="radio5" value="Fri-" class="radio"/>
+                  <div class="form-check form-switch"> 
+                  <input class="form-check-input" type="checkbox" name="Friday" id="radio5" value="Fri-" class="radio"/>
                   <label class="weekdayslabel" for="radio5">Friday</label>
                   </div>
 
-                  <div class="weekdaysbtn"> 
-                  <input type="checkbox" name="sat" id="radio6" value="Sat-" class="radio"/>
+                  <div class="form-check form-switch"> 
+                  <input class="form-check-input" type="checkbox" name="Saturday" id="radio6" value="Sat" class="radio"/>
                   <label class="weekdayslabel" for="radio6">Saturday</label>
                   </div>
 
-                </div>
+                  </div>
                 </div>
                 </div>
 

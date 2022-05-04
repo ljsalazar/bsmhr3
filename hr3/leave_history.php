@@ -43,7 +43,7 @@
         <a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
         <a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
         <a href="leave_management.php" class="breadcrumbs__item">Leave Management <?php if(!$totalAdminUnread==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$totalAdminUnread; ?></span><?php } ?></a>
-        <a href="apply_leave.php" class="breadcrumbs__item">Apply Leave</a>
+        <a href="apply_leave.php" class="breadcrumbs__item">Appoint Leave</a>
         <a href="leave_history.php" class="breadcrumbs__item is-active">Leave History</a>
         </nav>
       
@@ -53,7 +53,7 @@
         <a href="leave_type.php" class="breadcrumbs__item">Leave Types</a>
         <a href="leave_report.php" class="breadcrumbs__item">Leave Report</a>
         <a href="leave_management.php" class="breadcrumbs__item">Leave Management <?php if(!$totalAdminUnread==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$totalAdminUnread; ?></span><?php } ?></a>
-        <a href="apply_leave.php" class="breadcrumbs__item">Apply Leave</a>
+        <a href="apply_leave.php" class="breadcrumbs__item">Appoint Leave</a>
         <a href="leave_history.php" class="breadcrumbs__item is-active">Leave History</a>
         </nav>
 
@@ -71,20 +71,20 @@
     <div class="col-md-12">
       <div class="card h-100">
         <div class="card-header">
-          <h2>Leave History</h2>
+          <h5>My leaves</h5>
         </div>
         <div class="card-body">
           <!--<table class="table table-bordered" class="table table-sm table-striped table-bordered table-hover" style="width:100%">-->
             <table id="example" class="table table-striped data-table" style="width:100%">
             <thead>
               <tr>
-                <th class="text-center" style="width: 50px;">#</th>
-                <th class="text-center" style="width: 50px;">Leave Type</th>
-                <th class="text-center" style="width: 10%;"> From </th>
-                <th class="text-center" style="width: 10%;"> To </th>
-                <th class="text-center" style="width: 10%;"> Description </th>
-                <th class="text-center" style="width: 10%;"> Posting Date </th>
-                <th class="text-center" style="width: 10%;"> Admin Remark </th>
+                <th class="text-left" style="width: 50px;">#</th>
+                <th class="text-left" style="width: 50px;">Leave Type</th>
+                <th class="text-left" style="width: 10%;"> From </th>
+                <th class="text-left" style="width: 10%;"> To </th>
+                <th class="text-left" style="width: 10%;"> Description </th>
+                <th class="text-left" style="width: 10%;"> Posting Date </th>
+                <th class="text-left" style="width: 10%;"> Admin Remark </th>
                 <th class="text-left" style="width: 100px;"> Status </th>
               </tr>
             </thead>
@@ -105,12 +105,12 @@
               while ($row = $result -> fetch_row()) {
               ?>
               <tr>
-                <td class="text-center"><?php echo count_id();?></td>
-                <td class="text-center"> <?php echo remove_junk($row[1]); ?></td>
-                <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[2])); echo $posting_date; ?></td>                   
-                <td class="text-center"><?php $posting_date = date("F j, Y", strtotime($row[3])); echo $posting_date; ?></td> 
-                <td class="text-center"> <?php echo remove_junk($row[4]); ?></td>
-                <td class="text-center"> <?php $posting_date = date("F j, Y", strtotime($row[5])); echo $posting_date; ?></td>
+                <td class="text-left"><?php echo count_id();?></td>
+                <td class="text-left"> <?php echo remove_junk($row[1]); ?></td>
+                <td class="text-left"><?php $posting_date = date("F j, Y", strtotime($row[2])); echo $posting_date; ?></td>                   
+                <td class="text-left"><?php $posting_date = date("F j, Y", strtotime($row[3])); echo $posting_date; ?></td> 
+                <td class="text-left"> <?php echo remove_junk($row[4]); ?></td>
+                <td class="text-left"> <?php $posting_date = date("F j, Y", strtotime($row[5])); echo $posting_date; ?></td>
                 <td><?php if($row[7]=="")
                 {
                   echo htmlentities('waiting for approval');

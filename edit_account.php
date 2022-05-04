@@ -112,7 +112,8 @@
                       <form class="form" action="edit_account.php" method="POST" enctype="multipart/form-data">
                       <div class="input-group mb-3">
                         <div class="form-group">
-                          <input type="file" name="file_upload" multiple="multiple" class="btn btn-secondary btn-file"/>
+                          <input class="form-control" type="file" name="file_upload" multiple="multiple" class="btn btn-secondary btn-file"/>
+
                         </div>
                       </div>
                       <input type="hidden" name="user_id" value="<?php echo $user['id'];?>">

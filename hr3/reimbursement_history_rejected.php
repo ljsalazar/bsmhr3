@@ -56,8 +56,7 @@
 					<div class="card-header">
 						<div class="row">
 							<div class="col-md-9">
-								<h2>Reimbursements</h2>
-								<p>Browse the current reimbursed history logs</p>
+							
 								<?php if ($user_level == 1): ?>
 								<!-- <form class="form-inline" method="post" action="reimbursement_archive.php">
 									<button type="submit" id="pdf" name="generate_pdf" class="btn">Archive</button>
