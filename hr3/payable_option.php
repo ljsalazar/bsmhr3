@@ -37,7 +37,7 @@
 				<nav class="breadcrumbs">
 					<a href="claim_type.php" class="breadcrumbs__item">Types of Claims</a>
 					<a href="claim_history.php" class="breadcrumbs__item">Claims History <?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a>
-					<a href="claim_index.php" class="breadcrumbs__item is-active">Request Claims</a>
+					<a href="claim_index.php" class="breadcrumbs__item is-active">Appoint Claims</a>
 				</nav>
 				
 				<?php else: ?>

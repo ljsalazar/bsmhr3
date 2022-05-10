@@ -25,7 +25,7 @@
 				<!-- <?php if ($user_level <= '1'): ?>
 				<ul class="nav nav-pills">
 					
-					<li role="presentation"><a href="claim_index.php" class="btn" style="margin-bottom:10px">Request Claims</a></li>
+					<li role="presentation"><a href="claim_index.php" class="btn" style="margin-bottom:10px">Appoint Claims</a></li>
 					<li role="presentation"><a href="claim_type.php" class="btn" style="margin-bottom:10px">Types of Claims</a></li>
 					<li role="presentation" class="active"><a href="claim_history.php" class="btn" style="margin-bottom:10px">Claims History</a></li>
 				</ul>
@@ -33,7 +33,7 @@
 				<?php else: ?>
 				<ul class="nav nav-pills">
 					
-					<li role="presentation"><a href="claim_index.php" class="btn" style="margin-bottom:10px">Request Claims</a></li>
+					<li role="presentation"><a href="claim_index.php" class="btn" style="margin-bottom:10px">Appoint Claims</a></li>
 					<li role="presentation" class="active"><a href="claim_history.php" class="btn" style="margin-bottom:10px">Claims History</a></li>
 				</ul>		
 				<?php endif;?> -->

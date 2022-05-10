@@ -32,7 +32,7 @@
 			<div class="col-md-12"><?php echo display_msg($msg); ?>
 				<?php if ($user_level <= '2'): ?>
 				<nav class="breadcrumbs">
-					<a href="claim_index.php" class="breadcrumbs__item">Request Claims</a>
+					<a href="claim_index.php" class="breadcrumbs__item">Appoint Claims</a>
 					<a href="claim_type.php" class="breadcrumbs__item">Types of Claims</a>
 					<a href="claim_history.php" class="breadcrumbs__item is-active">Claims History</a>
 				</nav>

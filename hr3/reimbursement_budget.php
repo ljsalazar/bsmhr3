@@ -79,7 +79,7 @@
 									<div class="form-group">
 										<p>Select User:</p>
 										<select class="form-control" name="user_selected" placeholder="Claim Type">
-										<option value="">Allocate to:</option>
+										
 											<?php
 											$query = $conn->query("SELECT name FROM users");
 											

@@ -35,7 +35,7 @@
 				?>
 				<?php if ($user_level <= '3'): ?>
 				<nav class="breadcrumbs">
-					<a href="claim_index.php" class="breadcrumbs__item">Request Claims</a>
+					<a href="claim_index.php" class="breadcrumbs__item">Appoint Claims</a>
 					<a href="claim_type.php" class="breadcrumbs__item">Types of Claims</a>
 					<a href="claim_history.php" class="breadcrumbs__item is-active">Claims History <?php if(!$claim_notif==0){ ?><span class="badge" style="background-color: red;"><?php echo (int)$claim_notif; ?></span><?php } ?></a>
 				</nav>

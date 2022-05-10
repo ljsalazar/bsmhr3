@@ -100,7 +100,7 @@
 								<div class="form-group">
 									<p>Select Employee:</p>
 									<select class="form-select form-select-md" name="user_selected" >
-										  <option value="">Appoint claim to</option>
+										 
 										<?php
 										$query = $conn->query("SELECT name FROM users");
 										
