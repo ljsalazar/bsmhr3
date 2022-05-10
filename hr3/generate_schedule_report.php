@@ -29,6 +29,18 @@
         {
             $user = current_user();
             $username = $user['username'];
+            $employee_name = $user['name'];
+            $emp_id = $user['id'];
+            $e_dept = $user['department_id'];
+            $db = new dbObj();
+            $connString =  $db->getConnstring();
+            $department_query = "SELECT * FROM tbldepartments WHERE id = '{$e_dept}'";
+            $result = $connString->query($department_query);
+            foreach($result as $row){
+                $department_name = $row['DepartmentName'];
+                $department_sname = $row['DepartmentShortName'];
+                $department_cname = $row['DepartmentCode'];
+            
             // Logo
             #$this->Image('logo.png',10,-1,70);
             $this->SetFont('Arial','B',13);
@@ -39,9 +51,13 @@
             // Line break
             $this->Ln(20);
             $this->SetFont('Arial','B',8);
-            $this->Cell(90,8,'Employee Username: '.$username,1,0,'L');
+            $this->Cell(30,8,'Employee ID: '.$emp_id,1,0,'L');
+            $this->Cell(45,8,'Employee Name: '.$employee_name,1,0,'L');
+            $this->Cell(65,8,'Department Name: '.$department_name.'('.$department_sname.')',1,0,'L');
+            $this->Cell(40,8,'Department CODE: '.$department_cname,1,0,'L');
             // Line break
             $this->Ln(10);
+        }
         }
         
         // Page footer
