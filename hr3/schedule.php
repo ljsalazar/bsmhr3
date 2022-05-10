@@ -55,8 +55,8 @@ $result = $db->query($sql);
 					<div class="card-header">
          
           <div class="pull-right">
-           <a href="generate_schedule_report.php?id=<?php $user = current_user();
-    $userid = (int)$user['id']; echo $userid; ?>" class="btn btn-danger"><span class="glyphicon glyphicon-floppy-open"></span>Print</a>
+          <a href="generate_schedule_report.php?id=<?php $user = current_user();
+    $userid = (int)$user['id']; echo $userid; ?>" class="btn btn-danger">PDF <span class="bi bi-filetype-pdf"></a>
          </div>
         </div>
         <div class="card-body">
