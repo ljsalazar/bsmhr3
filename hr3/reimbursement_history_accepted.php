@@ -130,14 +130,6 @@
 						
 					</div>
 				</div>
-				
-				<?php include('layouts/table/tablefooter.php');?>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-				<script src="dist/js/scripts.js"></script>
-				<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-				<script src="dist/js/datatables-simple-demo.js"></script>
-				
 			</div><?php include_once('layouts/footer.php'); ?>
 		</body>
 	</html>

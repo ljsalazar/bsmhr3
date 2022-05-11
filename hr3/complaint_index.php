@@ -56,15 +56,16 @@
 					}
 				?>
 				<form method="post" action="complaint_index.php">
-					<input type="text" name="type" class="form-control" value=""></br>
+					<input required type="text" name="type" class="form-control" value=""></br>
 					<input type="submit" name="submit" class="btn btn-primary" value="Submit">
 				</form>
 				</br><button name="cancel" class="btn" onclick="location.href='time_index.php'">Cancel</button>
 			</div>
 			
-			<div class="jumbotron" style="display:block; margin:auto">
+
+			<div class="row" style="">
 				<div style="max-height:580px; overflow:auto;">
-					<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+					<table id="example" class="table table-striped data-table" style="width:100%">
 						<thead>
 							<tr>
 								<th>User</th> <th>Complaint</th> <th>Date</th> <th>Status</th> <th>Remarks</th> <th>Options</th>
@@ -114,12 +115,5 @@
 		</div>
 	</div>
 </div>
-
-<?php include('layouts/table/tablefooter.php');?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="dist/js/scripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<script src="dist/js/datatables-simple-demo.js"></script>
 
 <?php include_once('layouts/footer.php'); ?>												

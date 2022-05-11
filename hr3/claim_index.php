@@ -173,7 +173,7 @@
 								<?php else: ?>
 								<div class="panel-body">
 									<div style="max-height:600px; overflow:auto;">
-										<table id="datatablesSimple" class="table table-striped data-table" style="width:100%">
+										<table id="example" class="table table-striped data-table" style="width:100%">
 											<thead>
 												<tr>
 													<th class="text-center" style="width: 50px;">User</th>
@@ -233,11 +233,5 @@
 			<!--from startbootstrap.com this is for Datatables...
 				<link href="dist/css/styles.css" rel="stylesheet" />
 			-->
-			<?php include('layouts/table/tablefooter.php');?>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-			<script src="dist/js/scripts.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-			<script src="dist/js/datatables-simple-demo.js"></script>
 		</body>
 	</html>

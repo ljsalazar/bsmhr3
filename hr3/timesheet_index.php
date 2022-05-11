@@ -70,45 +70,37 @@
 										$query = $conn->query("SELECT * FROM time_attendance WHERE user_level >= 2 ORDER BY time_id DESC");
 									}
 									else {
-									$query = $conn->query("SELECT * FROM time_attendance WHERE username = '$username' ORDER BY time_id DESC");
+										$query = $conn->query("SELECT * FROM time_attendance WHERE username = '$username' ORDER BY time_id DESC");
 									}
 									
 									while($user_data = mysqli_fetch_array($query)) {
-									echo "<tr>";
-									echo "<td style='font-size: 14px'>".$user_data['name']."</td>";
-									echo "<td style='font-size: 14px'>".$user_data['login_time']."</td>";
-									
-									$log = $user_data['working'];
-									if ($log == 1){
-									echo "<td style='font-size: 14px'>Currently Working</td>";
-									echo "<td style='font-size: 14px'>Currently Working</td>";
-									} else {
-									echo "<td style='font-size: 14px'>".$user_data['logout_time']."</td>";
-									echo "<td style='font-size: 14px'>".$user_data['calculated_work']."</td>";
-									}
-									
-									if ($user_level <= 1){
-									echo "<td style='font-size: 14px'><a href='time_edit.php?time_id=$user_data[time_id]' class='btn btn-xs btn-warning'data-toggle='tooltip' title='Edit'>
-									<i class='bi bi-pencil-fill'></i></a>  <a href='time_delete.php?time_id=$user_data[time_id]' class='btn btn-xs btn-danger'data-toggle='tooltip' title='Remove'>
-									<i class='bi bi-eraser-fill'></i></a></td>";
-									} else {
-									echo "<td style='font-size: 14px'><a href='time_delete.php?time_id=$user_data[time_id]' class='btn btn-xs btn-danger'data-toggle='tooltip' title='Remove'>
-									<i class='bi bi-eraser-fill'></i></a>";
-									}	
-									echo "</tr>";
+										echo "<tr>";
+										echo "<td style='font-size: 14px'>".$user_data['name']."</td>";
+										echo "<td style='font-size: 14px'>".$user_data['login_time']."</td>";
+										
+										$log = $user_data['working'];
+										if ($log == 1){
+											echo "<td style='font-size: 14px'>Currently Working</td>";
+											echo "<td style='font-size: 14px'>Currently Working</td>";
+											} else {
+											echo "<td style='font-size: 14px'>".$user_data['logout_time']."</td>";
+											echo "<td style='font-size: 14px'>".$user_data['calculated_work']."</td>";
+										}
+										
+										if ($user_level <= 1){
+											echo "<td style='font-size: 14px'><a href='time_edit.php?time_id=$user_data[time_id]' class='btn btn-xs btn-warning'data-toggle='tooltip' title='Edit'>
+											<i class='bi bi-pencil-fill'></i></a>  <a href='time_delete.php?time_id=$user_data[time_id]' class='btn btn-xs btn-danger'data-toggle='tooltip' title='Remove'>
+											<i class='bi bi-eraser-fill'></i></a></td>";
+											} else {
+											echo "<td style='font-size: 14px'><a href='time_delete.php?time_id=$user_data[time_id]' class='btn btn-xs btn-danger'data-toggle='tooltip' title='Remove'>
+											<i class='bi bi-eraser-fill'></i></a>";
+										}	
+										echo "</tr>";
 									}?>
-									</table>
-									</div>
-									</div>
-									</div>
-									</div>
-									</div>
-									
-									<?php include('layouts/table/tablefooter.php');?>
-									<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-									<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-									<script src="dist/js/scripts.js"></script>
-									<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-									<script src="dist/js/datatables-simple-demo.js"></script>
-									
-									<?php include_once('layouts/footer.php'); ?>																															
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php include_once('layouts/footer.php'); ?>																																

@@ -221,7 +221,7 @@
 									
 									$conn->query("INSERT INTO `events` (event,fromdate,todate,min_user_level,author)
 									VALUES('$event', '$fromdate', '$todate', '$group_level', '$author')") or die(mysqli_error());
-							
+									
 									$session->msg('s',"Event Successfully Created");
 									echo "<script>window.location.href='time_index.php';</script>";
 								}
@@ -275,25 +275,18 @@
 								echo "<td>".$user_data['event']."</td>";
 								echo "<td>".$user_data['fromdate']."</td>";
 								echo "<td>".$user_data['todate']."</td>";
-							echo "<td>".$user_data['author']."</td>";
-							echo "<td><a href='event_edit.php?event_id=$user_data[event_id]' class='btn btn-xs btn-warning'data-toggle='tooltip' title='Edit'>
-							<i class='bi bi-pencil-fill'></i></a>  <a href='event_delete.php?event_id=$user_data[event_id]' class='btn btn-xs btn-danger'data-toggle='tooltip' title='Remove'>
-							<i class='bi bi-eraser-fill'></i></a></td>";
-							echo "</tr>";
+								echo "<td>".$user_data['author']."</td>";
+								echo "<td><a href='event_edit.php?event_id=$user_data[event_id]' class='btn btn-xs btn-warning'data-toggle='tooltip' title='Edit'>
+								<i class='bi bi-pencil-fill'></i></a>  <a href='event_delete.php?event_id=$user_data[event_id]' class='btn btn-xs btn-danger'data-toggle='tooltip' title='Remove'>
+								<i class='bi bi-eraser-fill'></i></a></td>";
+								echo "</tr>";
 							}	
-							?>
-							</table>
-							<?php endif;?>
-							</div>
-							</div>
-							</div>
-							</div>
-							
-							<?php include('layouts/table/tablefooter.php');?>
-							<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-							<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-							<script src="dist/js/scripts.js"></script>
-							<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-							<script src="dist/js/datatables-simple-demo.js"></script>
-							
-							<?php include_once('layouts/footer.php'); ?>																																														
+						?>
+					</table>
+					<?php endif;?>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<?php include_once('layouts/footer.php'); ?>																																														
