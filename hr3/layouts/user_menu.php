@@ -100,7 +100,7 @@
       <span class="me-2"><i class="bi bi-table"></i></span>
       <span>Tables</span>
     </a> -->
-    <a href="users.php" class="nav-link px-3">
+    <a href="../users.php" class="nav-link px-3">
       <span class="me-2"><i class="bi bi-people-fill"></i></span>
       <span>Manage Users</span>
     </a>
