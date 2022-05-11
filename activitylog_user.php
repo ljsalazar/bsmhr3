@@ -7,7 +7,7 @@ page_require_level(2);
  $all_users = find_all_user();
 ?>
 <?php 
-require('UserInfo.php');
+#require('UserInfo.php');
 ?>
 <?php include_once('layouts/header.php'); ?>
 
@@ -42,8 +42,8 @@ require('UserInfo.php');
                 <td><?php echo remove_junk(ucwords($a_user['name']))?></td>
                 <td><?php echo remove_junk(ucwords($a_user['username']))?></td>
                 <td class="text-left"><?php echo remove_junk(ucwords($a_user['group_name']))?></td>
-                <td class="text-left"><?php $posting_date = date("F j, Y - g:i a", strtotime($a_user['last_login'])); echo $posting_date; ?></td>
-              </tr>
+                <td class="text-left"><?php $posting_date = date("F j, Y - g:i a", strtotime($a_user['last_login'])); echo $posting_date; ?></td>	 
+			 </tr>
               <?php endforeach; ?>
             </tbody>
           </tabel>
