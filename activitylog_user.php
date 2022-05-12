@@ -33,11 +33,6 @@ require('UserInfo.php');
                 <th>Username</th>
                 <th class="text-left">User Role</th>
                 <th class="text-left">Last Login </th>
-                <th>Device</th>
-                <th>OS</th>
-                <th>IP</th>
-                  <th>Browser</th>
-
               </tr>
             </thead>
             <tbody>
@@ -48,10 +43,6 @@ require('UserInfo.php');
                 <td><?php echo remove_junk(ucwords($a_user['username']))?></td>
                 <td class="text-left"><?php echo remove_junk(ucwords($a_user['group_name']))?></td>
                 <td class="text-left"><?php $posting_date = date("F j, Y - g:i a", strtotime($a_user['last_login'])); echo $posting_date; ?></td>
-                <td><?= UserInfo::get_device();?></td>
-                <td><?= UserInfo::get_os();?></td>
-                <td><?= UserInfo::get_ip();?></td>
-                <td><?= UserInfo::get_browser();?></td>
               </tr>
               <?php endforeach; ?>
             </tbody>
