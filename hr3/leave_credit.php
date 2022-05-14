@@ -60,7 +60,7 @@
 					<div class="col-md-5">
 						<div class="card-body">
 							<h6 style="text-align:left">Provide Credits</h6>
-							<div style="max-height:300px; overflow:auto;">
+							<div style="max-height:600px; overflow:auto;">
 								<?php
 									$fullname = $user['name'];
 									

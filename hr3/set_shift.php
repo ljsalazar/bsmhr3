@@ -151,14 +151,14 @@
 		          </div>
 		          </h4>
 					
-					<div style="max-height:300px">
+					<div style="max-height:600px">
 						<table class="table" style="table-layout: auto;">
 							<tr>
 								<th>#</th> <th>Shift Name</th> <th>From</th> <th>To</th> <th>Action</th>
 							</tr>
 						</table>
 					</div>
-					<div style="max-height:300px; overflow:auto;">
+					<div style="max-height:600px; overflow:auto;">
 						<table class="table" style="table-layout: auto;">
 							<?php 
 								

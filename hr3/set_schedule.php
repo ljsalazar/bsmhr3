@@ -165,14 +165,14 @@ validate_fields($req_fields);
       <div class="card-header">
         <div class="panel" style="width:100%; display:block; margin:auto">
   <h4 style="text-align:left; margin-bottom:10px; margin-left:20px"><b>Schedule:</b></h4>
-  <div style="max-height:300px">
+  <div style="max-height:600px">
       <table class="table" style="table-layout: auto;">
     <tr>
         <th>#</th> <th>Shift</th> <th>Days</th> <th>Action</th>
     </tr>
   </table>
 </div>
-        <div style="max-height:300px; overflow:auto;">
+        <div style="max-height:600px; overflow:auto;">
       <table class="table" style="table-layout: auto;">
     <?php 
 

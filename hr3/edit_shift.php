@@ -141,14 +141,14 @@ if(empty($errors)){
         <div class="panel" style="width:100%; display:block; margin:auto">
   <h4 style="text-align:left; margin-bottom:10px; margin-left:10px">Shifting Records:</h4>
   
-  <div style="max-height:300px">
+  <div style="max-height:600px">
       <table class="table" style="table-layout: auto;">
     <tr>
         <th>Shift Name</th> <th>From</th> <th>To</th> <th>Action</th>
     </tr>
   </table>
 </div>
-        <div style="max-height:300px; overflow:auto;">
+        <div style="max-height:600px; overflow:auto;">
       <table class="table" style="table-layout: auto;">
     <?php 
 

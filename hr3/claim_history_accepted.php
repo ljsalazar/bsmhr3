@@ -83,7 +83,7 @@
 								<li role="presentation"><a href="claim_history_rejected.php" class="btn" style="margin-bottom:10px">Rejected</a></li>
 							</ul>
 							
-							<div style="max-height:300px">
+							<div style="">
 								<table id="example" class="table table-striped data-table" style="width:100%">
 									<thead>
 										<tr>

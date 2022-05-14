@@ -98,11 +98,11 @@
     <a href="#" class="nav-link px-3">
       <span class="me-2"><i class="bi bi-table"></i></span>
       <span>Tables</span>
-    </a> -->
+    </a> 
     <a href="users.php" class="nav-link px-3">
       <span class="me-2"><i class="bi bi-people-fill"></i></span>
       <span>Manage Users</span>
-    </a>
+    </a>-->
     <a href="" class="nav-link px-3">
       <span class="me-2"><i class="bi bi-clock-fill"></i></span>
       <span>: <span class="badge rounded bg-secondary"><?php echo date("F j, Y, g:i a");?></span></span>

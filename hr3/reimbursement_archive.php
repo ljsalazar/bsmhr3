@@ -53,7 +53,7 @@
 							<button name="cancel" class="btn btn-primary" onclick="location.href='reimbursement_history.php'">Back</button>
 						</div>
 						<div class="card-body">
-							<div style="max-height:300px">
+							<div style="max-height:600px">
 								<table id="example" class="table table-striped data-table" style="width:100%">
 									<thead>
 										<tr>

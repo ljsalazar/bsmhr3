@@ -56,7 +56,7 @@
 					<div class="col-md-5">
 						<div class="card-body">
 						
-							<div style="max-height:300px; overflow:auto;">
+							<div style="max-height:600px; overflow:auto;">
 								<?php
 									$fullname = $user['name'];
 									
