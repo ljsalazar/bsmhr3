@@ -101,7 +101,7 @@
 					<div class="col-md-7">
 						<div class="card-body">
 							<h6 style="text-align:left">Allocated Budget</h6>
-							<table id="example" class="table table-striped data-table" style="width:100%">
+							<table id="example" class="table table-bordered data-table" style="width:100%">
 								<thead>
 									<tr>
 										<th>Name</th>

@@ -16,7 +16,7 @@
 		$todate = $_POST['todate'];
 		$user_selected = $_POST['user_selected'];
 		$output .= '
-		<table id="datatablesSimple" class="table-striped table-bordered table-hover" bordered="4" style="width:100%">
+		<table id="datatablesSimple" class="table-bordered table-bordered table-hover" bordered="4" style="width:100%">
 		<thead>  
 		<tr>  
 		<th>#</th> 

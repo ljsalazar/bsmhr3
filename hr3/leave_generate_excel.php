@@ -15,7 +15,7 @@ if(isset($_POST["export_excel"]))
     $fromdate = $_POST['fromdate'];
 		$todate = $_POST['todate'];
   $output .= '
-   <table id="datatablesSimple" class="table-striped table-bordered table-hover" bordered="4" style="width:100%">
+   <table id="datatablesSimple" class="table-bordered table-bordered table-hover" bordered="4" style="width:100%">
    <thead>  
                     <tr>  
                          <th>#</th>  

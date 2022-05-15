@@ -87,7 +87,7 @@
 								<li role="presentation" class="active"><a href="reimbursement_history_rejected.php" class="btn btn-primary" style="margin-bottom:10px">Rejected</a></li>
 							</ul>
 							
-								<table id="example" class="table table-striped data-table" style="width:100%">
+								<table id="example" class="table table-bordered data-table" style="width:100%">
 									<thead>
 										<tr>
 											<th>User</th>

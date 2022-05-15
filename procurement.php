@@ -42,7 +42,7 @@ $row = join_procurment_table();
         <div class="table-responsive">
           <table
             id="example"
-            class="table table-striped data-table"
+            class="table table-bordered data-table"
             style="width: 100%" >
             <thead>
               <tr>

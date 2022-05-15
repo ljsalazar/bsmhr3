@@ -117,7 +117,7 @@
 								<h4 style="text-align:center;">PAYABLE LEAVES</h4>
 								<div class="panel-body">
 									<div style="max-height:600px">
-										<table id="example" class="table table-striped data-table" style="width:100%">
+										<table id="example" class="table table-bordered data-table" style="width:100%">
 											<thead>
 												<tr>
 													<th class="text-left" style="width: 50px;">User</th>
@@ -173,7 +173,7 @@
 								<?php else: ?>
 								<div class="panel-body">
 									<div style="max-height:600px; overflow:auto;">
-										<table id="example" class="table table-striped data-table" style="width:100%">
+										<table id="example" class="table table-bordered data-table" style="width:100%">
 											<thead>
 												<tr>
 													<th class="text-center" style="width: 50px;">User</th>

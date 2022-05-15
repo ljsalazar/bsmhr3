@@ -59,8 +59,8 @@ $result = $db->query($sql);
           </div>
         </div>
         <div class="card-body">
-          <!--<table class="table table-bordered" class="table table-sm table-striped table-bordered table-hover" style="width:100%">-->
-            <table id="example" class="table table-striped data-table" style="width:100%">
+          <!--<table class="table table-bordered" class="table table-sm table-bordered table-bordered table-hover" style="width:100%">-->
+            <table id="example" class="table table-bordered data-table" style="width:100%">
             <thead>
               <tr>
                 <th class="text-left" style="width: 50px;">#</th>

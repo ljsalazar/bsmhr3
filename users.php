@@ -42,7 +42,7 @@
       <div class="card-body">
        <table
          id="example"
-         class="table table-striped data-table"
+         class="table table-bordered data-table"
          style="width: 100%" >
          <thead>
           <tr>

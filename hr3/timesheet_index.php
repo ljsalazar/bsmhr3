@@ -50,7 +50,7 @@
 					
 					<div class="card-body">
 						<div style="max-height:600px">
-							<table id="example" class="table table-striped data-table" style="width:100%">
+							<table id="example" class="table table-bordered data-table" style="width:100%">
 								<thead>
 									<tr>
 										<th>User</th> <th>Login Time</th> <th>Logout Time</th> <th>Hours Worked</th> <th>Options</th>
