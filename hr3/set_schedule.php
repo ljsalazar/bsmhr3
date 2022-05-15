@@ -76,8 +76,8 @@ validate_fields($req_fields);
                   <div class="col-md-12">
                     <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"> 
                     <p>Select shift:</p>
-                    <select class="form-control btn-default" name="shift_type_id" required>
-                      <option value=""></option>
+                    <select required class="form-select form-select-md" name="shift_type_id" required>
+                      <option value="">Choose</option>
                       <?php  foreach ($shift_type as $shifts): ?>
                       <option value="<?php echo $shifts['id']; ?>">
                       <?php

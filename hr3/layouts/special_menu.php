@@ -1,7 +1,7 @@
 <ul class="navbar-nav">
   <li>
     <div class="text-muted small fw-bold text-uppercase px-3">
-      CORE
+      Analytics
     </div>
   </li>
   <li>
@@ -14,7 +14,7 @@
   <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
   <li>
     <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-      Interface
+      Submodule
     </div>
   </li>
 <!-- All Sub modules Side Nav Bar -->
@@ -101,11 +101,11 @@
     <a href="#" class="nav-link px-3">
       <span class="me-2"><i class="bi bi-table"></i></span>
       <span>Tables</span>
-    </a> -->
+    </a> 
     <a href="../users.php" class="nav-link px-3">
       <span class="me-2"><i class="bi bi-people-fill"></i></span>
       <span>Manage Users</span>
-    </a>
+    </a>-->
     <a href="" class="nav-link px-3">
       <span class="me-2"><i class="bi bi-clock-fill"></i></span>
       <span>: <span class="badge rounded bg-secondary"><?php echo date("F j, Y, g:i a");?></span></span>

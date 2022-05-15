@@ -25,11 +25,11 @@
               <!-- Code For UserLevel-->
             <?php $user_level=$user_p['user_level'];?>
             <?php if ($user_level==1):?>
-            <span class="idd1 iddforprofile">Admin</span><span><i class="fa fa-copy"></i></span>
+            <span class="idd1 iddforprofile">Super Admin</span><span><i class="fa fa-copy"></i></span>
             <?php elseif ($user_level==2):?>
-             <span class="idd1 iddforprofile">Employee</span><span><i class="fa fa-copy"></i></span>
+             <span class="idd1 iddforprofile">Admin - Human Resource Staff</span><span><i class="fa fa-copy"></i></span>
            <?php elseif ($user_level==3):?>
-            <span class="idd1 iddforprofile"></span><span><i class="fa fa-copy"></i></span>
+            <span class="idd1 iddforprofile">User - Employee</span><span><i class="fa fa-copy"></i></span>
             <?php endif;?>
             <!-- End of Code For UserLevel-->
 

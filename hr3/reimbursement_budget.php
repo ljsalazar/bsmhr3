@@ -78,8 +78,8 @@
 								<form method="post" action="">
 									<div class="form-group">
 										<p>Select User:</p>
-										<select class="form-control" name="user_selected" placeholder="Claim Type">
-										
+										<select required class="form-select form-select-md" name="user_selected" placeholder="Claim Type">
+										<option value="">Choose</option>
 											<?php
 											$query = $conn->query("SELECT name FROM users");
 											

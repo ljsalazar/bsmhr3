@@ -99,8 +99,8 @@
 								</br>
 								<div class="form-group">
 									<p>Select Employee:</p>
-									<select class="form-select form-select-md" name="user_selected" >
-										 
+									<select required class="form-select form-select-md" name="user_selected" >
+										<option value="">Choose</option>
 										<?php
 										$query = $conn->query("SELECT name FROM users");
 										

@@ -1,7 +1,7 @@
 <ul class="navbar-nav">
   <li>
     <div class="text-muted small fw-bold text-uppercase px-3">
-      CORE
+      Analytics
     </div>
   </li>
   <li>
@@ -14,7 +14,7 @@
   <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
   <li>
     <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-      Interface
+      Submodule
     </div>
   </li>
 <!-- All Sub modules Side Nav Bar -->
